@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sample TaTiO Performance Report</title>
+    <style>
+      @font-face {
+        font-family: "Gilroy";
+        src: url("https://shared-assets.tatio.io/fonts/Gilroy-Regular.otf");
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: "Gilroy";
+        src: url("https://shared-assets.tatio.io/fonts/Gilroy-Medium.otf");
+        font-weight: 500;
+      }
+      @font-face {
+        font-family: "Gilroy";
+        src: url("https://shared-assets.tatio.io/fonts/Gilroy-SemiBold.otf");
+        font-weight: 600;
+      }
+
+      :root {
+        --primary-font: Gilroy, Arial, Helvetica, sans-serif;
+        --dark-blue: #00004f;
+        --light-grey: #f9f9f9;
+        --almost-black: #1a1a1a;
+        --very-dark-grey: #414143;
+        --dark-grey: #777777;
+        --e-grey: #eeeeee;
+        --white: #ffffff;
+        --tatio-pink: #e20c98;
+        --orange: #ff5811;
+        --border-light-grey: #ecebeb;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--primary-font);
+        background: var(--light-grey);
+        color: var(--almost-black);
+        min-height: 100vh;
+      }
+
+      .page {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 12px 16px 40px;
+        min-height: 100vh;
+        position: relative;
+      }
+
+      .report-shell {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        min-height: calc(100vh - 52px);
+      }
+
+      .report-content {
+        filter: blur(4px);
+        opacity: 0.88;
+      }
+
+      .sample-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(249, 249, 249, 0.55);
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .cta-box {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+        background: var(--white);
+        border-radius: 16px;
+        padding: 48px 64px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow:
+          0 24px 48px rgba(50, 50, 71, 0.16),
+          0 12px 24px rgba(50, 50, 71, 0.1),
+          0 4px 8px rgba(50, 50, 71, 0.06);
+        max-width: min(90vw, 560px);
+        width: calc(100% - 32px);
+      }
+
+      .cta-box p {
+        font-size: 28px;
+        line-height: 1.35;
+        font-weight: 400;
+        color: var(--very-dark-grey);
+        margin-bottom: 16px;
+      }
+
+      .cta-box .cta-headline {
+        font-size: 40px;
+        line-height: 1.2;
+        font-weight: 600;
+        color: var(--dark-blue);
+        margin: 0;
+        text-decoration: none;
+      }
+
+      .cta-box .cta-headline:hover {
+        color: var(--tatio-pink);
+      }
+
+      @media (max-width: 768px) {
+        .cta-box {
+          padding: 32px 28px;
+        }
+
+        .cta-box p {
+          font-size: 22px;
+        }
+
+        .cta-box .cta-headline {
+          font-size: 30px;
+        }
+      }
+
+      .sections {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 97%;
+        margin: auto;
+      }
+
+      .section-row {
+        display: flex;
+        width: 100%;
+        gap: 20px;
+      }
+
+      .section-row.main {
+        position: relative;
+      }
+
+      .col-left {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 61%;
+      }
+
+      .col-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 40%;
+        padding-bottom: 30px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.88);
+        border-radius: 10px;
+      }
+
+      .card.solid-top {
+        background: rgba(255, 255, 255, 0.92);
+      }
+
+      /* Candidate header */
+      .candidate-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0 3px;
+        width: 100%;
+      }
+
+      .candidate-name {
+        font-size: 28px;
+        font-weight: 400;
+        text-transform: capitalize;
+      }
+
+      .candidate-sim {
+        font-size: 17px;
+        line-height: 24px;
+        color: var(--dark-grey);
+        margin-top: 2px;
+      }
+
+      .data-chips {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .chip {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--e-grey);
+        border-radius: 8px;
+        padding: 4px 8px;
+        font-size: 15px;
+        line-height: 22px;
+        white-space: nowrap;
+      }
+
+      .chip svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+        opacity: 0.75;
+      }
+
+      .icon-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--e-grey);
+        border: none;
+        border-radius: 8px;
+        width: 35px;
+        height: 35px;
+        color: var(--almost-black);
+      }
+
+      .icon-btn.download {
+        background: var(--orange);
+        color: var(--white);
+        width: 48px;
+        height: 45px;
+      }
+
+      .headline {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 33px;
+        color: var(--almost-black);
+      }
+
+      .description {
+        color: var(--very-dark-grey);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .eval-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 22px;
+        height: 35px;
+        border-radius: 8px;
+        color: var(--white);
+        background: var(--dark-blue);
+        padding: 10px;
+        width: fit-content;
+      }
+
+      /* Prediction */
+      .prediction-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+        width: 60%;
+        height: 200px;
+      }
+
+      .prediction-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .score-ring {
+        width: 135px;
+        height: 135px;
+        flex-shrink: 0;
+        display: block;
+        filter: blur(7px);
+      }
+
+      .score-ring text {
+        font-family: var(--primary-font);
+        font-size: 40px;
+        fill: var(--almost-black);
+        font-weight: 400;
+      }
+
+      /* Progress & duration */
+      .stat-card {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 20px 20px 30px;
+        gap: 20px;
+        width: 25%;
+        height: 200px;
+        justify-content: space-between;
+      }
+
+      .stat-card.duration {
+        gap: 5px;
+      }
+
+      .stat-card .duration-value {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 33px;
+      }
+
+      /* Assets */
+      .assets-row {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
+        min-height: 200px;
+      }
+
+      .asset-card {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 20px 20px 30px;
+        width: 100%;
+        min-height: 200px;
+        justify-content: space-between;
+      }
+
+      .asset-card img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .asset-card ul {
+        margin: 0;
+        padding-inline-start: 20px;
+      }
+
+      .asset-card li {
+        margin-top: 4px;
+      }
+
+      /* General skills */
+      .skills-card {
+        padding: 25px 25px 25px 30px;
+        width: 100%;
+        min-height: 290px;
+      }
+
+      .skill-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 0 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        gap: 20px;
+      }
+
+      .skill-row:last-child {
+        border-bottom: none;
+      }
+
+      .skill-name {
+        font-weight: 500;
+        font-size: 15px;
+        width: 38%;
+      }
+
+      .skill-bar-wrap {
+        position: relative;
+        width: 57%;
+      }
+
+      .skill-pct {
+        position: absolute;
+        right: 0;
+        bottom: 10px;
+        font-weight: 500;
+        font-size: 12.5px;
+      }
+
+      .skill-bar {
+        width: 100%;
+        height: 10px;
+        background: rgba(120, 120, 128, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .skill-bar-fill {
+        height: 100%;
+        background: var(--dark-blue);
+        border-radius: 8px;
+      }
+
+      /* Learning curve */
+      .learning-card {
+        padding: 25px 25px 25px 30px;
+        width: 100%;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .learning-card img {
+        width: 100%;
+        height: 88%;
+        object-fit: contain;
+      }
+
+      /* Performance */
+      .performance-card {
+        width: 100%;
+        height: 660px;
+        padding: 25px 25px 25px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .performance-head {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .diagram-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex: 1;
+      }
+
+      .core-tasks {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        align-self: flex-start;
+      }
+
+      .core-task {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .core-task .dot {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        box-shadow: 1px 1px 2px rgba(65, 65, 67, 0.3);
+        flex-shrink: 0;
+      }
+
+      .diagram-net {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 21px;
+        width: 72%;
+        height: auto;
+      }
+
+      .net-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 15px;
+        line-height: 22px;
+        width: 100%;
+      }
+
+      .net-row hr {
+        width: 70%;
+        border: none;
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+      }
+
+      .columns-wrap {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 80%;
+        left: 50%;
+        transform: translate(-50%, 2%);
+        height: 96%;
+        top: 0;
+      }
+
+      .v-bar {
+        position: relative;
+        background: var(--border-light-grey);
+        border-radius: 8px;
+        width: 35px;
+        height: 100%;
+        display: flex;
+      }
+
+      .v-bar-fill {
+        margin-top: auto;
+        border-radius: 8px;
+        width: 100%;
+      }
+
+      .v-bar-goal {
+        border-top: 3px solid var(--white);
+        overflow: hidden;
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+        align-self: flex-end;
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+      }
+
+      @media (max-width: 1100px) {
+        .section-row.main {
+          flex-direction: column;
+        }
+        .col-left,
+        .col-right {
+          width: 100%;
+        }
+        .prediction-card {
+          width: 100%;
+        }
+        .stat-card {
+          width: 48%;
+        }
+        .section-row.top-stats {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="report-shell">
+        <div class="report-content">
+          <div class="sections">
+            <!-- Candidate header -->
+            <header class="candidate-header">
+              <div>
+                <div class="candidate-name">Sample Candidate</div>
+                <div class="candidate-sim">Customer Service Simulation</div>
+              </div>
+              <div class="data-chips">
+                <div class="chip">
+                  <svg viewBox="0 0 512 512" fill="currentColor">
+                    <path
+                      d="M48 64C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm0 48h416v40.8c0 35.5-57.1 64-112 64s-112-28.5-112-64V112zm0 96v176c0 8.8 7.2 16 16 16h32V208H64zm384 176H240V208h176v176z"
+                    />
+                  </svg>
+                  candidate@example.com
+                </div>
+                <div class="chip">
+                  <svg viewBox="0 0 512 512" fill="currentColor">
+                    <path
+                      d="M164.9 24.6c-7.7-18.6-28.2-28.5-47.1-23.2l-88 27C75.1 31.2 64 42.7 64 57v355c0 14.3 11.1 25.8 25.3 30.1l88 27c18.9 5.5 39.5-4.6 47.1-23.2 7.7-18.6 28.2-28.5 47.1-23.2l88-27c14.2-4.3 25.3-15.8 25.3-30.1V57c0-14.3-11.1-25.8-25.3-30.1l-88-27c-18.9-5.5-39.5 4.6-47.1 23.2z"
+                    />
+                  </svg>
+                  Anonymous
+                </div>
+                <div class="chip">
+                  <svg viewBox="0 0 384 512" fill="currentColor">
+                    <path
+                      d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2 12.3 15.3 35.1 15.3 47.4 0zM192 272c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z"
+                    />
+                  </svg>
+                  Anonymous
+                </div>
+                <button class="icon-btn" type="button" aria-label="Favorite">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 576 512"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M287.9 0C297.1 0 305.5 5.25 309.5 13.38L375.1 154.8L531.4 177.5C540.4 178.8 547.8 185.1 550.7 193.7C553.5 202.4 551.2 211.9 544.8 218.2L433.6 328.4L459.1 483.9C461.2 492.9 457.1 502.1 450.2 507.4C443.3 512.7 432.9 513.6 425.1 509.8L287.9 435.9L150.1 509.8C142.3 513.6 131.9 512.7 125 507.4C118.1 502.1 114.8 492.9 116.9 483.9L142.2 328.4L31.11 218.2C24.65 211.9 22.36 202.4 25.2 193.7C28.03 185.1 35.44 178.8 44.45 177.5L200.7 154.8L266.3 13.38C270.3 5.25 278.7 0 287.9 0z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="icon-btn download"
+                  type="button"
+                  aria-label="Download"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 512 512"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.6-73.6c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32H448c17.7 0 32-14.3 32-32V384c0-17.7-14.3-32-32-32H64z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </header>
+
+            <div class="section-row main">
+              <div class="col-left">
+                <div class="section-row top-stats">
+                  <article class="card solid-top prediction-card">
+                    <div class="prediction-inner">
+                      <svg
+                        class="score-ring"
+                        viewBox="0 0 100 100"
+                        aria-hidden="true"
+                      >
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="42"
+                          fill="none"
+                          stroke="#ECEBEB"
+                          stroke-width="9"
+                        />
+                        <circle
+                          cx="50"
+                          cy="50"
+                          r="42"
+                          fill="none"
+                          stroke="#E20C98"
+                          stroke-width="11"
+                          stroke-linecap="round"
+                          stroke-dasharray="263.9"
+                          stroke-dashoffset="58.1"
+                          transform="rotate(-90 50 50)"
+                        />
+                        <text
+                          x="50"
+                          y="50"
+                          text-anchor="middle"
+                          dominant-baseline="central"
+                        >
+                          78%
+                        </text>
+                      </svg>
+                    </div>
+                  </article>
+
+                  <article class="card solid-top stat-card">
+                    <div class="headline">Scenarios 6/6</div>
+                    <div class="eval-badge">Perfect</div>
+                  </article>
+
+                  <article class="card solid-top stat-card duration">
+                    <div>
+                      <div class="headline">Duration</div>
+                      <div class="duration-value">00:06:42</div>
+                    </div>
+                    <p class="description">
+                      Faster than 68% of the candidates.
+                    </p>
+                    <div class="eval-badge">Average</div>
+                  </article>
+                </div>
+
+                <article class="card performance-card">
+                  <div class="performance-head">
+                    <div class="headline">Performance Details</div>
+                    <p class="description">
+                      Candidate performance across core job tasks compared to
+                      role standards.
+                    </p>
+                  </div>
+                  <div class="diagram-section">
+                    <div class="core-tasks">
+                      <div class="core-task">
+                        <span class="dot" style="background: #5b32af"></span
+                        >Active Listening
+                      </div>
+                      <div class="core-task">
+                        <span class="dot" style="background: #9933ff"></span
+                        >Problem Resolution
+                      </div>
+                      <div class="core-task">
+                        <span class="dot" style="background: #e20c98"></span
+                        >Communication
+                      </div>
+                      <div class="core-task">
+                        <span class="dot" style="background: #ff5811"></span
+                        >Product Knowledge
+                      </div>
+                      <div class="core-task">
+                        <span class="dot" style="background: #ffc100"></span
+                        >Empathy
+                      </div>
+                    </div>
+                    <div class="diagram-net">
+                      <div class="net-row">
+                        <hr />
+                        <span>10.0</span>
+                      </div>
+                      <div class="net-row">
+                        <hr />
+                        <span>9.0</span>
+                      </div>
+                      <div class="net-row">
+                        <hr />
+                        <span>8.0</span>
+                      </div>
+                      <div class="net-row">
+                        <hr />
+                        <span>7.0</span>
+                      </div>
+                      <div class="net-row">
+                        <hr />
+                        <span>6.0</span>
+                      </div>
+                      <div class="net-row">
+                        <hr />
+                        <span>5.0</span>
+                      </div>
+                      <div class="net-row">
+                        <hr />
+                        <span>4.0</span>
+                      </div>
+                      <div class="net-row">
+                        <hr />
+                        <span>3.0</span>
+                      </div>
+                      <div class="net-row">
+                        <hr />
+                        <span>2.0</span>
+                      </div>
+                      <div class="net-row">
+                        <hr />
+                        <span>1.0</span>
+                      </div>
+                      <div class="net-row">
+                        <hr />
+                        <span>0.0</span>
+                      </div>
+                      <div class="columns-wrap">
+                        <div class="v-bar">
+                          <div class="v-bar-goal" style="height: 90%"></div>
+                          <div
+                            class="v-bar-fill"
+                            style="height: 82%; background: #5b32af"
+                          ></div>
+                        </div>
+                        <div class="v-bar">
+                          <div class="v-bar-goal" style="height: 80%"></div>
+                          <div
+                            class="v-bar-fill"
+                            style="height: 76%; background: #9933ff"
+                          ></div>
+                        </div>
+                        <div class="v-bar">
+                          <div class="v-bar-goal" style="height: 85%"></div>
+                          <div
+                            class="v-bar-fill"
+                            style="height: 88%; background: #e20c98"
+                          ></div>
+                        </div>
+                        <div class="v-bar">
+                          <div class="v-bar-goal" style="height: 75%"></div>
+                          <div
+                            class="v-bar-fill"
+                            style="height: 71%; background: #ff5811"
+                          ></div>
+                        </div>
+                        <div class="v-bar">
+                          <div class="v-bar-goal" style="height: 80%"></div>
+                          <div
+                            class="v-bar-fill"
+                            style="height: 84%; background: #ffc100"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-right">
+                <div class="assets-row">
+                  <article class="card asset-card">
+                    <div>
+                      <img
+                        src="https://shared-assets.tatio.io/images/ThumbsUp.gif"
+                        alt=""
+                      />
+                      <div class="headline">Strengths</div>
+                      <ul>
+                        <li>
+                          <span class="description"
+                            >Clear and professional tone with customers</span
+                          >
+                        </li>
+                        <li>
+                          <span class="description"
+                            >Quick identification of customer needs</span
+                          >
+                        </li>
+                        <li>
+                          <span class="description"
+                            >Consistent follow-through on commitments</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </article>
+                  <article class="card asset-card">
+                    <div>
+                      <img
+                        src="https://shared-assets.tatio.io/images/notes.gif"
+                        alt=""
+                      />
+                      <div class="headline">Areas for Improvement</div>
+                      <ul>
+                        <li>
+                          <span class="description"
+                            >Could deepen product knowledge in edge cases</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </article>
+                </div>
+
+                <article class="card skills-card">
+                  <div class="headline">Communication Skills</div>
+                  <div class="skill-row">
+                    <span class="skill-name">Clarity</span>
+                    <div class="skill-bar-wrap">
+                      <span class="skill-pct">88%</span>
+                      <div class="skill-bar">
+                        <div class="skill-bar-fill" style="width: 88%"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-row">
+                    <span class="skill-name">Tone</span>
+                    <div class="skill-bar-wrap">
+                      <span class="skill-pct">76%</span>
+                      <div class="skill-bar">
+                        <div class="skill-bar-fill" style="width: 76%"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="skill-row">
+                    <span class="skill-name">Responsiveness</span>
+                    <div class="skill-bar-wrap">
+                      <span class="skill-pct">92%</span>
+                      <div class="skill-bar">
+                        <div class="skill-bar-fill" style="width: 92%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="card learning-card">
+                  <div class="headline">Learning Curve</div>
+                  <img
+                    src="https://shared-assets.tatio.io/images/learningCurve.png"
+                    alt="Learning curve chart"
+                  />
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sample-overlay" aria-hidden="true"></div>
+
+        <div class="cta-box">
+          <p>Want to see if you're qualified?</p>
+          <a
+            class="cta-headline"
+            href="https://www.tatio.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Join Tatio Today!</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
