@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Motivation &amp; Communication Report — TaTiO mock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: Gilroy;
+        src: url('https://shared-assets.tatio.io/fonts/Gilroy-Regular.otf');
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: Gilroy;
+        src: url('https://shared-assets.tatio.io/fonts/Gilroy-Medium.otf');
+        font-weight: 500;
+      }
+      @font-face {
+        font-family: Gilroy;
+        src: url('https://shared-assets.tatio.io/fonts/Gilroy-SemiBold.otf');
+        font-weight: 600;
+      }
+      @font-face {
+        font-family: Gilroy;
+        src: url('https://shared-assets.tatio.io/fonts/Gilroy-Bold.otf');
+        font-weight: 700;
+      }
+
+      :root {
+        --dark-blue: #00004f;
+        --tatio-pink: #e20c98;
+        --tatio-green: #07f698;
+        --orange: #ff5811;
+        --yellow: #ffc100;
+        --light-blue: #07e7f6;
+        --light-grey: #f9f9f9;
+        --frosted-sky: #f9fafe;
+        --almost-black: #1a1a1a;
+        --very-dark-grey: #414143;
+        --dark-grey: #777777;
+        --e-grey: #eeeeee;
+        --border: #ecebeb;
+        --primary-font: Gilroy, Rubik, Arial, Helvetica, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--primary-font);
+        color: var(--almost-black);
+        background: var(--light-grey);
+        min-height: 100vh;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      .mock-banner {
+        background: var(--dark-blue);
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 8px 12px;
+      }
+
+      .mock-banner span {
+        color: var(--tatio-green);
+      }
+
+      .shell {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 12px 1.5% 48px;
+      }
+
+      /* Candidate header — mirrors CandidateDetailsSection */
+      .candidate-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px 0 12px;
+        flex-wrap: wrap;
+      }
+
+      .candidate-header .name {
+        font-size: 28px;
+        font-weight: 400;
+        text-transform: capitalize;
+        margin: 0;
+        line-height: 1.2;
+      }
+
+      .candidate-header .sim-name {
+        margin: 4px 0 0;
+        font-size: 15px;
+        color: var(--dark-grey);
+        font-weight: 400;
+      }
+
+      .data-section {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .data-card {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--e-grey);
+        border-radius: 8px;
+        padding: 4px 10px;
+        font-size: 14px;
+        font-weight: 400;
+        white-space: nowrap;
+      }
+
+      .pdf-btn {
+        background: var(--orange);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        width: 48px;
+        height: 45px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      /* Switcher — light, report-native */
+      .switcher {
+        display: flex;
+        gap: 8px;
+        margin: 4px 0 14px;
+      }
+
+      .switcher button {
+        border: none;
+        background: #fff;
+        color: var(--very-dark-grey);
+        font-weight: 500;
+        font-size: 14px;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .switcher button[aria-selected='true'] {
+        background: var(--dark-blue);
+        color: #fff;
+      }
+
+      .sections {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .section-row {
+        display: flex;
+        gap: 12px;
+        width: 100%;
+      }
+
+      .card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 22px 25px;
+        font-family: var(--primary-font);
+      }
+
+      .headline {
+        font-weight: 500;
+        font-size: 22px;
+        color: var(--almost-black);
+        margin: 0;
+      }
+
+      .description {
+        margin: 8px 0 0;
+        color: var(--very-dark-grey);
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: 400;
+      }
+
+      .evaluation-card {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--dark-blue);
+        color: #fff;
+        border-radius: 8px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        width: fit-content;
+        margin-top: 12px;
+      }
+
+      /* Top row: profile (like prediction) + duration + recordings */
+      .profile-card {
+        width: 55%;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        min-height: 180px;
+      }
+
+      .profile-texts {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .circular {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+      }
+
+      .circular svg {
+        transform: rotate(-90deg);
+      }
+
+      .circular .score {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-size: 28px;
+        font-weight: 500;
+        color: var(--almost-black);
+      }
+
+      .side-stat {
+        width: 22.5%;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .side-stat .big {
+        font-size: 28px;
+        font-weight: 500;
+        margin-top: 8px;
+      }
+
+      /* Three-aspect visualization */
+      .viz-card {
+        width: 100%;
+      }
+
+      .viz-layout {
+        display: grid;
+        grid-template-columns: minmax(260px, 340px) 1fr;
+        gap: 28px;
+        align-items: center;
+        margin-top: 18px;
+      }
+
+      .radar-wrap {
+        position: relative;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        aspect-ratio: 1;
+      }
+
+      .radar-wrap svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      .aspect-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .aspect-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 0 14px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      }
+
+      .aspect-row:last-child {
+        border-bottom: none;
+      }
+
+      .aspect-name {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        font-size: 15px;
+      }
+
+      .aspect-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        box-shadow: 1px 1px 2px rgba(65, 65, 67, 0.3);
+        flex-shrink: 0;
+      }
+
+      .aspect-bar-wrap {
+        width: 52%;
+        position: relative;
+      }
+
+      .aspect-bar-track {
+        width: 100%;
+        height: 10px;
+        background: rgba(120, 120, 128, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .aspect-bar-fill {
+        height: 100%;
+        border-radius: 8px;
+        background: var(--dark-blue);
+        transition: width 1s ease;
+      }
+
+      .aspect-pct {
+        position: absolute;
+        right: 0;
+        bottom: 12px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .aspect-level {
+        font-size: 13px;
+        color: var(--very-dark-grey);
+        margin-top: 4px;
+      }
+
+      /* Main body: media + dimensions */
+      .main-split {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .left-col {
+        width: 42%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .right-col {
+        width: 58%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .player {
+        background: var(--dark-blue);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .player-stage {
+        aspect-ratio: 16 / 10;
+        background: linear-gradient(160deg, #00003e, #00004f);
+        display: grid;
+        place-items: center;
+        position: relative;
+      }
+
+      .avatar {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      .play-overlay {
+        position: absolute;
+        inset: 0;
+        border: none;
+        background: rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+      }
+
+      .play-overlay[hidden] {
+        display: none;
+      }
+
+      .play-btn {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--tatio-pink);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+        padding-left: 3px;
+      }
+
+      .player-controls {
+        padding: 12px 14px 14px;
+        color: #fff;
+      }
+
+      .scrub {
+        width: 100%;
+        appearance: none;
+        height: 4px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.25);
+        outline: none;
+      }
+
+      .scrub::-webkit-slider-thumb {
+        appearance: none;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--tatio-pink);
+      }
+
+      .player-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+        font-size: 12px;
+        opacity: 0.9;
+      }
+
+      .transcript-card {
+        max-height: 360px;
+        overflow: auto;
+      }
+
+      .transcript-line {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 10px;
+        padding: 8px 6px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .transcript-line:hover,
+      .transcript-line.active {
+        background: rgba(226, 12, 152, 0.06);
+      }
+
+      .transcript-line.evidence-hit {
+        background: rgba(7, 246, 152, 0.14);
+        outline: 1px solid rgba(7, 246, 152, 0.4);
+      }
+
+      .ts {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--tatio-pink);
+        padding-top: 2px;
+      }
+
+      .transcript-line p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.5;
+        color: var(--almost-black);
+      }
+
+      .dimension {
+        padding-bottom: 4px;
+      }
+
+      .dimension + .dimension {
+        margin-top: 4px;
+      }
+
+      .dimension-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .dimension-head h4 {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .dimension .description {
+        margin-top: 6px;
+      }
+
+      .evidence {
+        list-style: none;
+        margin: 12px 0 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .evidence button {
+        width: 100%;
+        text-align: left;
+        border: none;
+        background: var(--e-grey);
+        border-radius: 8px;
+        padding: 10px 12px;
+        cursor: pointer;
+      }
+
+      .evidence button:hover {
+        background: #e6e6e6;
+      }
+
+      .evidence .quote {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.45;
+        color: var(--almost-black);
+      }
+
+      .evidence .stamp {
+        display: inline-block;
+        margin-top: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--tatio-pink);
+      }
+
+      .safeguard-card .description {
+        margin-top: 10px;
+      }
+
+      .acoustic-card .experimental {
+        display: inline-block;
+        margin-top: 8px;
+        background: #ffc100;
+        color: var(--dark-blue);
+        border-radius: 6px;
+        padding: 4px 8px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .acoustic-bars {
+        margin-top: 8px;
+      }
+
+      .progress-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 0 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      }
+
+      .progress-row:last-child {
+        border-bottom: none;
+      }
+
+      .progress-row .span {
+        font-weight: 500;
+        font-size: 15px;
+        min-width: 140px;
+      }
+
+      .progress-row .bars-wrap {
+        width: 57%;
+        position: relative;
+      }
+
+      .progress-row .precentage {
+        position: absolute;
+        right: 0;
+        bottom: 12px;
+        font-size: 12.5px;
+        font-weight: 500;
+      }
+
+      .multicolor-bar {
+        width: 100%;
+        height: 10px;
+        background: rgba(120, 120, 128, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .multicolor-bar .bar {
+        height: 100%;
+        background: var(--dark-blue);
+        border-radius: 8px;
+      }
+
+      .footnote {
+        margin: 10px 0 0;
+        font-size: 12px;
+        color: var(--very-dark-grey);
+        line-height: 1.45;
+      }
+
+      @media (max-width: 1100px) {
+        .section-row,
+        .main-split,
+        .viz-layout {
+          flex-direction: column;
+          grid-template-columns: 1fr;
+          display: flex;
+        }
+
+        .profile-card,
+        .side-stat,
+        .left-col,
+        .right-col {
+          width: 100%;
+        }
+
+        .radar-wrap {
+          max-width: 280px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mock-banner">
+      TaTiO mock · closer to current report chrome · <span>SKIL-6267</span>
+    </div>
+
+    <div class="shell">
+      <header class="candidate-header">
+        <div>
+          <h1 class="name">Camille Martin</h1>
+          <p class="sim-name">Louis Vuitton France · Early Talent Simulation</p>
+        </div>
+        <div class="data-section">
+          <div class="data-card">camille.martin@email.com</div>
+          <div class="data-card">+33 6 12 34 56 78</div>
+          <div class="data-card">Paris, FR</div>
+          <button class="pdf-btn" type="button" title="Download PDF">↓</button>
+        </div>
+      </header>
+
+      <div class="switcher" role="tablist" aria-label="Report type">
+        <button type="button" role="tab" aria-selected="false">Core Skills</button>
+        <button type="button" role="tab" aria-selected="true">Motivation &amp; Communication</button>
+      </div>
+
+      <div class="sections">
+        <!-- Top metrics row — same rhythm as prediction / progress / duration -->
+        <div class="section-row">
+          <section class="card profile-card">
+            <div class="profile-texts">
+              <h2 class="headline">Overall motivation profile</h2>
+              <p class="description">
+                The candidate demonstrated a clear and well-supported motivation for the opportunity, grounding her
+                interest in a specific experience from her internship. She articulated what attracts her to Louis
+                Vuitton, described a concrete contribution from previous experience, and identified a clear development
+                goal. While her understanding of the Maison remained relatively broad, the overall evidence presented
+                was specific, relevant, and well communicated.
+              </p>
+              <div class="evaluation-card">Strong</div>
+            </div>
+            <div class="circular" aria-label="Overall profile Strong">
+              <svg viewBox="0 0 120 120" width="120" height="120">
+                <circle cx="60" cy="60" r="48" fill="none" stroke="#ECEBEB" stroke-width="9" />
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="48"
+                  fill="none"
+                  stroke="var(--tatio-pink)"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                  stroke-dasharray="301.6"
+                  stroke-dashoffset="55"
+                />
+              </svg>
+              <div class="score" style="font-size: 16px; font-weight: 600">Strong</div>
+            </div>
+          </section>
+
+          <section class="card side-stat">
+            <h2 class="headline">Duration</h2>
+            <div>
+              <div class="big">2:00</div>
+              <p class="description">of 2:00 max</p>
+            </div>
+            <div class="evaluation-card">Within limit</div>
+          </section>
+
+          <section class="card side-stat">
+            <h2 class="headline">Recordings</h2>
+            <div>
+              <div class="big">1 / 2</div>
+              <p class="description">Submitted final attempt</p>
+            </div>
+            <div class="evaluation-card">Completed</div>
+          </section>
+        </div>
+
+        <!-- Three-aspect visualization -->
+        <section class="card viz-card" aria-labelledby="aspects-title">
+          <h2 class="headline" id="aspects-title">Motivation video focus areas</h2>
+          <p class="description">
+            Three core aspects of the motivation response — how clearly the candidate covers why LV, product
+            awareness, and how they communicate.
+          </p>
+
+          <div class="viz-layout">
+            <div class="radar-wrap" aria-hidden="true">
+              <svg viewBox="0 0 320 300" id="radarChart">
+                <!-- background rings -->
+                <polygon points="160,40 278,230 42,230" fill="none" stroke="#ECEBEB" stroke-width="1.5" />
+                <polygon points="160,78 244,210 76,210" fill="none" stroke="#ECEBEB" stroke-width="1.5" />
+                <polygon points="160,116 210,190 110,190" fill="none" stroke="#ECEBEB" stroke-width="1.5" />
+                <line x1="160" y1="160" x2="160" y2="40" stroke="#ECEBEB" stroke-width="1.5" />
+                <line x1="160" y1="160" x2="278" y2="230" stroke="#ECEBEB" stroke-width="1.5" />
+                <line x1="160" y1="160" x2="42" y2="230" stroke="#ECEBEB" stroke-width="1.5" />
+
+                <!-- score polygon: Motivation Strong, Communication Strong, Awareness Moderate -->
+                <polygon
+                  id="scorePoly"
+                  points="160,55 255.2,212.2 88.4,212.2"
+                  fill="rgba(226, 12, 152, 0.18)"
+                  stroke="var(--tatio-pink)"
+                  stroke-width="2.5"
+                />
+                <circle cx="160" cy="55" r="5" fill="var(--tatio-pink)" />
+                <circle cx="255.2" cy="212.2" r="5" fill="var(--tatio-pink)" />
+                <circle cx="88.4" cy="212.2" r="5" fill="var(--tatio-pink)" />
+
+                <text x="160" y="24" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">
+                  Motivation
+                </text>
+                <text x="292" y="248" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">
+                  Communication
+                </text>
+                <text x="28" y="248" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">
+                  Awareness
+                </text>
+              </svg>
+            </div>
+
+            <div class="aspect-list" id="aspectList"></div>
+          </div>
+        </section>
+
+        <div class="main-split">
+          <div class="left-col">
+            <section class="card" style="padding: 0; overflow: hidden">
+              <div class="player">
+                <div class="player-stage">
+                  <div class="avatar">CM</div>
+                  <button class="play-overlay" id="playOverlay" type="button" aria-label="Play clip">
+                    <span class="play-btn">▶</span>
+                  </button>
+                </div>
+                <div class="player-controls">
+                  <input class="scrub" id="scrub" type="range" min="0" max="120" value="0" aria-label="Position" />
+                  <div class="player-meta">
+                    <span id="timeLabel">0:00 / 2:00</span>
+                    <span>Attempt 1 of 2</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="card transcript-card">
+              <h2 class="headline">Transcript</h2>
+              <p class="description" style="margin-bottom: 12px">Original language · en · click a line to seek</p>
+              <div id="transcript"></div>
+            </section>
+          </div>
+
+          <div class="right-col">
+            <section class="card">
+              <h2 class="headline">AI-generated summary</h2>
+              <p class="description">
+                Camille demonstrates a well-supported motivation for pursuing a career in product management, drawing on
+                relevant internship experience and providing concrete examples of analytical contribution. She
+                communicates clearly, shows curiosity about the product lifecycle, and expresses a genuine desire to
+                learn. While her understanding of Louis Vuitton is thoughtful, it remains relatively broad, indicating
+                good potential for further development.
+              </p>
+            </section>
+
+            <section class="card" id="dimensionsCard">
+              <h2 class="headline">Dimension scores</h2>
+              <p class="description" style="margin-bottom: 14px">
+                Each conclusion links to transcript spans. Levels use text — not color alone.
+              </p>
+              <div id="dimensions"></div>
+            </section>
+
+            <section class="card acoustic-card">
+              <h2 class="headline">Vocal engagement</h2>
+              <span class="experimental">Experimental — supporting only</span>
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px">
+                <p class="description" style="margin: 0">
+                  Expressed interest in the opportunity throughout the response while maintaining a professional,
+                  though relatively measured, style of communication.
+                </p>
+                <div class="evaluation-card" style="margin-top: 0; flex-shrink: 0">Moderate</div>
+              </div>
+              <div class="acoustic-bars" id="acousticBars"></div>
+              <p class="footnote">
+                Supporting delivery indicators only. Not confidence, authenticity, sincerity, or hireability. Excluded
+                from overall profile and the four content dimensions.
+              </p>
+            </section>
+
+            <section class="card safeguard-card">
+              <h2 class="headline">Review note</h2>
+              <p class="description">
+                This report is AI-generated based on the candidate's recorded motivation response. Appearance, accent,
+                facial features, recording background, and camera or audio quality were not evaluated. The report is
+                intended to support, not replace, recruiter judgment.
+              </p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const aspects = [
+        {
+          name: 'Substantiated motivation',
+          short: 'Motivation',
+          score: 88,
+          level: 'Strong',
+          color: '#e20c98',
+          tip: 'Internship story grounded motivation in a concrete product question',
+        },
+        {
+          name: 'Maison & product awareness',
+          short: 'Awareness',
+          score: 62,
+          level: 'Moderate',
+          color: '#00004f',
+          tip: 'Craftsmanship and long-term value — knowledge still relatively general',
+        },
+        {
+          name: 'Communication clarity',
+          short: 'Communication',
+          score: 86,
+          level: 'Strong',
+          color: '#ff5811',
+          tip: 'Well-structured response covering all three topics in sequence',
+        },
+      ];
+
+      const transcript = [
+        {
+          id: 't1',
+          start: 2,
+          text: "Hi, I'm Camille. The reason I'm interested in this programme actually comes from my internship at Sandro, where I supported the merchandising team.",
+        },
+        {
+          id: 't2',
+          start: 16,
+          text: "One of my responsibilities was preparing the weekly sell-through reports. There was one handbag that everyone expected to do really well, but it didn't, and nobody could really explain why. Was it the price, the colour, or the stores? That experience made me realise I wanted to understand what really drives a product's success.",
+        },
+        {
+          id: 't3',
+          start: 42,
+          text: "What interests me about Louis Vuitton is its focus on craftsmanship and creating products that last. During my internship, the pace was very much about the next collection, so I find Louis Vuitton's approach to quality and long-term value really interesting.",
+        },
+        {
+          id: 't4',
+          start: 62,
+          text: "I don't know the technical side yet, but that's exactly what I'd like to learn.",
+        },
+        {
+          id: 't5',
+          start: 72,
+          text: 'I think I\'d bring strong analytical skills. I redesigned our weekly sell-through report to make it easier for the team to use, and it became the version people relied on.',
+        },
+        {
+          id: 't6',
+          start: 92,
+          text: "Through this programme, I'd love to develop a much deeper understanding of how collections are created from the beginning and learn from experienced teams across the product lifecycle.",
+        },
+        {
+          id: 't7',
+          start: 110,
+          text: 'Thank you.',
+        },
+      ];
+
+      const dimensions = [
+        {
+          title: 'Substantiated motivation',
+          level: 'Strong',
+          text: 'Connected her motivation to a specific experience during her merchandising internship, explaining how an unresolved product performance question led her to pursue a career in product management.',
+          evidence: [
+            { span: 't1', quote: 'internship at Sandro, where I supported the merchandising team' },
+            {
+              span: 't2',
+              quote: "That experience made me realise I wanted to understand what really drives a product's success.",
+            },
+          ],
+        },
+        {
+          title: 'Maison & product awareness',
+          level: 'Moderate',
+          text: "Demonstrated an appreciation for Louis Vuitton's craftsmanship and long-term product philosophy while comparing it with her previous experience, although her knowledge of the Maison remained relatively general.",
+          evidence: [
+            {
+              span: 't3',
+              quote: "focus on craftsmanship and creating products that last… quality and long-term value",
+            },
+          ],
+        },
+        {
+          title: 'Contribution & growth mindset',
+          level: 'Strong',
+          text: 'Described improving a weekly sell-through report that was adopted by her team and expressed a clear ambition to learn how collections are developed from the earliest stages.',
+          evidence: [
+            {
+              span: 't5',
+              quote: 'redesigned our weekly sell-through report… became the version people relied on',
+            },
+            {
+              span: 't6',
+              quote: 'how collections are created from the beginning… across the product lifecycle',
+            },
+          ],
+        },
+        {
+          title: 'Communication clarity',
+          level: 'Strong',
+          text: 'Delivered a well-structured response that addressed all three topics in a logical and easy-to-follow sequence.',
+          evidence: [
+            { span: 't1', quote: "Hi, I'm Camille. The reason I'm interested in this programme…" },
+            { span: 't3', quote: 'What interests me about Louis Vuitton…' },
+            { span: 't5', quote: "I think I'd bring strong analytical skills…" },
+          ],
+        },
+      ];
+
+      const acoustic = [
+        { name: 'Pace stability', score: 78 },
+        { name: 'Energy consistency', score: 68 },
+        { name: 'Signal quality', score: 92 },
+      ];
+
+      const duration = 120;
+      let currentTime = 0;
+      let playing = false;
+      let timer = null;
+
+      function formatTime(s) {
+        return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+      }
+
+      function renderAspects() {
+        document.getElementById('aspectList').innerHTML = aspects
+          .map(
+            (a) => `
+          <div class="aspect-row">
+            <div>
+              <div class="aspect-name">
+                <span class="aspect-dot" style="background:${a.color}"></span>
+                ${a.name}
+              </div>
+              <div class="aspect-level">${a.level} · ${a.tip}</div>
+            </div>
+            <div class="aspect-bar-wrap">
+              <span class="aspect-pct">${a.score}%</span>
+              <div class="aspect-bar-track">
+                <div class="aspect-bar-fill" style="width:${a.score}%; background:${a.color === '#e20c98' ? 'var(--tatio-pink)' : a.color === '#ff5811' ? 'var(--orange)' : 'var(--dark-blue)'}"></div>
+              </div>
+            </div>
+          </div>`
+          )
+          .join('');
+      }
+
+      function renderTranscript() {
+        document.getElementById('transcript').innerHTML = transcript
+          .map(
+            (line) => `
+          <div class="transcript-line" data-id="${line.id}" data-start="${line.start}" role="button" tabindex="0">
+            <span class="ts">${formatTime(line.start)}</span>
+            <p>${line.text}</p>
+          </div>`
+          )
+          .join('');
+      }
+
+      function renderDimensions() {
+        document.getElementById('dimensions').innerHTML = dimensions
+          .map(
+            (d) => `
+          <article class="dimension">
+            <div class="dimension-head">
+              <h4>${d.title}</h4>
+              <div class="evaluation-card" style="margin-top:0">${d.level}</div>
+            </div>
+            <p class="description">${d.text}</p>
+            <ul class="evidence">
+              ${d.evidence
+                .map(
+                  (e) => `
+                <li>
+                  <button type="button" data-span="${e.span}">
+                    <p class="quote">“${e.quote}”</p>
+                    <span class="stamp">Jump to evidence →</span>
+                  </button>
+                </li>`
+                )
+                .join('')}
+            </ul>
+          </article>`
+          )
+          .join('');
+      }
+
+      function renderAcoustic() {
+        document.getElementById('acousticBars').innerHTML = acoustic
+          .map(
+            (a) => `
+          <div class="progress-row">
+            <span class="span">${a.name}</span>
+            <div class="bars-wrap">
+              <span class="precentage">${a.score}%</span>
+              <div class="multicolor-bar"><div class="bar" style="width:${a.score}%"></div></div>
+            </div>
+          </div>`
+          )
+          .join('');
+      }
+
+      function setActiveLine(id) {
+        document.querySelectorAll('.transcript-line').forEach((el) => {
+          el.classList.toggle('active', el.dataset.id === id);
+        });
+      }
+
+      function highlightEvidence(id) {
+        document.querySelectorAll('.transcript-line').forEach((el) => el.classList.remove('evidence-hit'));
+        const target = document.querySelector(`.transcript-line[data-id="${id}"]`);
+        if (!target) return;
+        target.classList.add('evidence-hit', 'active');
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        const line = transcript.find((t) => t.id === id);
+        if (line) seekTo(line.start);
+      }
+
+      function seekTo(seconds) {
+        currentTime = Math.max(0, Math.min(duration, seconds));
+        document.getElementById('scrub').value = String(currentTime);
+        document.getElementById('timeLabel').textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        const active = [...transcript].reverse().find((t) => currentTime >= t.start);
+        if (active) setActiveLine(active.id);
+      }
+
+      document.getElementById('playOverlay').addEventListener('click', () => {
+        playing = true;
+        document.getElementById('playOverlay').hidden = true;
+        clearInterval(timer);
+        timer = setInterval(() => {
+          if (!playing) return;
+          currentTime = Math.min(duration, currentTime + 0.25);
+          seekTo(currentTime);
+          if (currentTime >= duration) {
+            playing = false;
+            document.getElementById('playOverlay').hidden = false;
+            clearInterval(timer);
+          }
+        }, 250);
+      });
+
+      document.getElementById('scrub').addEventListener('input', (e) => seekTo(Number(e.target.value)));
+
+      document.getElementById('transcript').addEventListener('click', (e) => {
+        const line = e.target.closest('.transcript-line');
+        if (line) highlightEvidence(line.dataset.id);
+      });
+
+      document.getElementById('dimensions').addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-span]');
+        if (btn) highlightEvidence(btn.dataset.span);
+      });
+
+      document.querySelectorAll('.switcher button').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.switcher button').forEach((b) => b.setAttribute('aria-selected', 'false'));
+          btn.setAttribute('aria-selected', 'true');
+        });
+      });
+
+      renderAspects();
+      renderTranscript();
+      renderDimensions();
+      renderAcoustic();
+      seekTo(0);
+    </script>
+  </body>
+</html>
