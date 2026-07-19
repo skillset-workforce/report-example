@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,22 +13,22 @@
     <style>
       @font-face {
         font-family: Gilroy;
-        src: url('https://shared-assets.tatio.io/fonts/Gilroy-Regular.otf');
+        src: url("https://shared-assets.tatio.io/fonts/Gilroy-Regular.otf");
         font-weight: 400;
       }
       @font-face {
         font-family: Gilroy;
-        src: url('https://shared-assets.tatio.io/fonts/Gilroy-Medium.otf');
+        src: url("https://shared-assets.tatio.io/fonts/Gilroy-Medium.otf");
         font-weight: 500;
       }
       @font-face {
         font-family: Gilroy;
-        src: url('https://shared-assets.tatio.io/fonts/Gilroy-SemiBold.otf');
+        src: url("https://shared-assets.tatio.io/fonts/Gilroy-SemiBold.otf");
         font-weight: 600;
       }
       @font-face {
         font-family: Gilroy;
-        src: url('https://shared-assets.tatio.io/fonts/Gilroy-Bold.otf');
+        src: url("https://shared-assets.tatio.io/fonts/Gilroy-Bold.otf");
         font-weight: 700;
       }
 
@@ -158,7 +158,7 @@
         cursor: pointer;
       }
 
-      .switcher button[aria-selected='true'] {
+      .switcher button[aria-selected="true"] {
         background: var(--dark-blue);
         color: #fff;
       }
@@ -681,8 +681,12 @@
       </header>
 
       <div class="switcher" role="tablist" aria-label="Report type">
-        <button type="button" role="tab" aria-selected="false">Core Skills</button>
-        <button type="button" role="tab" aria-selected="true">Motivation &amp; Communication</button>
+        <button type="button" role="tab" aria-selected="false">
+          Core Skills
+        </button>
+        <button type="button" role="tab" aria-selected="true">
+          Motivation &amp; Communication
+        </button>
       </div>
 
       <div class="sections">
@@ -692,17 +696,27 @@
             <div class="profile-texts">
               <h2 class="headline">Overall motivation profile</h2>
               <p class="description">
-                The candidate demonstrated a clear and well-supported motivation for the opportunity, grounding her
-                interest in a specific experience from her internship. She articulated what attracts her to Louis
-                Vuitton, described a concrete contribution from previous experience, and identified a clear development
-                goal. While her understanding of the Maison remained relatively broad, the overall evidence presented
-                was specific, relevant, and well communicated.
+                The candidate demonstrated a clear and well-supported motivation
+                for the opportunity, grounding her interest in a specific
+                experience from her internship. She articulated what attracts
+                her to Louis Vuitton, described a concrete contribution from
+                previous experience, and identified a clear development goal.
+                While her understanding of the Maison remained relatively broad,
+                the overall evidence presented was specific, relevant, and well
+                communicated.
               </p>
               <div class="evaluation-card">Strong</div>
             </div>
             <div class="circular" aria-label="Overall profile Strong">
               <svg viewBox="0 0 120 120" width="120" height="120">
-                <circle cx="60" cy="60" r="48" fill="none" stroke="#ECEBEB" stroke-width="9" />
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="48"
+                  fill="none"
+                  stroke="#ECEBEB"
+                  stroke-width="9"
+                />
                 <circle
                   cx="60"
                   cy="60"
@@ -715,15 +729,17 @@
                   stroke-dashoffset="55"
                 />
               </svg>
-              <div class="score" style="font-size: 16px; font-weight: 600">Strong</div>
+              <div class="score" style="font-size: 16px; font-weight: 600">
+                Strong
+              </div>
             </div>
           </section>
 
           <section class="card side-stat">
             <h2 class="headline">Duration</h2>
             <div>
-              <div class="big">2:00</div>
-              <p class="description">of 2:00 max</p>
+              <div class="big">1:18</div>
+              <p class="description">of 1:30 max</p>
             </div>
             <div class="evaluation-card">Within limit</div>
           </section>
@@ -740,22 +756,61 @@
 
         <!-- Three-aspect visualization -->
         <section class="card viz-card" aria-labelledby="aspects-title">
-          <h2 class="headline" id="aspects-title">Motivation video focus areas</h2>
+          <h2 class="headline" id="aspects-title">
+            Motivation video focus areas
+          </h2>
           <p class="description">
-            Three core aspects of the motivation response — how clearly the candidate covers why LV, product
-            awareness, and how they communicate.
+            Three core aspects of the motivation response — how clearly the
+            candidate covers why LV, product awareness, and how they
+            communicate.
           </p>
 
           <div class="viz-layout">
             <div class="radar-wrap" aria-hidden="true">
               <svg viewBox="0 0 320 300" id="radarChart">
                 <!-- background rings -->
-                <polygon points="160,40 278,230 42,230" fill="none" stroke="#ECEBEB" stroke-width="1.5" />
-                <polygon points="160,78 244,210 76,210" fill="none" stroke="#ECEBEB" stroke-width="1.5" />
-                <polygon points="160,116 210,190 110,190" fill="none" stroke="#ECEBEB" stroke-width="1.5" />
-                <line x1="160" y1="160" x2="160" y2="40" stroke="#ECEBEB" stroke-width="1.5" />
-                <line x1="160" y1="160" x2="278" y2="230" stroke="#ECEBEB" stroke-width="1.5" />
-                <line x1="160" y1="160" x2="42" y2="230" stroke="#ECEBEB" stroke-width="1.5" />
+                <polygon
+                  points="160,40 278,230 42,230"
+                  fill="none"
+                  stroke="#ECEBEB"
+                  stroke-width="1.5"
+                />
+                <polygon
+                  points="160,78 244,210 76,210"
+                  fill="none"
+                  stroke="#ECEBEB"
+                  stroke-width="1.5"
+                />
+                <polygon
+                  points="160,116 210,190 110,190"
+                  fill="none"
+                  stroke="#ECEBEB"
+                  stroke-width="1.5"
+                />
+                <line
+                  x1="160"
+                  y1="160"
+                  x2="160"
+                  y2="40"
+                  stroke="#ECEBEB"
+                  stroke-width="1.5"
+                />
+                <line
+                  x1="160"
+                  y1="160"
+                  x2="278"
+                  y2="230"
+                  stroke="#ECEBEB"
+                  stroke-width="1.5"
+                />
+                <line
+                  x1="160"
+                  y1="160"
+                  x2="42"
+                  y2="230"
+                  stroke="#ECEBEB"
+                  stroke-width="1.5"
+                />
 
                 <!-- score polygon: Motivation Strong, Communication Strong, Awareness Moderate -->
                 <polygon
@@ -769,13 +824,34 @@
                 <circle cx="255.2" cy="212.2" r="5" fill="var(--tatio-pink)" />
                 <circle cx="88.4" cy="212.2" r="5" fill="var(--tatio-pink)" />
 
-                <text x="160" y="24" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">
+                <text
+                  x="160"
+                  y="24"
+                  text-anchor="middle"
+                  font-size="13"
+                  font-weight="600"
+                  fill="#1a1a1a"
+                >
                   Motivation
                 </text>
-                <text x="292" y="248" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">
+                <text
+                  x="292"
+                  y="248"
+                  text-anchor="middle"
+                  font-size="13"
+                  font-weight="600"
+                  fill="#1a1a1a"
+                >
                   Communication
                 </text>
-                <text x="28" y="248" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">
+                <text
+                  x="28"
+                  y="248"
+                  text-anchor="middle"
+                  font-size="13"
+                  font-weight="600"
+                  fill="#1a1a1a"
+                >
                   Awareness
                 </text>
               </svg>
@@ -791,12 +867,25 @@
               <div class="player">
                 <div class="player-stage">
                   <div class="avatar">CM</div>
-                  <button class="play-overlay" id="playOverlay" type="button" aria-label="Play clip">
+                  <button
+                    class="play-overlay"
+                    id="playOverlay"
+                    type="button"
+                    aria-label="Play clip"
+                  >
                     <span class="play-btn">▶</span>
                   </button>
                 </div>
                 <div class="player-controls">
-                  <input class="scrub" id="scrub" type="range" min="0" max="120" value="0" aria-label="Position" />
+                  <input
+                    class="scrub"
+                    id="scrub"
+                    type="range"
+                    min="0"
+                    max="120"
+                    value="0"
+                    aria-label="Position"
+                  />
                   <div class="player-meta">
                     <span id="timeLabel">0:00 / 2:00</span>
                     <span>Attempt 1 of 2</span>
@@ -807,7 +896,9 @@
 
             <section class="card transcript-card">
               <h2 class="headline">Transcript</h2>
-              <p class="description" style="margin-bottom: 12px">Original language · en · click a line to seek</p>
+              <p class="description" style="margin-bottom: 12px">
+                Original language · en · click a line to seek
+              </p>
               <div id="transcript"></div>
             </section>
           </div>
@@ -816,18 +907,22 @@
             <section class="card">
               <h2 class="headline">AI-generated summary</h2>
               <p class="description">
-                Camille demonstrates a well-supported motivation for pursuing a career in product management, drawing on
-                relevant internship experience and providing concrete examples of analytical contribution. She
-                communicates clearly, shows curiosity about the product lifecycle, and expresses a genuine desire to
-                learn. While her understanding of Louis Vuitton is thoughtful, it remains relatively broad, indicating
-                good potential for further development.
+                Camille demonstrates a well-supported motivation for pursuing a
+                career in product management, drawing on relevant internship
+                experience and providing concrete examples of analytical
+                contribution. She communicates clearly, shows curiosity about
+                the product lifecycle, and expresses a genuine desire to learn.
+                While her understanding of Louis Vuitton is thoughtful, it
+                remains relatively broad, indicating good potential for further
+                development.
               </p>
             </section>
 
             <section class="card" id="dimensionsCard">
               <h2 class="headline">Dimension scores</h2>
               <p class="description" style="margin-bottom: 14px">
-                Each conclusion links to transcript spans. Levels use text — not color alone.
+                Each conclusion links to transcript spans. Levels use text — not
+                color alone.
               </p>
               <div id="dimensions"></div>
             </section>
@@ -835,26 +930,43 @@
             <section class="card acoustic-card">
               <h2 class="headline">Vocal engagement</h2>
               <span class="experimental">Experimental — supporting only</span>
-              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  gap: 12px;
+                  margin-top: 12px;
+                "
+              >
                 <p class="description" style="margin: 0">
-                  Expressed interest in the opportunity throughout the response while maintaining a professional,
-                  though relatively measured, style of communication.
+                  Expressed interest in the opportunity throughout the response
+                  while maintaining a professional, though relatively measured,
+                  style of communication.
                 </p>
-                <div class="evaluation-card" style="margin-top: 0; flex-shrink: 0">Moderate</div>
+                <div
+                  class="evaluation-card"
+                  style="margin-top: 0; flex-shrink: 0"
+                >
+                  Moderate
+                </div>
               </div>
               <div class="acoustic-bars" id="acousticBars"></div>
               <p class="footnote">
-                Supporting delivery indicators only. Not confidence, authenticity, sincerity, or hireability. Excluded
-                from overall profile and the four content dimensions.
+                Supporting delivery indicators only. Not confidence,
+                authenticity, sincerity, or hireability. Excluded from overall
+                profile and the four content dimensions.
               </p>
             </section>
 
             <section class="card safeguard-card">
               <h2 class="headline">Review note</h2>
               <p class="description">
-                This report is AI-generated based on the candidate's recorded motivation response. Appearance, accent,
-                facial features, recording background, and camera or audio quality were not evaluated. The report is
-                intended to support, not replace, recruiter judgment.
+                This report is AI-generated based on the candidate's recorded
+                motivation response. Appearance, accent, facial features,
+                recording background, and camera or audio quality were not
+                evaluated. The report is intended to support, not replace,
+                recruiter judgment.
               </p>
             </section>
           </div>
@@ -865,124 +977,139 @@
     <script>
       const aspects = [
         {
-          name: 'Substantiated motivation',
-          short: 'Motivation',
+          name: "Substantiated motivation",
+          short: "Motivation",
           score: 88,
-          level: 'Strong',
-          color: '#e20c98',
-          tip: 'Internship story grounded motivation in a concrete product question',
+          level: "Strong",
+          color: "#e20c98",
+          tip: "Internship story grounded motivation in a concrete product question",
         },
         {
-          name: 'Maison & product awareness',
-          short: 'Awareness',
+          name: "Maison & product awareness",
+          short: "Awareness",
           score: 62,
-          level: 'Moderate',
-          color: '#00004f',
-          tip: 'Craftsmanship and long-term value — knowledge still relatively general',
+          level: "Moderate",
+          color: "#00004f",
+          tip: "Craftsmanship and long-term value — knowledge still relatively general",
         },
         {
-          name: 'Communication clarity',
-          short: 'Communication',
+          name: "Communication clarity",
+          short: "Communication",
           score: 86,
-          level: 'Strong',
-          color: '#ff5811',
-          tip: 'Well-structured response covering all three topics in sequence',
+          level: "Strong",
+          color: "#ff5811",
+          tip: "Well-structured response covering all three topics in sequence",
         },
       ];
 
       const transcript = [
         {
-          id: 't1',
+          id: "t1",
           start: 2,
           text: "Hi, I'm Camille. The reason I'm interested in this programme actually comes from my internship at Sandro, where I supported the merchandising team.",
         },
         {
-          id: 't2',
+          id: "t2",
           start: 16,
           text: "One of my responsibilities was preparing the weekly sell-through reports. There was one handbag that everyone expected to do really well, but it didn't, and nobody could really explain why. Was it the price, the colour, or the stores? That experience made me realise I wanted to understand what really drives a product's success.",
         },
         {
-          id: 't3',
+          id: "t3",
           start: 42,
           text: "What interests me about Louis Vuitton is its focus on craftsmanship and creating products that last. During my internship, the pace was very much about the next collection, so I find Louis Vuitton's approach to quality and long-term value really interesting.",
         },
         {
-          id: 't4',
+          id: "t4",
           start: 62,
           text: "I don't know the technical side yet, but that's exactly what I'd like to learn.",
         },
         {
-          id: 't5',
+          id: "t5",
           start: 72,
-          text: 'I think I\'d bring strong analytical skills. I redesigned our weekly sell-through report to make it easier for the team to use, and it became the version people relied on.',
+          text: "I think I'd bring strong analytical skills. I redesigned our weekly sell-through report to make it easier for the team to use, and it became the version people relied on.",
         },
         {
-          id: 't6',
+          id: "t6",
           start: 92,
           text: "Through this programme, I'd love to develop a much deeper understanding of how collections are created from the beginning and learn from experienced teams across the product lifecycle.",
         },
         {
-          id: 't7',
+          id: "t7",
           start: 110,
-          text: 'Thank you.',
+          text: "Thank you.",
         },
       ];
 
       const dimensions = [
         {
-          title: 'Substantiated motivation',
-          level: 'Strong',
-          text: 'Connected her motivation to a specific experience during her merchandising internship, explaining how an unresolved product performance question led her to pursue a career in product management.',
+          title: "Substantiated motivation",
+          level: "Strong",
+          text: "Connected her motivation to a specific experience during her merchandising internship, explaining how an unresolved product performance question led her to pursue a career in product management.",
           evidence: [
-            { span: 't1', quote: 'internship at Sandro, where I supported the merchandising team' },
             {
-              span: 't2',
-              quote: "That experience made me realise I wanted to understand what really drives a product's success.",
+              span: "t1",
+              quote:
+                "internship at Sandro, where I supported the merchandising team",
+            },
+            {
+              span: "t2",
+              quote:
+                "That experience made me realise I wanted to understand what really drives a product's success.",
             },
           ],
         },
         {
-          title: 'Maison & product awareness',
-          level: 'Moderate',
+          title: "Maison & product awareness",
+          level: "Moderate",
           text: "Demonstrated an appreciation for Louis Vuitton's craftsmanship and long-term product philosophy while comparing it with her previous experience, although her knowledge of the Maison remained relatively general.",
           evidence: [
             {
-              span: 't3',
-              quote: "focus on craftsmanship and creating products that last… quality and long-term value",
+              span: "t3",
+              quote:
+                "focus on craftsmanship and creating products that last… quality and long-term value",
             },
           ],
         },
         {
-          title: 'Contribution & growth mindset',
-          level: 'Strong',
-          text: 'Described improving a weekly sell-through report that was adopted by her team and expressed a clear ambition to learn how collections are developed from the earliest stages.',
+          title: "Contribution & growth mindset",
+          level: "Strong",
+          text: "Described improving a weekly sell-through report that was adopted by her team and expressed a clear ambition to learn how collections are developed from the earliest stages.",
           evidence: [
             {
-              span: 't5',
-              quote: 'redesigned our weekly sell-through report… became the version people relied on',
+              span: "t5",
+              quote:
+                "redesigned our weekly sell-through report… became the version people relied on",
             },
             {
-              span: 't6',
-              quote: 'how collections are created from the beginning… across the product lifecycle',
+              span: "t6",
+              quote:
+                "how collections are created from the beginning… across the product lifecycle",
             },
           ],
         },
         {
-          title: 'Communication clarity',
-          level: 'Strong',
-          text: 'Delivered a well-structured response that addressed all three topics in a logical and easy-to-follow sequence.',
+          title: "Communication clarity",
+          level: "Strong",
+          text: "Delivered a well-structured response that addressed all three topics in a logical and easy-to-follow sequence.",
           evidence: [
-            { span: 't1', quote: "Hi, I'm Camille. The reason I'm interested in this programme…" },
-            { span: 't3', quote: 'What interests me about Louis Vuitton…' },
-            { span: 't5', quote: "I think I'd bring strong analytical skills…" },
+            {
+              span: "t1",
+              quote:
+                "Hi, I'm Camille. The reason I'm interested in this programme…",
+            },
+            { span: "t3", quote: "What interests me about Louis Vuitton…" },
+            {
+              span: "t5",
+              quote: "I think I'd bring strong analytical skills…",
+            },
           ],
         },
       ];
 
       const acoustic = [
-        { name: 'Pace stability', score: 78 },
-        { name: 'Energy consistency', score: 68 },
-        { name: 'Signal quality', score: 92 },
+        { name: "Pace stability", score: 78 },
+        { name: "Energy consistency", score: 68 },
+        { name: "Signal quality", score: 92 },
       ];
 
       const duration = 120;
@@ -991,11 +1118,11 @@
       let timer = null;
 
       function formatTime(s) {
-        return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+        return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
       }
 
       function renderAspects() {
-        document.getElementById('aspectList').innerHTML = aspects
+        document.getElementById("aspectList").innerHTML = aspects
           .map(
             (a) => `
           <div class="aspect-row">
@@ -1009,28 +1136,28 @@
             <div class="aspect-bar-wrap">
               <span class="aspect-pct">${a.score}%</span>
               <div class="aspect-bar-track">
-                <div class="aspect-bar-fill" style="width:${a.score}%; background:${a.color === '#e20c98' ? 'var(--tatio-pink)' : a.color === '#ff5811' ? 'var(--orange)' : 'var(--dark-blue)'}"></div>
+                <div class="aspect-bar-fill" style="width:${a.score}%; background:${a.color === "#e20c98" ? "var(--tatio-pink)" : a.color === "#ff5811" ? "var(--orange)" : "var(--dark-blue)"}"></div>
               </div>
             </div>
-          </div>`
+          </div>`,
           )
-          .join('');
+          .join("");
       }
 
       function renderTranscript() {
-        document.getElementById('transcript').innerHTML = transcript
+        document.getElementById("transcript").innerHTML = transcript
           .map(
             (line) => `
           <div class="transcript-line" data-id="${line.id}" data-start="${line.start}" role="button" tabindex="0">
             <span class="ts">${formatTime(line.start)}</span>
             <p>${line.text}</p>
-          </div>`
+          </div>`,
           )
-          .join('');
+          .join("");
       }
 
       function renderDimensions() {
-        document.getElementById('dimensions').innerHTML = dimensions
+        document.getElementById("dimensions").innerHTML = dimensions
           .map(
             (d) => `
           <article class="dimension">
@@ -1048,17 +1175,17 @@
                     <p class="quote">“${e.quote}”</p>
                     <span class="stamp">Jump to evidence →</span>
                   </button>
-                </li>`
+                </li>`,
                 )
-                .join('')}
+                .join("")}
             </ul>
-          </article>`
+          </article>`,
           )
-          .join('');
+          .join("");
       }
 
       function renderAcoustic() {
-        document.getElementById('acousticBars').innerHTML = acoustic
+        document.getElementById("acousticBars").innerHTML = acoustic
           .map(
             (a) => `
           <div class="progress-row">
@@ -1067,38 +1194,45 @@
               <span class="precentage">${a.score}%</span>
               <div class="multicolor-bar"><div class="bar" style="width:${a.score}%"></div></div>
             </div>
-          </div>`
+          </div>`,
           )
-          .join('');
+          .join("");
       }
 
       function setActiveLine(id) {
-        document.querySelectorAll('.transcript-line').forEach((el) => {
-          el.classList.toggle('active', el.dataset.id === id);
+        document.querySelectorAll(".transcript-line").forEach((el) => {
+          el.classList.toggle("active", el.dataset.id === id);
         });
       }
 
       function highlightEvidence(id) {
-        document.querySelectorAll('.transcript-line').forEach((el) => el.classList.remove('evidence-hit'));
-        const target = document.querySelector(`.transcript-line[data-id="${id}"]`);
+        document
+          .querySelectorAll(".transcript-line")
+          .forEach((el) => el.classList.remove("evidence-hit"));
+        const target = document.querySelector(
+          `.transcript-line[data-id="${id}"]`,
+        );
         if (!target) return;
-        target.classList.add('evidence-hit', 'active');
-        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        target.classList.add("evidence-hit", "active");
+        target.scrollIntoView({ behavior: "smooth", block: "nearest" });
         const line = transcript.find((t) => t.id === id);
         if (line) seekTo(line.start);
       }
 
       function seekTo(seconds) {
         currentTime = Math.max(0, Math.min(duration, seconds));
-        document.getElementById('scrub').value = String(currentTime);
-        document.getElementById('timeLabel').textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
-        const active = [...transcript].reverse().find((t) => currentTime >= t.start);
+        document.getElementById("scrub").value = String(currentTime);
+        document.getElementById("timeLabel").textContent =
+          `${formatTime(currentTime)} / ${formatTime(duration)}`;
+        const active = [...transcript]
+          .reverse()
+          .find((t) => currentTime >= t.start);
         if (active) setActiveLine(active.id);
       }
 
-      document.getElementById('playOverlay').addEventListener('click', () => {
+      document.getElementById("playOverlay").addEventListener("click", () => {
         playing = true;
-        document.getElementById('playOverlay').hidden = true;
+        document.getElementById("playOverlay").hidden = true;
         clearInterval(timer);
         timer = setInterval(() => {
           if (!playing) return;
@@ -1106,28 +1240,32 @@
           seekTo(currentTime);
           if (currentTime >= duration) {
             playing = false;
-            document.getElementById('playOverlay').hidden = false;
+            document.getElementById("playOverlay").hidden = false;
             clearInterval(timer);
           }
         }, 250);
       });
 
-      document.getElementById('scrub').addEventListener('input', (e) => seekTo(Number(e.target.value)));
+      document
+        .getElementById("scrub")
+        .addEventListener("input", (e) => seekTo(Number(e.target.value)));
 
-      document.getElementById('transcript').addEventListener('click', (e) => {
-        const line = e.target.closest('.transcript-line');
+      document.getElementById("transcript").addEventListener("click", (e) => {
+        const line = e.target.closest(".transcript-line");
         if (line) highlightEvidence(line.dataset.id);
       });
 
-      document.getElementById('dimensions').addEventListener('click', (e) => {
-        const btn = e.target.closest('button[data-span]');
+      document.getElementById("dimensions").addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-span]");
         if (btn) highlightEvidence(btn.dataset.span);
       });
 
-      document.querySelectorAll('.switcher button').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.switcher button').forEach((b) => b.setAttribute('aria-selected', 'false'));
-          btn.setAttribute('aria-selected', 'true');
+      document.querySelectorAll(".switcher button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".switcher button")
+            .forEach((b) => b.setAttribute("aria-selected", "false"));
+          btn.setAttribute("aria-selected", "true");
         });
       });
 
