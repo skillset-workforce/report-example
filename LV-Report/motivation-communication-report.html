@@ -252,9 +252,9 @@
         margin-top: 12px;
       }
 
-      /* Top row: profile (like prediction) + duration + recordings */
+      /* Top row: profile + duration */
       .profile-card {
-        width: 55%;
+        width: 72%;
         display: flex;
         align-items: center;
         gap: 24px;
@@ -288,7 +288,7 @@
       }
 
       .side-stat {
-        width: 22.5%;
+        width: 28%;
         min-height: 180px;
         display: flex;
         flex-direction: column;
@@ -301,23 +301,22 @@
         margin-top: 8px;
       }
 
-      /* Three-aspect visualization */
-      .viz-card {
-        width: 100%;
-      }
-
-      .viz-layout {
+      /* Dimension score visualization */
+      .dim-viz {
         display: grid;
-        grid-template-columns: minmax(260px, 340px) 1fr;
-        gap: 28px;
+        grid-template-columns: minmax(200px, 260px) 1fr;
+        gap: 20px;
         align-items: center;
-        margin-top: 18px;
+        margin: 16px 0 20px;
+        padding: 14px 16px;
+        background: var(--frosted-sky);
+        border-radius: 10px;
       }
 
       .radar-wrap {
         position: relative;
         width: 100%;
-        max-width: 320px;
+        max-width: 240px;
         margin: 0 auto;
         aspect-ratio: 1;
       }
@@ -328,73 +327,52 @@
         overflow: visible;
       }
 
-      .aspect-list {
+      .dim-bars {
         display: flex;
         flex-direction: column;
-        gap: 0;
-      }
-
-      .aspect-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 16px 0 14px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-      }
-
-      .aspect-row:last-child {
-        border-bottom: none;
-      }
-
-      .aspect-name {
-        display: flex;
-        align-items: center;
         gap: 10px;
+      }
+
+      .dim-bar-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px 12px;
+        align-items: center;
+      }
+
+      .dim-bar-row .label {
+        font-size: 13px;
         font-weight: 500;
-        font-size: 15px;
+        color: var(--almost-black);
       }
 
-      .aspect-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        box-shadow: 1px 1px 2px rgba(65, 65, 67, 0.3);
-        flex-shrink: 0;
+      .dim-bar-row .level-chip {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--dark-blue);
+        white-space: nowrap;
       }
 
-      .aspect-bar-wrap {
-        width: 52%;
-        position: relative;
-      }
-
-      .aspect-bar-track {
-        width: 100%;
-        height: 10px;
-        background: rgba(120, 120, 128, 0.2);
-        border-radius: 8px;
+      .dim-bar-track {
+        grid-column: 1 / -1;
+        height: 8px;
+        background: var(--e-grey);
+        border-radius: 99px;
         overflow: hidden;
       }
 
-      .aspect-bar-fill {
+      .dim-bar-fill {
         height: 100%;
-        border-radius: 8px;
+        border-radius: 99px;
+        background: var(--tatio-pink);
+      }
+
+      .dim-bar-fill.moderate {
         background: var(--dark-blue);
-        transition: width 1s ease;
       }
 
-      .aspect-pct {
-        position: absolute;
-        right: 0;
-        bottom: 12px;
-        font-size: 12px;
-        font-weight: 500;
-      }
-
-      .aspect-level {
-        font-size: 13px;
-        color: var(--very-dark-grey);
-        margin-top: 4px;
+      .dim-bar-fill.limited {
+        background: var(--orange);
       }
 
       /* Main body: media + dimensions */
@@ -572,33 +550,16 @@
         gap: 8px;
       }
 
-      .evidence button {
-        width: 100%;
-        text-align: left;
-        border: none;
-        background: var(--e-grey);
-        border-radius: 8px;
-        padding: 10px 12px;
-        cursor: pointer;
-      }
-
-      .evidence button:hover {
-        background: #e6e6e6;
-      }
-
       .evidence .quote {
         margin: 0;
+        padding: 10px 12px;
+        background: var(--frosted-sky);
+        border-left: 3px solid var(--tatio-pink);
+        border-radius: 0 8px 8px 0;
         font-size: 13px;
         line-height: 1.45;
         color: var(--almost-black);
-      }
-
-      .evidence .stamp {
-        display: inline-block;
-        margin-top: 4px;
-        font-size: 11px;
-        font-weight: 600;
-        color: var(--tatio-pink);
+        font-style: italic;
       }
 
       .safeguard-card .description {
@@ -676,7 +637,7 @@
       @media (max-width: 1100px) {
         .section-row,
         .main-split,
-        .viz-layout {
+        .dim-viz {
           flex-direction: column;
           grid-template-columns: 1fr;
           display: flex;
@@ -738,10 +699,6 @@
       </header>
 
       <div class="switcher" role="tablist" aria-label="Report type">
-        <button type="button" role="tab" aria-selected="false">
-          Core Skills
-        </button>
-
         <button type="button" role="tab" aria-selected="true">
           Motivation &amp; Communication
         </button>
@@ -801,123 +758,7 @@
             </div>
             <div class="evaluation-card">Within limit</div>
           </section>
-
-          <section class="card side-stat">
-            <h2 class="headline">Recordings</h2>
-            <div>
-              <div class="big">1 / 2</div>
-              <p class="description">Submitted final attempt</p>
-            </div>
-            <div class="evaluation-card">Completed</div>
-          </section>
         </div>
-
-        <!-- Three-aspect visualization -->
-        <section class="card viz-card" aria-labelledby="aspects-title">
-          <h2 class="headline" id="aspects-title">
-            Motivation video focus areas
-          </h2>
-          <p class="description">
-            Three core aspects of the motivation response — how clearly the
-            candidate covers why LV, product awareness, and how they
-            communicate.
-          </p>
-
-          <div class="viz-layout">
-            <div class="radar-wrap" aria-hidden="true">
-              <svg viewBox="0 0 320 300" id="radarChart">
-                <!-- background rings -->
-                <polygon
-                  points="160,40 278,230 42,230"
-                  fill="none"
-                  stroke="#ECEBEB"
-                  stroke-width="1.5"
-                />
-                <polygon
-                  points="160,78 244,210 76,210"
-                  fill="none"
-                  stroke="#ECEBEB"
-                  stroke-width="1.5"
-                />
-                <polygon
-                  points="160,116 210,190 110,190"
-                  fill="none"
-                  stroke="#ECEBEB"
-                  stroke-width="1.5"
-                />
-                <line
-                  x1="160"
-                  y1="160"
-                  x2="160"
-                  y2="40"
-                  stroke="#ECEBEB"
-                  stroke-width="1.5"
-                />
-                <line
-                  x1="160"
-                  y1="160"
-                  x2="278"
-                  y2="230"
-                  stroke="#ECEBEB"
-                  stroke-width="1.5"
-                />
-                <line
-                  x1="160"
-                  y1="160"
-                  x2="42"
-                  y2="230"
-                  stroke="#ECEBEB"
-                  stroke-width="1.5"
-                />
-
-                <!-- score polygon: Motivation Strong, Communication Strong, Awareness Moderate -->
-                <polygon
-                  id="scorePoly"
-                  points="160,55 255.2,212.2 88.4,212.2"
-                  fill="rgba(226, 12, 152, 0.18)"
-                  stroke="var(--tatio-pink)"
-                  stroke-width="2.5"
-                />
-                <circle cx="160" cy="55" r="5" fill="var(--tatio-pink)" />
-                <circle cx="255.2" cy="212.2" r="5" fill="var(--tatio-pink)" />
-                <circle cx="88.4" cy="212.2" r="5" fill="var(--tatio-pink)" />
-
-                <text
-                  x="160"
-                  y="24"
-                  text-anchor="middle"
-                  font-size="13"
-                  font-weight="600"
-                  fill="#1a1a1a"
-                >
-                  Motivation
-                </text>
-                <text
-                  x="292"
-                  y="248"
-                  text-anchor="middle"
-                  font-size="13"
-                  font-weight="600"
-                  fill="#1a1a1a"
-                >
-                  Communication
-                </text>
-                <text
-                  x="28"
-                  y="248"
-                  text-anchor="middle"
-                  font-size="13"
-                  font-weight="600"
-                  fill="#1a1a1a"
-                >
-                  Awareness
-                </text>
-              </svg>
-            </div>
-
-            <div class="aspect-list" id="aspectList"></div>
-          </div>
-        </section>
 
         <div class="main-split">
           <div class="left-col">
@@ -940,13 +781,13 @@
                     id="scrub"
                     type="range"
                     min="0"
-                    max="120"
+                    max="77"
                     value="0"
                     aria-label="Position"
                   />
                   <div class="player-meta">
-                    <span id="timeLabel">0:00 / 2:00</span>
-                    <span>Attempt 1 of 2</span>
+                    <span id="timeLabel">0:00 / 1:17</span>
+                    <span>Motivation recording</span>
                   </div>
                 </div>
               </div>
@@ -978,10 +819,120 @@
 
             <section class="card" id="dimensionsCard">
               <h2 class="headline">Dimension scores</h2>
-              <p class="description" style="margin-bottom: 14px">
-                Each conclusion links to transcript spans. Levels use text — not
-                color alone.
+              <p class="description">
+                Four content dimensions assessed from the transcript. Levels use
+                text — not color alone.
               </p>
+
+              <div class="dim-viz" aria-label="Dimension score overview">
+                <div class="radar-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 280 280" id="radarChart">
+                    <polygon
+                      points="140,40 240,140 140,240 40,140"
+                      fill="none"
+                      stroke="#ECEBEB"
+                      stroke-width="1.5"
+                    />
+                    <polygon
+                      points="140,70 210,140 140,210 70,140"
+                      fill="none"
+                      stroke="#ECEBEB"
+                      stroke-width="1.5"
+                    />
+                    <polygon
+                      points="140,100 180,140 140,180 100,140"
+                      fill="none"
+                      stroke="#ECEBEB"
+                      stroke-width="1.5"
+                    />
+                    <line
+                      x1="140"
+                      y1="140"
+                      x2="140"
+                      y2="40"
+                      stroke="#ECEBEB"
+                      stroke-width="1.5"
+                    />
+                    <line
+                      x1="140"
+                      y1="140"
+                      x2="240"
+                      y2="140"
+                      stroke="#ECEBEB"
+                      stroke-width="1.5"
+                    />
+                    <line
+                      x1="140"
+                      y1="140"
+                      x2="140"
+                      y2="240"
+                      stroke="#ECEBEB"
+                      stroke-width="1.5"
+                    />
+                    <line
+                      x1="140"
+                      y1="140"
+                      x2="40"
+                      y2="140"
+                      stroke="#ECEBEB"
+                      stroke-width="1.5"
+                    />
+                    <polygon
+                      id="scorePoly"
+                      points="140,52 198,140 140,228 52,140"
+                      fill="rgba(226, 12, 152, 0.18)"
+                      stroke="var(--tatio-pink)"
+                      stroke-width="2.5"
+                    />
+                    <circle cx="140" cy="52" r="4" fill="var(--tatio-pink)" />
+                    <circle cx="198" cy="140" r="4" fill="var(--tatio-pink)" />
+                    <circle cx="140" cy="228" r="4" fill="var(--tatio-pink)" />
+                    <circle cx="52" cy="140" r="4" fill="var(--tatio-pink)" />
+                    <text
+                      x="140"
+                      y="22"
+                      text-anchor="middle"
+                      font-size="11"
+                      font-weight="600"
+                      fill="#1a1a1a"
+                    >
+                      Motivation
+                    </text>
+                    <text
+                      x="262"
+                      y="144"
+                      text-anchor="middle"
+                      font-size="11"
+                      font-weight="600"
+                      fill="#1a1a1a"
+                    >
+                      Awareness
+                    </text>
+                    <text
+                      x="140"
+                      y="268"
+                      text-anchor="middle"
+                      font-size="11"
+                      font-weight="600"
+                      fill="#1a1a1a"
+                    >
+                      Contribution
+                    </text>
+                    <text
+                      x="18"
+                      y="144"
+                      text-anchor="middle"
+                      font-size="11"
+                      font-weight="600"
+                      fill="#1a1a1a"
+                    >
+                      Clarity
+                    </text>
+                  </svg>
+                </div>
+                <div class="dim-bars" id="dimBars"></div>
+              </div>
+
               <div id="dimensions"></div>
             </section>
 
@@ -1042,32 +993,12 @@
     </div>
 
     <script>
-      const aspects = [
-        {
-          name: "Substantiated motivation",
-          short: "Motivation",
-          score: 88,
-          level: "Strong",
-          color: "#e20c98",
-          tip: "Internship story grounded motivation in a concrete product question",
-        },
-        {
-          name: "Maison & product awareness",
-          short: "Awareness",
-          score: 62,
-          level: "Moderate",
-          color: "#00004f",
-          tip: "Craftsmanship and long-term value — knowledge still relatively general",
-        },
-        {
-          name: "Communication clarity",
-          short: "Communication",
-          score: 86,
-          level: "Strong",
-          color: "#ff5811",
-          tip: "Well-structured response covering all three topics in sequence",
-        },
-      ];
+      const LEVEL_WIDTH = {
+        Strong: 90,
+        Moderate: 60,
+        Limited: 35,
+        "Insufficient Evidence": 18,
+      };
 
       const transcript = [
         {
@@ -1077,32 +1008,32 @@
         },
         {
           id: "t2",
-          start: 16,
+          start: 12,
           text: "One of my responsibilities was preparing the weekly sell-through reports. There was one handbag that everyone expected to do really well, but it didn't, and nobody could really explain why. Was it the price, the colour, or the stores? That experience made me realise I wanted to understand what really drives a product's success.",
         },
         {
           id: "t3",
-          start: 42,
+          start: 32,
           text: "What interests me about Louis Vuitton is its focus on craftsmanship and creating products that last. During my internship, the pace was very much about the next collection, so I find Louis Vuitton's approach to quality and long-term value really interesting.",
         },
         {
           id: "t4",
-          start: 62,
+          start: 48,
           text: "I don't know the technical side yet, but that's exactly what I'd like to learn.",
         },
         {
           id: "t5",
-          start: 72,
+          start: 54,
           text: "I think I'd bring strong analytical skills. I redesigned our weekly sell-through report to make it easier for the team to use, and it became the version people relied on.",
         },
         {
           id: "t6",
-          start: 92,
+          start: 66,
           text: "Through this programme, I'd love to develop a much deeper understanding of how collections are created from the beginning and learn from experienced teams across the product lifecycle.",
         },
         {
           id: "t7",
-          start: 110,
+          start: 74,
           text: "Thank you.",
         },
       ];
@@ -1110,65 +1041,42 @@
       const dimensions = [
         {
           title: "Substantiated motivation",
+          short: "Motivation",
           level: "Strong",
           text: "Connected her motivation to a specific experience during her merchandising internship, explaining how an unresolved product performance question led her to pursue a career in product management.",
           evidence: [
-            {
-              span: "t1",
-              quote:
-                "internship at Sandro, where I supported the merchandising team",
-            },
-            {
-              span: "t2",
-              quote:
-                "That experience made me realise I wanted to understand what really drives a product's success.",
-            },
+            "internship at Sandro, where I supported the merchandising team",
+            "That experience made me realise I wanted to understand what really drives a product's success.",
           ],
         },
         {
           title: "Maison & product awareness",
+          short: "Awareness",
           level: "Moderate",
           text: "Demonstrated an appreciation for Louis Vuitton's craftsmanship and long-term product philosophy while comparing it with her previous experience, although her knowledge of the Maison remained relatively general.",
           evidence: [
-            {
-              span: "t3",
-              quote:
-                "focus on craftsmanship and creating products that last… quality and long-term value",
-            },
+            "focus on craftsmanship and creating products that last… quality and long-term value",
           ],
         },
         {
           title: "Contribution & growth mindset",
+          short: "Contribution",
           level: "Strong",
           text: "Described improving a weekly sell-through report that was adopted by her team and expressed a clear ambition to learn how collections are developed from the earliest stages.",
           evidence: [
-            {
-              span: "t5",
-              quote:
-                "redesigned our weekly sell-through report… became the version people relied on",
-            },
-            {
-              span: "t6",
-              quote:
-                "how collections are created from the beginning… across the product lifecycle",
-            },
+            "redesigned our weekly sell-through report… became the version people relied on",
+            "how collections are created from the beginning… across the product lifecycle",
           ],
         },
         {
           title: "Communication clarity",
+          short: "Clarity",
           level: "Strong",
           text: "Delivered a well-structured response that addressed all three topics in a logical and easy-to-follow sequence.",
           evidence: [
-            {
-              span: "t1",
-              quote:
-                "Hi, I'm Camille. The reason I'm interested in this programme…",
-            },
-            { span: "t3", quote: "What interests me about Louis Vuitton…" },
-            {
-              span: "t5",
-              quote: "I think I'd bring strong analytical skills…",
-            },
+            "Hi, I'm Camille. The reason I'm interested in this programme…",
+            "What interests me about Louis Vuitton…",
+            "I think I'd bring strong analytical skills…",
           ],
         },
       ];
@@ -1179,7 +1087,7 @@
         { name: "Signal quality", score: 92 },
       ];
 
-      const duration = 120;
+      const duration = 77;
       let currentTime = 0;
       let playing = false;
       let timer = null;
@@ -1188,26 +1096,25 @@
         return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
       }
 
-      function renderAspects() {
-        document.getElementById("aspectList").innerHTML = aspects
-          .map(
-            (a) => `
-          <div class="aspect-row">
-            <div>
-              <div class="aspect-name">
-                <span class="aspect-dot" style="background:${a.color}"></span>
-                ${a.name}
-              </div>
-              <div class="aspect-level">${a.level} · ${a.tip}</div>
+      function renderDimViz() {
+        document.getElementById("dimBars").innerHTML = dimensions
+          .map((d) => {
+            const width = LEVEL_WIDTH[d.level] ?? 40;
+            const fillClass =
+              d.level === "Moderate"
+                ? "moderate"
+                : d.level === "Limited"
+                  ? "limited"
+                  : "";
+            return `
+          <div class="dim-bar-row">
+            <span class="label">${d.short}</span>
+            <span class="level-chip">${d.level}</span>
+            <div class="dim-bar-track">
+              <div class="dim-bar-fill ${fillClass}" style="width:${width}%"></div>
             </div>
-            <div class="aspect-bar-wrap">
-              <span class="aspect-pct">${a.score}%</span>
-              <div class="aspect-bar-track">
-                <div class="aspect-bar-fill" style="width:${a.score}%; background:${a.color === "#e20c98" ? "var(--tatio-pink)" : a.color === "#ff5811" ? "var(--orange)" : "var(--dark-blue)"}"></div>
-              </div>
-            </div>
-          </div>`,
-          )
+          </div>`;
+          })
           .join("");
       }
 
@@ -1234,17 +1141,7 @@
             </div>
             <p class="description">${d.text}</p>
             <ul class="evidence">
-              ${d.evidence
-                .map(
-                  (e) => `
-                <li>
-                  <button type="button" data-span="${e.span}">
-                    <p class="quote">“${e.quote}”</p>
-                    <span class="stamp">Jump to evidence →</span>
-                  </button>
-                </li>`,
-                )
-                .join("")}
+              ${d.evidence.map((quote) => `<li><p class="quote">“${quote}”</p></li>`).join("")}
             </ul>
           </article>`,
           )
@@ -1270,20 +1167,6 @@
         document.querySelectorAll(".transcript-line").forEach((el) => {
           el.classList.toggle("active", el.dataset.id === id);
         });
-      }
-
-      function highlightEvidence(id) {
-        document
-          .querySelectorAll(".transcript-line")
-          .forEach((el) => el.classList.remove("evidence-hit"));
-        const target = document.querySelector(
-          `.transcript-line[data-id="${id}"]`,
-        );
-        if (!target) return;
-        target.classList.add("evidence-hit", "active");
-        target.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        const line = transcript.find((t) => t.id === id);
-        if (line) seekTo(line.start);
       }
 
       function seekTo(seconds) {
@@ -1319,12 +1202,9 @@
 
       document.getElementById("transcript").addEventListener("click", (e) => {
         const line = e.target.closest(".transcript-line");
-        if (line) highlightEvidence(line.dataset.id);
-      });
-
-      document.getElementById("dimensions").addEventListener("click", (e) => {
-        const btn = e.target.closest("button[data-span]");
-        if (btn) highlightEvidence(btn.dataset.span);
+        if (!line) return;
+        seekTo(Number(line.dataset.start));
+        setActiveLine(line.dataset.id);
       });
 
       document.querySelectorAll(".switcher button").forEach((btn) => {
@@ -1336,7 +1216,7 @@
         });
       });
 
-      renderAspects();
+      renderDimViz();
       renderTranscript();
       renderDimensions();
       renderAcoustic();
