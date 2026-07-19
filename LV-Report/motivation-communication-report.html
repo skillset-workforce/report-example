@@ -34,7 +34,7 @@
 
       :root {
         --dark-blue: #00004f;
-        --moderate: #5a5aad;
+        --moderate: #88077b;
         --tatio-pink: #e20c98;
         --tatio-green: #07f698;
         --orange: #ff5811;
@@ -91,7 +91,7 @@
         border-radius: 16px;
         background: #fff;
         border: 1px solid rgba(0, 0, 79, 0.08);
-        box-shadow: 0 14px 34px rgba(0, 0, 79, 0.1);
+        box-shadow: 0 14px 34px rgba(0, 0, 79, 0.08);
       }
 
       .report-heading {
@@ -100,35 +100,18 @@
         justify-content: space-between;
         gap: 24px;
         margin: 0;
-        padding: 28px 30px 24px;
+        padding: 20px 28px 18px;
         overflow: hidden;
         position: relative;
         border-radius: 0;
-        color: #fff;
-        background:
-          radial-gradient(
-            circle at 88% 15%,
-            rgba(7, 246, 152, 0.2),
-            transparent 28%
-          ),
-          linear-gradient(
-            135deg,
-            #00003e 0%,
-            var(--dark-blue) 68%,
-            #17176b 100%
-          );
+        border-left: 4px solid var(--tatio-pink);
+        color: var(--dark-blue);
+        background: linear-gradient(180deg, #f7f8fd 0%, #ffffff 100%);
         box-shadow: none;
       }
 
       .report-heading::after {
-        content: "";
-        position: absolute;
-        width: 210px;
-        height: 210px;
-        right: -72px;
-        bottom: -132px;
-        border: 28px solid rgba(226, 12, 152, 0.2);
-        border-radius: 50%;
+        display: none;
       }
 
       .report-heading-copy {
@@ -139,7 +122,7 @@
 
       .eyebrow {
         margin: 0 0 8px;
-        color: var(--tatio-green);
+        color: var(--tatio-pink);
         font-size: 12px;
         font-weight: 700;
         letter-spacing: 0.12em;
@@ -148,36 +131,20 @@
 
       .report-heading h1 {
         margin: 0;
-        font-size: clamp(30px, 3.6vw, 44px);
-        line-height: 1.05;
+        font-size: clamp(26px, 3vw, 36px);
+        line-height: 1.1;
         font-weight: 600;
         letter-spacing: -0.03em;
       }
 
       .report-heading .subtitle {
         max-width: 720px;
-        margin: 10px 0 0;
-        color: rgba(255, 255, 255, 0.78);
-        font-size: 15px;
+        margin: 8px 0 0;
+        color: var(--dark-grey);
+        font-size: 14px;
         line-height: 1.45;
       }
 
-      .report-status {
-        position: relative;
-        z-index: 1;
-        flex-shrink: 0;
-        padding: 9px 13px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 999px;
-        color: #fff;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(8px);
-        font-size: 12px;
-        font-weight: 600;
-        white-space: nowrap;
-      }
-
-      /* Candidate strip — part of report hero */
       .candidate-header {
         display: flex;
         align-items: center;
@@ -187,8 +154,8 @@
         padding: 16px 24px 18px;
         border: none;
         border-radius: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        background: linear-gradient(180deg, #f7f8fd 0%, #ffffff 100%);
+        border-top: 1px solid var(--border);
+        background: #fff;
         flex-wrap: wrap;
       }
 
@@ -257,34 +224,45 @@
       .data-section {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 14px;
         flex-wrap: wrap;
       }
 
-      .data-card {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        background: #fff;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 6px 11px;
-        font-size: 13px;
-        font-weight: 400;
-        white-space: nowrap;
+      .contact-meta {
+        margin: 0;
         color: var(--very-dark-grey);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .contact-meta a {
+        color: var(--dark-blue);
+        text-decoration: none;
+      }
+
+      .contact-meta a:hover {
+        color: var(--tatio-pink);
+        text-decoration: underline;
       }
 
       .pdf-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         background: var(--orange);
         color: #fff;
         border: none;
         border-radius: 8px;
-        width: 42px;
         height: 40px;
+        padding: 0 14px;
         cursor: pointer;
-        font-size: 15px;
+        font-size: 13px;
         font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .pdf-btn:hover {
+        filter: brightness(1.05);
       }
 
       .sections {
@@ -348,22 +326,48 @@
       }
 
       .evaluation-card.limited {
-        background: var(--orange);
+        background: var(--dark-blue);
       }
 
-      /* Top row: profile + duration */
+      /* Overall verdict */
       .profile-card {
-        width: 74%;
+        width: 100%;
         display: flex;
         align-items: center;
-        gap: 24px;
-        min-height: 200px;
-        align-self: stretch;
+        gap: 28px;
+        min-height: 180px;
       }
 
       .profile-texts {
         flex: 1;
         min-width: 0;
+      }
+
+      .scan-list {
+        list-style: none;
+        margin: 14px 0 0;
+        padding: 0;
+        display: grid;
+        gap: 8px;
+      }
+
+      .scan-list li {
+        display: grid;
+        grid-template-columns: 88px 1fr;
+        gap: 10px;
+        align-items: start;
+        font-size: 13.5px;
+        line-height: 1.45;
+        color: var(--very-dark-grey);
+      }
+
+      .scan-list strong {
+        color: var(--dark-blue);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding-top: 2px;
       }
 
       .circular {
@@ -382,23 +386,9 @@
         inset: 0;
         display: grid;
         place-items: center;
-        font-size: 28px;
-        font-weight: 500;
+        font-size: 16px;
+        font-weight: 600;
         color: var(--almost-black);
-      }
-
-      .side-stat {
-        width: 26%;
-        min-height: 200px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .side-stat .big {
-        font-size: 28px;
-        font-weight: 500;
-        margin-top: 8px;
       }
 
       /* Dimension score visualization */
@@ -417,7 +407,7 @@
 
       .dim-viz {
         display: grid;
-        grid-template-columns: minmax(280px, 360px) 1fr;
+        grid-template-columns: minmax(240px, 300px) 1fr;
         gap: 28px 36px;
         align-items: center;
         margin: 18px 0 0;
@@ -430,33 +420,10 @@
         animation: dimVizIn 0.7s ease both;
       }
 
-      @keyframes dimVizIn {
-        from {
-          opacity: 0;
-          transform: translateY(12px) scale(0.985);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-      }
-
-      .section-kicker {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 8px;
-        color: var(--tatio-pink);
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
       .radar-wrap {
         position: relative;
         width: 100%;
-        max-width: 320px;
+        max-width: 300px;
         margin: 0 auto;
         aspect-ratio: 1;
       }
@@ -472,6 +439,17 @@
         animation: scoreReveal 0.75s ease 0.1s both;
       }
 
+      @keyframes dimVizIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
       @keyframes scoreReveal {
         from {
           opacity: 0;
@@ -482,6 +460,18 @@
           opacity: 1;
           transform: scale(1);
         }
+      }
+
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 8px;
+        color: var(--tatio-pink);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
 
       .dim-bars {
@@ -537,7 +527,7 @@
       }
 
       .dim-bar-row .level-chip.limited {
-        background: var(--orange);
+        background: var(--dark-blue);
       }
 
       .dim-bar-track {
@@ -554,8 +544,7 @@
         border-radius: 99px;
         background: linear-gradient(
           90deg,
-          #ffb14a 0%,
-          var(--dark-blue) 52%,
+          var(--dark-blue) 0%,
           var(--tatio-pink) 100%
         );
         box-shadow: 0 0 0 1px rgba(0, 0, 79, 0.08);
@@ -644,34 +633,58 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+        min-height: 0;
       }
 
       .right-col {
         width: 58%;
         display: flex;
         flex-direction: column;
-        gap: 16px;
-      }
-
-      .left-col > .acoustic-card,
-      .right-col > #dimensionsCard {
-        flex: 1;
         min-height: 0;
       }
 
-      .right-col > #dimensionsCard {
+      .left-col > .transcript-card {
+        flex: 1;
+        min-height: 0;
         display: flex;
         flex-direction: column;
       }
 
-      .right-col > #dimensionsCard #dimensions {
+      .transcript-card #transcript {
         flex: 1;
+        min-height: 0;
+        overflow: auto;
+      }
+
+      .right-col > #dimensionsCard {
+        flex: 1;
+        min-height: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #dimensionsCard #dimensions {
+        flex: 1;
+        min-height: 0;
+        overflow: auto;
+      }
+
+      .player-card {
+        flex-shrink: 0;
+        padding: 0;
+        overflow: hidden;
       }
 
       .player {
         background: var(--dark-blue);
         border-radius: 10px;
         overflow: hidden;
+      }
+
+      .player:focus-within {
+        outline: 2px solid var(--tatio-pink);
+        outline-offset: 2px;
       }
 
       .player-stage {
@@ -744,15 +757,39 @@
 
       .player-meta {
         display: flex;
+        align-items: center;
         justify-content: space-between;
+        gap: 12px;
         margin-top: 8px;
         font-size: 12px;
-        opacity: 0.9;
+        opacity: 0.95;
       }
 
-      .transcript-card {
-        max-height: 360px;
-        overflow: auto;
+      .player-meta-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .play-control {
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .duration-pill {
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 999px;
+        padding: 3px 8px;
+        font-size: 11px;
+        font-weight: 600;
+        white-space: nowrap;
       }
 
       .transcript-line {
@@ -765,8 +802,14 @@
       }
 
       .transcript-line:hover,
-      .transcript-line.active {
+      .transcript-line:focus-visible {
         background: rgba(226, 12, 152, 0.06);
+        outline: none;
+      }
+
+      .transcript-line.active {
+        background: rgba(226, 12, 152, 0.1);
+        box-shadow: inset 3px 0 0 var(--tatio-pink);
       }
 
       .transcript-line.evidence-hit {
@@ -851,16 +894,89 @@
         line-height: 1.45;
         color: var(--almost-black);
         font-style: italic;
+        cursor: pointer;
+        transition:
+          background 0.15s ease,
+          border-color 0.15s ease;
       }
 
-      .safeguard-card .description {
-        margin-top: 10px;
+      .evidence .quote:hover,
+      .evidence .quote:focus-visible {
+        background: rgba(226, 12, 152, 0.06);
+        border-left-color: var(--moderate);
+        outline: none;
+      }
+
+      .evidence .quote:focus-visible {
+        box-shadow: 0 0 0 2px rgba(226, 12, 152, 0.25);
+      }
+
+      .quote-hint {
+        display: block;
+        margin-top: 4px;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 600;
+        color: var(--dark-grey);
+      }
+
+      .acoustic-card {
+        overflow: visible;
+        border-style: dashed;
+        background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
+      }
+
+      .speech-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .speech-header .headline {
+        margin-top: 0;
+      }
+
+      .speech-badges {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .secondary-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 79, 0.16);
+        background: #fff;
+        color: var(--dark-grey);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .speech-level {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 11px;
+        border-radius: 8px;
+        border: 1.5px solid var(--moderate);
+        background: rgba(136, 7, 123, 0.06);
+        color: var(--moderate);
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
       }
 
       .acoustic-card .experimental {
         display: inline-block;
         margin-top: 8px;
-        background: #ffc100;
+        background: rgba(0, 0, 79, 0.06);
         color: var(--dark-blue);
         border-radius: 6px;
         padding: 4px 8px;
@@ -939,10 +1055,6 @@
         transform: translateY(0);
       }
 
-      .acoustic-card {
-        overflow: visible;
-      }
-
       .analysis-stack {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -994,19 +1106,24 @@
         }
 
         .profile-card,
-        .side-stat,
         .left-col,
         .right-col {
           width: 100%;
         }
 
-        .left-col > .acoustic-card,
+        .left-col > .transcript-card,
         .right-col > #dimensionsCard {
           flex: none;
+          height: auto;
+        }
+
+        .transcript-card #transcript,
+        #dimensionsCard #dimensions {
+          overflow: visible;
         }
 
         .radar-wrap {
-          max-width: 320px;
+          max-width: 280px;
         }
       }
 
@@ -1041,9 +1158,10 @@
       }
 
       @media print {
-        .mock-banner,
-        .pdf-btn {
-          display: none;
+        .pdf-btn,
+        .play-overlay,
+        .play-control {
+          display: none !important;
         }
 
         body {
@@ -1053,6 +1171,32 @@
         .shell {
           max-width: none;
           padding: 0;
+        }
+
+        .main-split,
+        .section-row,
+        .dim-viz {
+          display: block;
+        }
+
+        .left-col,
+        .right-col,
+        .profile-card {
+          width: 100%;
+        }
+
+        .transcript-card,
+        #dimensionsCard {
+          height: auto;
+        }
+
+        .transcript-card #transcript,
+        #dimensionsCard #dimensions {
+          overflow: visible;
+        }
+
+        .radar-wrap {
+          display: none !important;
         }
 
         .report-heading,
@@ -1069,6 +1213,7 @@
       <section class="report-hero" aria-labelledby="report-title">
         <div class="report-heading">
           <div class="report-heading-copy">
+            <p class="eyebrow">TaTiO · Candidate assessment</p>
             <h1 id="report-title">Motivation &amp; Communication Report</h1>
             <p class="subtitle">
               Evidence-based review of the recorded motivation response.
@@ -1091,72 +1236,83 @@
             </div>
           </div>
           <div class="data-section">
-            <div class="data-card">camille.martin@email.com</div>
-            <div class="data-card">+33 6 12 34 56 78</div>
-            <div class="data-card">Paris, FR</div>
-            <button class="pdf-btn" type="button" title="Download PDF">
-              ↓
-            </button>
+            <p class="contact-meta">
+              <a href="mailto:camille.martin@email.com"
+                >camille.martin@email.com</a
+              >
+              · +33 6 12 34 56 78 · Paris, FR
+            </p>
+            <button class="pdf-btn" type="button">↓ Download PDF</button>
           </div>
         </header>
       </section>
 
       <div class="sections">
-        <!-- Top metrics row — same rhythm as prediction / progress / duration -->
-        <div class="section-row">
-          <section class="card profile-card">
-            <div class="profile-texts">
-              <span class="section-kicker">Overall assessment</span>
-              <h2 class="headline">Overall motivation profile</h2>
-              <p class="description">
-                Camille presents a clear and well-supported rationale for the
-                opportunity, grounded in a specific merchandising experience.
-                She explains what attracts her to Louis Vuitton, identifies a
-                concrete contribution from her internship, and articulates a
-                focused development goal. Her knowledge of the Maison is
-                relevant but remains broad; overall, the response is specific,
-                coherent, and well evidenced.
-              </p>
-              <div class="evaluation-card strong">Strong</div>
-            </div>
-            <div class="circular" aria-label="Overall profile Strong">
-              <svg viewBox="0 0 120 120" width="120" height="120">
-                <circle
-                  cx="60"
-                  cy="60"
-                  r="48"
-                  fill="none"
-                  stroke="#ECEBEB"
-                  stroke-width="9"
-                />
-                <circle
-                  cx="60"
-                  cy="60"
-                  r="48"
-                  fill="none"
-                  stroke="var(--tatio-pink)"
-                  stroke-width="11"
-                  stroke-linecap="round"
-                  stroke-dasharray="301.6"
-                  stroke-dashoffset="55"
-                />
-              </svg>
-              <div class="score" style="font-size: 16px; font-weight: 600">
-                Strong
-              </div>
-            </div>
-          </section>
-
-          <section class="card side-stat">
-            <span class="section-kicker">Recording</span>
-            <h2 class="headline">Duration</h2>
-            <div>
-              <div class="big">1:17</div>
-              <p class="description">of 1:30 max</p>
-            </div>
-            <div class="evaluation-card">Within limit</div>
-          </section>
-        </div>
+        <section class="card profile-card">
+          <div class="profile-texts">
+            <span class="section-kicker">Overall assessment</span>
+            <h2 class="headline">Overall motivation profile</h2>
+            <p class="description">
+              Camille presents a clear, well-supported rationale grounded in a
+              specific merchandising experience. She explains what attracts her
+              to Louis Vuitton, identifies a concrete internship contribution,
+              and sets a focused development goal. Maison knowledge is relevant
+              but still broad.
+            </p>
+            <ul class="scan-list">
+              <li>
+                <strong>Strength</strong>
+                <span
+                  >Specific motivation with a concrete analytical contribution
+                  from internship work.</span
+                >
+              </li>
+              <li>
+                <strong>Watch-out</strong>
+                <span
+                  >Product awareness is thoughtful but remains general rather
+                  than Maison-specific.</span
+                >
+              </li>
+              <li>
+                <strong>Speech</strong>
+                <span
+                  >Steady delivery · Moderate — excluded from overall
+                  profile.</span
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="circular" aria-label="Overall profile Strong">
+            <svg
+              viewBox="0 0 120 120"
+              width="120"
+              height="120"
+              aria-hidden="true"
+            >
+              <circle
+                cx="60"
+                cy="60"
+                r="48"
+                fill="none"
+                stroke="#ECEBEB"
+                stroke-width="9"
+              />
+              <circle
+                cx="60"
+                cy="60"
+                r="48"
+                fill="none"
+                stroke="var(--tatio-pink)"
+                stroke-width="11"
+                stroke-linecap="round"
+                stroke-dasharray="301.6"
+                stroke-dashoffset="55"
+              />
+            </svg>
+            <div class="score">Strong</div>
+          </div>
+        </section>
 
         <section
           class="card dim-viz-card"
@@ -1167,7 +1323,11 @@
             Motivation and communication dimensions
           </h2>
 
-          <div class="dim-viz" aria-label="Dimension score overview">
+          <div
+            class="dim-viz"
+            id="dimViz"
+            aria-label="Dimension score overview"
+          >
             <div class="radar-wrap" aria-hidden="true">
               <svg viewBox="0 0 320 320" id="radarChart"></svg>
             </div>
@@ -1177,8 +1337,12 @@
 
         <div class="main-split">
           <div class="left-col">
-            <section class="card" style="padding: 0; overflow: hidden">
-              <div class="player">
+            <section class="card player-card" id="playerCard">
+              <div
+                class="player"
+                tabindex="0"
+                aria-label="Motivation recording player. Press Space to play or pause."
+              >
                 <div class="player-stage">
                   <div class="avatar">CM</div>
                   <button
@@ -1201,66 +1365,36 @@
                     aria-label="Position"
                   />
                   <div class="player-meta">
-                    <span id="timeLabel">0:00 / 1:17</span>
+                    <div class="player-meta-left">
+                      <button
+                        class="play-control"
+                        id="playControl"
+                        type="button"
+                      >
+                        Play
+                      </button>
+                      <span id="timeLabel">0:00 / 1:17</span>
+                    </div>
+                    <span class="duration-pill"
+                      >1:17 of 1:30 · Within limit</span
+                    >
                   </div>
                 </div>
               </div>
             </section>
 
-            <section class="card transcript-card">
+            <section class="card transcript-card" id="transcriptCard">
               <span class="section-kicker">Source evidence</span>
               <h2 class="headline">Transcript</h2>
               <p class="description" style="margin-bottom: 12px">
-                Original language · English · select a passage to seek
+                Original language · English · click a line or evidence quote to
+                seek
               </p>
               <div id="transcript"></div>
-            </section>
-
-            <section class="card acoustic-card">
-              <span class="section-kicker">Speech analysis</span>
-              <div
-                class="speech-summary"
-                style="
-                  display: flex;
-                  align-items: flex-start;
-                  justify-content: space-between;
-                  gap: 16px;
-                  margin-top: 10px;
-                "
-              >
-                <p class="description" style="margin: 0">
-                  Camille’s delivery is steady and controlled, with consistent
-                  pacing and measured variation in vocal energy. The result
-                  reflects observable delivery patterns only and does not infer
-                  confidence, personality, or sincerity.
-                </p>
-                <div
-                  class="evaluation-card moderate"
-                  style="margin-top: 0; flex-shrink: 0"
-                >
-                  Moderate
-                </div>
-              </div>
-
-              <div class="acoustic-bars" id="acousticBars"></div>
             </section>
           </div>
 
           <div class="right-col">
-            <section class="card">
-              <span class="section-kicker">Executive summary</span>
-              <h2 class="headline">Candidate overview</h2>
-              <p class="description">
-                Camille links her interest in product management to relevant
-                internship experience and supports it with a concrete example of
-                analytical contribution. Her response is logically structured,
-                demonstrates curiosity about the product lifecycle, and defines
-                a credible learning objective. Her understanding of Louis
-                Vuitton is thoughtful, although currently expressed at a general
-                level.
-              </p>
-            </section>
-
             <section class="card" id="dimensionsCard">
               <span class="section-kicker">Detailed findings</span>
               <h2 class="headline">Evidence by dimension</h2>
@@ -1268,6 +1402,25 @@
             </section>
           </div>
         </div>
+
+        <section class="card acoustic-card">
+          <div class="speech-header">
+            <div>
+              <span class="section-kicker">Speech analysis</span>
+              <h2 class="headline">Delivery signals</h2>
+            </div>
+            <div class="speech-badges">
+              <span class="secondary-chip">Not in overall profile</span>
+              <span class="speech-level">Moderate</span>
+            </div>
+          </div>
+          <p class="description">
+            Camille’s delivery is steady and controlled, with consistent pacing
+            and measured variation in vocal energy. Observable delivery patterns
+            only — does not infer confidence, personality, or sincerity.
+          </p>
+          <div class="acoustic-bars" id="acousticBars"></div>
+        </section>
       </div>
 
       <footer class="report-footer">
@@ -1335,8 +1488,16 @@
           score: 94,
           text: "Camille grounds her interest in product management in a specific merchandising experience, explaining how an unresolved product-performance question shaped her career direction.",
           evidence: [
-            "internship at Sandro, where I supported the merchandising team",
-            "That experience made me realise I wanted to understand what really drives a product's success.",
+            {
+              quote:
+                "internship at Sandro, where I supported the merchandising team",
+              lineId: "t1",
+            },
+            {
+              quote:
+                "That experience made me realise I wanted to understand what really drives a product's success.",
+              lineId: "t2",
+            },
           ],
         },
         {
@@ -1346,7 +1507,11 @@
           score: 62,
           text: "She identifies craftsmanship, product longevity, and long-term value as relevant points of attraction. The comparison with her internship is meaningful, although her knowledge of the Maison remains general.",
           evidence: [
-            "focus on craftsmanship and creating products that last… quality and long-term value",
+            {
+              quote:
+                "focus on craftsmanship and creating products that last… quality and long-term value",
+              lineId: "t3",
+            },
           ],
         },
         {
@@ -1356,8 +1521,16 @@
           score: 86,
           text: "She provides a concrete example of improving a sell-through report that her team adopted, while setting a clear learning objective across the product lifecycle.",
           evidence: [
-            "redesigned our weekly sell-through report… became the version people relied on",
-            "how collections are created from the beginning… across the product lifecycle",
+            {
+              quote:
+                "redesigned our weekly sell-through report… became the version people relied on",
+              lineId: "t5",
+            },
+            {
+              quote:
+                "how collections are created from the beginning… across the product lifecycle",
+              lineId: "t6",
+            },
           ],
         },
         {
@@ -1367,9 +1540,19 @@
           score: 91,
           text: "The response follows a clear sequence: source of motivation, interest in Louis Vuitton, prior contribution, and future development. Each point is relevant and easy to follow.",
           evidence: [
-            "Hi, I'm Camille. The reason I'm interested in this programme…",
-            "What interests me about Louis Vuitton…",
-            "I think I'd bring strong analytical skills…",
+            {
+              quote:
+                "Hi, I'm Camille. The reason I'm interested in this programme…",
+              lineId: "t1",
+            },
+            {
+              quote: "What interests me about Louis Vuitton…",
+              lineId: "t3",
+            },
+            {
+              quote: "I think I'd bring strong analytical skills…",
+              lineId: "t5",
+            },
           ],
         },
       ];
@@ -1563,7 +1746,17 @@
             <p class="description">${escapeHtml(d.text)}</p>
             <div class="evidence-label">Supporting evidence</div>
             <ul class="evidence">
-              ${d.evidence.map((quote) => `<li><p class="quote">“${escapeHtml(quote)}”</p></li>`).join("")}
+              ${d.evidence
+                .map(
+                  (item) => `
+                <li>
+                  <p class="quote" role="button" tabindex="0" data-line-id="${escapeHtml(item.lineId)}">
+                    “${escapeHtml(item.quote)}”
+                    <span class="quote-hint">Jump to transcript</span>
+                  </p>
+                </li>`,
+                )
+                .join("")}
             </ul>
           </article>`,
           )
@@ -1589,7 +1782,63 @@
       function setActiveLine(id) {
         document.querySelectorAll(".transcript-line").forEach((el) => {
           el.classList.toggle("active", el.dataset.id === id);
+          el.classList.toggle("evidence-hit", false);
         });
+      }
+
+      function highlightEvidenceLine(id) {
+        document.querySelectorAll(".transcript-line").forEach((el) => {
+          const match = el.dataset.id === id;
+          el.classList.toggle("evidence-hit", match);
+          el.classList.toggle("active", match);
+        });
+        const line = document.querySelector(
+          `.transcript-line[data-id="${id}"]`,
+        );
+        if (line) {
+          line.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      }
+
+      function jumpToEvidence(lineId) {
+        const line = transcript.find((t) => t.id === lineId);
+        if (!line) return;
+        seekTo(line.start);
+        highlightEvidenceLine(lineId);
+        document
+          .getElementById("transcriptCard")
+          ?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+
+      function updatePlayUi() {
+        const overlay = document.getElementById("playOverlay");
+        const control = document.getElementById("playControl");
+        overlay.hidden = playing;
+        control.textContent = playing ? "Pause" : "Play";
+      }
+
+      function stopPlayback() {
+        playing = false;
+        clearInterval(timer);
+        timer = null;
+        updatePlayUi();
+      }
+
+      function startPlayback() {
+        playing = true;
+        updatePlayUi();
+        clearInterval(timer);
+        timer = setInterval(() => {
+          if (!playing) return;
+          currentTime = Math.min(duration, currentTime + 0.25);
+          seekTo(currentTime);
+          if (currentTime >= duration) stopPlayback();
+        }, 250);
+      }
+
+      function togglePlayback() {
+        if (playing) stopPlayback();
+        else startPlayback();
       }
 
       function seekTo(seconds) {
@@ -1603,25 +1852,24 @@
         if (active) setActiveLine(active.id);
       }
 
-      document.getElementById("playOverlay").addEventListener("click", () => {
-        playing = true;
-        document.getElementById("playOverlay").hidden = true;
-        clearInterval(timer);
-        timer = setInterval(() => {
-          if (!playing) return;
-          currentTime = Math.min(duration, currentTime + 0.25);
-          seekTo(currentTime);
-          if (currentTime >= duration) {
-            playing = false;
-            document.getElementById("playOverlay").hidden = false;
-            clearInterval(timer);
-          }
-        }, 250);
+      document
+        .getElementById("playOverlay")
+        .addEventListener("click", togglePlayback);
+      document
+        .getElementById("playControl")
+        .addEventListener("click", togglePlayback);
+
+      document.querySelector(".player").addEventListener("keydown", (e) => {
+        if (e.code !== "Space" && e.key !== " ") return;
+        if (e.target.matches("input, button, a, textarea")) return;
+        e.preventDefault();
+        togglePlayback();
       });
 
-      document
-        .getElementById("scrub")
-        .addEventListener("input", (e) => seekTo(Number(e.target.value)));
+      document.getElementById("scrub").addEventListener("input", (e) => {
+        stopPlayback();
+        seekTo(Number(e.target.value));
+      });
 
       document.getElementById("transcript").addEventListener("click", (e) => {
         const line = e.target.closest(".transcript-line");
@@ -1630,11 +1878,35 @@
         setActiveLine(line.dataset.id);
       });
 
+      document.getElementById("transcript").addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        const line = e.target.closest(".transcript-line");
+        if (!line) return;
+        e.preventDefault();
+        seekTo(Number(line.dataset.start));
+        setActiveLine(line.dataset.id);
+      });
+
+      document.getElementById("dimensions").addEventListener("click", (e) => {
+        const quote = e.target.closest(".quote[data-line-id]");
+        if (!quote) return;
+        jumpToEvidence(quote.dataset.lineId);
+      });
+
+      document.getElementById("dimensions").addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        const quote = e.target.closest(".quote[data-line-id]");
+        if (!quote) return;
+        e.preventDefault();
+        jumpToEvidence(quote.dataset.lineId);
+      });
+
       renderDimViz();
       renderTranscript();
       renderDimensions();
       renderAcoustic();
       seekTo(0);
+      updatePlayUi();
     </script>
   </body>
 </html>
