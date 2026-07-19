@@ -339,6 +339,10 @@
         margin-top: 12px;
       }
 
+      .evaluation-card.strong {
+        background: var(--tatio-pink);
+      }
+
       .evaluation-card.moderate {
         background: var(--moderate);
       }
@@ -520,7 +524,7 @@
         min-width: 96px;
         padding: 4px 10px;
         border-radius: 999px;
-        background: var(--dark-blue);
+        background: var(--tatio-pink);
         color: #fff;
         font-size: 12px;
         font-weight: 700;
@@ -1113,7 +1117,7 @@
                 relevant but remains broad; overall, the response is specific,
                 coherent, and well evidenced.
               </p>
-              <div class="evaluation-card">Strong</div>
+              <div class="evaluation-card strong">Strong</div>
             </div>
             <div class="circular" aria-label="Overall profile Strong">
               <svg viewBox="0 0 120 120" width="120" height="120">
@@ -1541,6 +1545,7 @@
       }
 
       function levelClass(level) {
+        if (level === "Strong") return "strong";
         if (level === "Moderate") return "moderate";
         if (level === "Limited") return "limited";
         return "";
