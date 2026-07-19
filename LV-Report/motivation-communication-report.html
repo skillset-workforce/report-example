@@ -34,6 +34,7 @@
 
       :root {
         --dark-blue: #00004f;
+        --moderate: #5a5aad;
         --tatio-pink: #e20c98;
         --tatio-green: #07f698;
         --orange: #ff5811;
@@ -81,16 +82,113 @@
       .shell {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 12px 1.5% 48px;
+        padding: 22px 2.5% 52px;
       }
 
-      /* Candidate header — mirrors CandidateDetailsSection */
+      .report-hero {
+        margin: 10px 0 18px;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 79, 0.08);
+        box-shadow: 0 14px 34px rgba(0, 0, 79, 0.1);
+      }
+
+      .report-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        margin: 0;
+        padding: 28px 30px 24px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 0;
+        color: #fff;
+        background:
+          radial-gradient(
+            circle at 88% 15%,
+            rgba(7, 246, 152, 0.2),
+            transparent 28%
+          ),
+          linear-gradient(
+            135deg,
+            #00003e 0%,
+            var(--dark-blue) 68%,
+            #17176b 100%
+          );
+        box-shadow: none;
+      }
+
+      .report-heading::after {
+        content: "";
+        position: absolute;
+        width: 210px;
+        height: 210px;
+        right: -72px;
+        bottom: -132px;
+        border: 28px solid rgba(226, 12, 152, 0.2);
+        border-radius: 50%;
+      }
+
+      .report-heading-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 820px;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--tatio-green);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .report-heading h1 {
+        margin: 0;
+        font-size: clamp(30px, 3.6vw, 44px);
+        line-height: 1.05;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+      }
+
+      .report-heading .subtitle {
+        max-width: 720px;
+        margin: 10px 0 0;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .report-status {
+        position: relative;
+        z-index: 1;
+        flex-shrink: 0;
+        padding: 9px 13px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 999px;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      /* Candidate strip — part of report hero */
       .candidate-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        padding: 20px 0 12px;
+        margin: 0;
+        padding: 16px 24px 18px;
+        border: none;
+        border-radius: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(180deg, #f7f8fd 0%, #ffffff 100%);
         flex-wrap: wrap;
       }
 
@@ -106,19 +204,25 @@
         height: 48px;
         object-fit: contain;
         flex-shrink: 0;
+        padding: 6px;
+        border-radius: 12px;
+        background: #fff;
+        border: 1px solid var(--border);
       }
 
       .candidate-header .name {
-        font-size: 28px;
-        font-weight: 400;
+        font-size: 24px;
+        font-weight: 600;
         text-transform: capitalize;
         margin: 0;
-        line-height: 1.2;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: var(--dark-blue);
       }
 
       .candidate-header .sim-name {
         margin: 4px 0 0;
-        font-size: 15px;
+        font-size: 14px;
         color: var(--dark-grey);
         font-weight: 400;
       }
@@ -153,7 +257,7 @@
       .data-section {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         flex-wrap: wrap;
       }
 
@@ -161,12 +265,14 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        background: var(--e-grey);
+        background: #fff;
+        border: 1px solid var(--border);
         border-radius: 8px;
-        padding: 4px 10px;
-        font-size: 14px;
+        padding: 6px 11px;
+        font-size: 13px;
         font-weight: 400;
         white-space: nowrap;
+        color: var(--very-dark-grey);
       }
 
       .pdf-btn {
@@ -174,67 +280,48 @@
         color: #fff;
         border: none;
         border-radius: 8px;
-        width: 48px;
-        height: 45px;
+        width: 42px;
+        height: 40px;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 600;
-      }
-
-      /* Switcher — light, report-native */
-      .switcher {
-        display: flex;
-        gap: 8px;
-        margin: 4px 0 14px;
-      }
-
-      .switcher button {
-        border: none;
-        background: #fff;
-        color: var(--very-dark-grey);
-        font-weight: 500;
-        font-size: 14px;
-        padding: 10px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-
-      .switcher button[aria-selected="true"] {
-        background: var(--dark-blue);
-        color: #fff;
       }
 
       .sections {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
       }
 
       .section-row {
         display: flex;
-        gap: 12px;
+        gap: 16px;
         width: 100%;
+        align-items: stretch;
       }
 
       .card {
         background: #fff;
-        border-radius: 10px;
-        padding: 22px 25px;
+        border: 1px solid rgba(0, 0, 0, 0.045);
+        border-radius: 12px;
+        padding: 24px 26px;
         font-family: var(--primary-font);
+        box-shadow: 0 5px 18px rgba(0, 0, 79, 0.045);
       }
 
       .headline {
-        font-weight: 500;
-        font-size: 22px;
+        font-weight: 600;
+        font-size: 23px;
         color: var(--almost-black);
         margin: 0;
+        letter-spacing: -0.015em;
       }
 
       .description {
         margin: 8px 0 0;
         color: var(--very-dark-grey);
-        font-size: 14px;
-        line-height: 1.5;
+        font-size: 14.5px;
+        line-height: 1.58;
         font-weight: 400;
       }
 
@@ -252,13 +339,22 @@
         margin-top: 12px;
       }
 
+      .evaluation-card.moderate {
+        background: var(--moderate);
+      }
+
+      .evaluation-card.limited {
+        background: var(--orange);
+      }
+
       /* Top row: profile + duration */
       .profile-card {
-        width: 72%;
+        width: 74%;
         display: flex;
         align-items: center;
         gap: 24px;
-        min-height: 180px;
+        min-height: 200px;
+        align-self: stretch;
       }
 
       .profile-texts {
@@ -288,8 +384,8 @@
       }
 
       .side-stat {
-        width: 28%;
-        min-height: 180px;
+        width: 26%;
+        min-height: 200px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -302,21 +398,61 @@
       }
 
       /* Dimension score visualization */
+      .dim-viz-card {
+        width: 100%;
+        padding: 26px 28px 28px;
+        background:
+          radial-gradient(
+            circle at 12% 18%,
+            rgba(226, 12, 152, 0.08),
+            transparent 32%
+          ),
+          linear-gradient(180deg, #ffffff 0%, #f7f8fd 100%);
+        border: 1px solid rgba(0, 0, 79, 0.08);
+      }
+
       .dim-viz {
         display: grid;
-        grid-template-columns: minmax(200px, 260px) 1fr;
-        gap: 20px;
+        grid-template-columns: minmax(280px, 360px) 1fr;
+        gap: 28px 36px;
         align-items: center;
-        margin: 16px 0 20px;
-        padding: 14px 16px;
-        background: var(--frosted-sky);
-        border-radius: 10px;
+        margin: 18px 0 0;
+        padding: 22px 24px;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 79, 0.08);
+        border-radius: 14px;
+        box-shadow: 0 10px 28px rgba(0, 0, 79, 0.06);
+        overflow: visible;
+        animation: dimVizIn 0.7s ease both;
+      }
+
+      @keyframes dimVizIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 8px;
+        color: var(--tatio-pink);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
 
       .radar-wrap {
         position: relative;
         width: 100%;
-        max-width: 240px;
+        max-width: 320px;
         margin: 0 auto;
         aspect-ratio: 1;
       }
@@ -327,73 +463,205 @@
         overflow: visible;
       }
 
+      .radar-wrap #scorePoly {
+        filter: drop-shadow(0 6px 14px rgba(226, 12, 152, 0.2));
+        animation: scoreReveal 0.75s ease 0.1s both;
+      }
+
+      @keyframes scoreReveal {
+        from {
+          opacity: 0;
+          transform-origin: center;
+          transform: scale(0.82);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
       .dim-bars {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 14px;
       }
 
       .dim-bar-row {
+        position: relative;
         display: grid;
         grid-template-columns: 1fr auto;
-        gap: 8px 12px;
+        gap: 10px 14px;
         align-items: center;
+        padding: 10px 12px;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        background: var(--frosted-sky);
+        cursor: help;
+        transition:
+          border-color 0.15s ease,
+          background 0.15s ease,
+          transform 0.15s ease;
+      }
+
+      .dim-bar-row:hover,
+      .dim-bar-row:focus-within {
+        background: #fff;
+        border-color: rgba(226, 12, 152, 0.28);
+        transform: translateY(-1px);
       }
 
       .dim-bar-row .label {
-        font-size: 13px;
-        font-weight: 500;
+        font-size: 15px;
+        font-weight: 600;
         color: var(--almost-black);
       }
 
       .dim-bar-row .level-chip {
+        min-width: 96px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--dark-blue);
+        color: #fff;
         font-size: 12px;
-        font-weight: 600;
-        color: var(--dark-blue);
+        font-weight: 700;
+        text-align: center;
         white-space: nowrap;
+      }
+
+      .dim-bar-row .level-chip.moderate {
+        background: var(--moderate);
+      }
+
+      .dim-bar-row .level-chip.limited {
+        background: var(--orange);
       }
 
       .dim-bar-track {
         grid-column: 1 / -1;
-        height: 8px;
-        background: var(--e-grey);
+        height: 14px;
+        background: #e8e9f2;
         border-radius: 99px;
         overflow: hidden;
       }
 
       .dim-bar-fill {
         height: 100%;
+        width: 0;
         border-radius: 99px;
-        background: var(--tatio-pink);
+        background: linear-gradient(
+          90deg,
+          #ffb14a 0%,
+          var(--dark-blue) 52%,
+          var(--tatio-pink) 100%
+        );
+        box-shadow: 0 0 0 1px rgba(0, 0, 79, 0.08);
+        transition: width 0.85s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
-      .dim-bar-fill.moderate {
+      .dim-bar-row.is-ready .dim-bar-fill {
+        width: var(--fill-width);
+      }
+
+      .dim-hint {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: calc(100% + 8px);
+        z-index: 5;
+        padding: 12px 14px;
+        border-radius: 10px;
         background: var(--dark-blue);
+        color: #fff;
+        box-shadow: 0 12px 28px rgba(0, 0, 79, 0.22);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(4px);
+        transition:
+          opacity 0.15s ease,
+          transform 0.15s ease,
+          visibility 0.15s ease;
       }
 
-      .dim-bar-fill.limited {
-        background: var(--orange);
+      .dim-hint::after {
+        content: "";
+        position: absolute;
+        left: 24px;
+        top: 100%;
+        border: 6px solid transparent;
+        border-top-color: var(--dark-blue);
+      }
+
+      .dim-hint strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .dim-hint span {
+        display: block;
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 12px;
+        line-height: 1.45;
+        font-weight: 400;
+      }
+
+      .dim-bar-row:hover .dim-hint,
+      .dim-bar-row:focus-within .dim-hint {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .dim-viz,
+        .radar-wrap #scorePoly,
+        .dim-bar-fill {
+          animation: none;
+          transition: none;
+        }
+
+        .dim-hint {
+          transition: none;
+        }
       }
 
       /* Main body: media + dimensions */
       .main-split {
         display: flex;
-        gap: 12px;
-        align-items: flex-start;
+        gap: 16px;
+        align-items: stretch;
       }
 
       .left-col {
         width: 42%;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
       }
 
       .right-col {
         width: 58%;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
+      }
+
+      .left-col > .acoustic-card,
+      .right-col > #dimensionsCard {
+        flex: 1;
+        min-height: 0;
+      }
+
+      .right-col > #dimensionsCard {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .right-col > #dimensionsCard #dimensions {
+        flex: 1;
       }
 
       .player {
@@ -517,11 +785,21 @@
       }
 
       .dimension {
-        padding-bottom: 4px;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .dimension:first-child {
+        padding-top: 14px;
+      }
+
+      .dimension:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
       }
 
       .dimension + .dimension {
-        margin-top: 4px;
+        margin-top: 0;
       }
 
       .dimension-head {
@@ -541,9 +819,18 @@
         margin-top: 6px;
       }
 
+      .evidence-label {
+        margin-top: 13px;
+        color: var(--dark-grey);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
       .evidence {
         list-style: none;
-        margin: 12px 0 0;
+        margin: 7px 0 0;
         padding: 0;
         display: flex;
         flex-direction: column;
@@ -578,53 +865,107 @@
       }
 
       .acoustic-bars {
-        margin-top: 8px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 16px;
+        overflow: visible;
       }
 
       .progress-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 18px 0 12px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        position: relative;
+        display: block;
+        padding: 13px 14px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: var(--frosted-sky);
+        cursor: help;
+        transition:
+          border-color 0.15s ease,
+          background 0.15s ease,
+          transform 0.15s ease;
+      }
+
+      .progress-row:hover,
+      .progress-row:focus-within {
+        background: #fff;
+        border-color: rgba(0, 0, 79, 0.18);
+        transform: translateY(-1px);
       }
 
       .progress-row:last-child {
-        border-bottom: none;
+        border-bottom: 1px solid var(--border);
       }
 
       .progress-row .span {
-        font-weight: 500;
-        font-size: 15px;
-        min-width: 140px;
+        display: block;
+        font-weight: 600;
+        font-size: 13px;
       }
 
-      .progress-row .bars-wrap {
-        width: 57%;
-        position: relative;
+      .signal-value {
+        display: block;
+        margin-top: 5px;
+        color: var(--dark-blue);
+        font-size: 16px;
+        font-weight: 600;
       }
 
-      .progress-row .precentage {
-        position: absolute;
+      .progress-row .dim-hint {
+        left: 0;
+        right: auto;
+        width: min(260px, 72vw);
+        bottom: calc(100% + 10px);
+      }
+
+      .progress-row:nth-child(even) .dim-hint {
+        left: auto;
         right: 0;
-        bottom: 12px;
-        font-size: 12.5px;
-        font-weight: 500;
       }
 
-      .multicolor-bar {
-        width: 100%;
-        height: 10px;
-        background: rgba(120, 120, 128, 0.2);
-        border-radius: 8px;
-        overflow: hidden;
+      .progress-row:nth-child(even) .dim-hint::after {
+        left: auto;
+        right: 24px;
       }
 
-      .multicolor-bar .bar {
-        height: 100%;
-        background: var(--dark-blue);
-        border-radius: 8px;
+      .progress-row:hover .dim-hint,
+      .progress-row:focus-within .dim-hint {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .acoustic-card {
+        overflow: visible;
+      }
+
+      .analysis-stack {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .analysis-step {
+        min-height: 92px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: #fff;
+      }
+
+      .analysis-step strong {
+        display: block;
+        color: var(--dark-blue);
+        font-size: 12px;
+      }
+
+      .analysis-step span {
+        display: block;
+        margin-top: 5px;
+        color: var(--dark-grey);
+        font-size: 12px;
+        line-height: 1.4;
       }
 
       .footnote {
@@ -635,6 +976,11 @@
       }
 
       @media (max-width: 1100px) {
+        .report-heading {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
         .section-row,
         .main-split,
         .dim-viz {
@@ -650,8 +996,36 @@
           width: 100%;
         }
 
+        .left-col > .acoustic-card,
+        .right-col > #dimensionsCard {
+          flex: none;
+        }
+
         .radar-wrap {
-          max-width: 280px;
+          max-width: 320px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          padding-inline: 12px;
+        }
+
+        .report-heading {
+          padding: 24px 20px;
+        }
+
+        .candidate-header {
+          align-items: flex-start;
+        }
+
+        .data-section {
+          gap: 8px;
+        }
+
+        .acoustic-bars,
+        .analysis-stack {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -661,64 +1035,83 @@
           animation: none !important;
         }
       }
+
+      @media print {
+        .mock-banner,
+        .pdf-btn {
+          display: none;
+        }
+
+        body {
+          background: #fff;
+        }
+
+        .shell {
+          max-width: none;
+          padding: 0;
+        }
+
+        .report-heading,
+        .report-hero,
+        .card {
+          box-shadow: none;
+          break-inside: avoid;
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="mock-banner">
-      <img
-        src="https://shared-assets.tatio.io/images/tatio-short-logo.svg"
-        alt="TaTiO"
-        width="18"
-        height="18"
-        style="vertical-align: -3px; margin-right: 6px"
-      />
-      TaTiO mock · Motivation &amp; Communication Report
-    </div>
-
     <div class="shell">
-      <header class="candidate-header">
-        <div class="candidate-identity">
-          <img
-            class="tatio-logo"
-            src="https://shared-assets.tatio.io/images/tatio-short-logo.svg"
-            alt="TaTiO"
-          />
-          <div>
-            <h1 class="name">Camille Martin</h1>
-            <p class="sim-name">
-              Louis Vuitton France · Early Talent Simulation
+      <section class="report-hero" aria-labelledby="report-title">
+        <div class="report-heading">
+          <div class="report-heading-copy">
+            <h1 id="report-title">Motivation &amp; Communication Report</h1>
+            <p class="subtitle">
+              Evidence-based review of the recorded motivation response.
             </p>
           </div>
         </div>
-        <div class="data-section">
-          <div class="data-card">camille.martin@email.com</div>
-          <div class="data-card">+33 6 12 34 56 78</div>
-          <div class="data-card">Paris, FR</div>
-          <button class="pdf-btn" type="button" title="Download PDF">↓</button>
-        </div>
-      </header>
 
-      <div class="switcher" role="tablist" aria-label="Report type">
-        <button type="button" role="tab" aria-selected="true">
-          Motivation &amp; Communication
-        </button>
-      </div>
+        <header class="candidate-header">
+          <div class="candidate-identity">
+            <img
+              class="tatio-logo"
+              src="https://shared-assets.tatio.io/images/tatio-short-logo.svg"
+              alt="TaTiO"
+            />
+            <div>
+              <h2 class="name">Camille Martin</h2>
+              <p class="sim-name">
+                Louis Vuitton France · Early Talent Simulation
+              </p>
+            </div>
+          </div>
+          <div class="data-section">
+            <div class="data-card">camille.martin@email.com</div>
+            <div class="data-card">+33 6 12 34 56 78</div>
+            <div class="data-card">Paris, FR</div>
+            <button class="pdf-btn" type="button" title="Download PDF">
+              ↓
+            </button>
+          </div>
+        </header>
+      </section>
 
       <div class="sections">
         <!-- Top metrics row — same rhythm as prediction / progress / duration -->
         <div class="section-row">
           <section class="card profile-card">
             <div class="profile-texts">
+              <span class="section-kicker">Overall assessment</span>
               <h2 class="headline">Overall motivation profile</h2>
               <p class="description">
-                The candidate demonstrated a clear and well-supported motivation
-                for the opportunity, grounding her interest in a specific
-                experience from her internship. She articulated what attracts
-                her to Louis Vuitton, described a concrete contribution from
-                previous experience, and identified a clear development goal.
-                While her understanding of the Maison remained relatively broad,
-                the overall evidence presented was specific, relevant, and well
-                communicated.
+                Camille presents a clear and well-supported rationale for the
+                opportunity, grounded in a specific merchandising experience.
+                She explains what attracts her to Louis Vuitton, identifies a
+                concrete contribution from her internship, and articulates a
+                focused development goal. Her knowledge of the Maison is
+                relevant but remains broad; overall, the response is specific,
+                coherent, and well evidenced.
               </p>
               <div class="evaluation-card">Strong</div>
             </div>
@@ -751,6 +1144,7 @@
           </section>
 
           <section class="card side-stat">
+            <span class="section-kicker">Recording</span>
             <h2 class="headline">Duration</h2>
             <div>
               <div class="big">1:17</div>
@@ -759,6 +1153,23 @@
             <div class="evaluation-card">Within limit</div>
           </section>
         </div>
+
+        <section
+          class="card dim-viz-card"
+          aria-labelledby="content-assessment-title"
+        >
+          <span class="section-kicker">Content assessment</span>
+          <h2 class="headline" id="content-assessment-title">
+            Motivation and communication dimensions
+          </h2>
+
+          <div class="dim-viz" aria-label="Dimension score overview">
+            <div class="radar-wrap" aria-hidden="true">
+              <svg viewBox="0 0 320 320" id="radarChart"></svg>
+            </div>
+            <div class="dim-bars" id="dimBars"></div>
+          </div>
+        </section>
 
         <div class="main-split">
           <div class="left-col">
@@ -787,184 +1198,69 @@
                   />
                   <div class="player-meta">
                     <span id="timeLabel">0:00 / 1:17</span>
-                    <span>Motivation recording</span>
                   </div>
                 </div>
               </div>
             </section>
 
             <section class="card transcript-card">
+              <span class="section-kicker">Source evidence</span>
               <h2 class="headline">Transcript</h2>
               <p class="description" style="margin-bottom: 12px">
-                Original language · en · click a line to seek
+                Original language · English · select a passage to seek
               </p>
               <div id="transcript"></div>
             </section>
-          </div>
-
-          <div class="right-col">
-            <section class="card">
-              <h2 class="headline">Talent summary</h2>
-              <p class="description">
-                Camille demonstrates a well-supported motivation for pursuing a
-                career in product management, drawing on relevant internship
-                experience and providing concrete examples of analytical
-                contribution. She communicates clearly, shows curiosity about
-                the product lifecycle, and expresses a genuine desire to learn.
-                While her understanding of Louis Vuitton is thoughtful, it
-                remains relatively broad, indicating good potential for further
-                development.
-              </p>
-            </section>
-
-            <section class="card" id="dimensionsCard">
-              <h2 class="headline">Dimension scores</h2>
-              <p class="description">
-                Four content dimensions assessed from the transcript. Levels use
-                text — not color alone.
-              </p>
-
-              <div class="dim-viz" aria-label="Dimension score overview">
-                <div class="radar-wrap" aria-hidden="true">
-                  <svg viewBox="0 0 280 280" id="radarChart">
-                    <polygon
-                      points="140,40 240,140 140,240 40,140"
-                      fill="none"
-                      stroke="#ECEBEB"
-                      stroke-width="1.5"
-                    />
-                    <polygon
-                      points="140,70 210,140 140,210 70,140"
-                      fill="none"
-                      stroke="#ECEBEB"
-                      stroke-width="1.5"
-                    />
-                    <polygon
-                      points="140,100 180,140 140,180 100,140"
-                      fill="none"
-                      stroke="#ECEBEB"
-                      stroke-width="1.5"
-                    />
-                    <line
-                      x1="140"
-                      y1="140"
-                      x2="140"
-                      y2="40"
-                      stroke="#ECEBEB"
-                      stroke-width="1.5"
-                    />
-                    <line
-                      x1="140"
-                      y1="140"
-                      x2="240"
-                      y2="140"
-                      stroke="#ECEBEB"
-                      stroke-width="1.5"
-                    />
-                    <line
-                      x1="140"
-                      y1="140"
-                      x2="140"
-                      y2="240"
-                      stroke="#ECEBEB"
-                      stroke-width="1.5"
-                    />
-                    <line
-                      x1="140"
-                      y1="140"
-                      x2="40"
-                      y2="140"
-                      stroke="#ECEBEB"
-                      stroke-width="1.5"
-                    />
-                    <polygon
-                      id="scorePoly"
-                      points="140,52 198,140 140,228 52,140"
-                      fill="rgba(226, 12, 152, 0.18)"
-                      stroke="var(--tatio-pink)"
-                      stroke-width="2.5"
-                    />
-                    <circle cx="140" cy="52" r="4" fill="var(--tatio-pink)" />
-                    <circle cx="198" cy="140" r="4" fill="var(--tatio-pink)" />
-                    <circle cx="140" cy="228" r="4" fill="var(--tatio-pink)" />
-                    <circle cx="52" cy="140" r="4" fill="var(--tatio-pink)" />
-                    <text
-                      x="140"
-                      y="22"
-                      text-anchor="middle"
-                      font-size="11"
-                      font-weight="600"
-                      fill="#1a1a1a"
-                    >
-                      Motivation
-                    </text>
-                    <text
-                      x="262"
-                      y="144"
-                      text-anchor="middle"
-                      font-size="11"
-                      font-weight="600"
-                      fill="#1a1a1a"
-                    >
-                      Awareness
-                    </text>
-                    <text
-                      x="140"
-                      y="268"
-                      text-anchor="middle"
-                      font-size="11"
-                      font-weight="600"
-                      fill="#1a1a1a"
-                    >
-                      Contribution
-                    </text>
-                    <text
-                      x="18"
-                      y="144"
-                      text-anchor="middle"
-                      font-size="11"
-                      font-weight="600"
-                      fill="#1a1a1a"
-                    >
-                      Clarity
-                    </text>
-                  </svg>
-                </div>
-                <div class="dim-bars" id="dimBars"></div>
-              </div>
-
-              <div id="dimensions"></div>
-            </section>
 
             <section class="card acoustic-card">
-              <h2 class="headline">Vocal engagement</h2>
+              <span class="section-kicker">Speech analysis</span>
               <div
+                class="speech-summary"
                 style="
                   display: flex;
-                  align-items: center;
+                  align-items: flex-start;
                   justify-content: space-between;
-                  gap: 12px;
-                  margin-top: 12px;
+                  gap: 16px;
+                  margin-top: 10px;
                 "
               >
                 <p class="description" style="margin: 0">
-                  Expressed interest in the opportunity throughout the response
-                  while maintaining a professional, though relatively measured,
-                  style of communication.
+                  Camille’s delivery is steady and controlled, with consistent
+                  pacing and measured variation in vocal energy. The result
+                  reflects observable delivery patterns only and does not infer
+                  confidence, personality, or sincerity.
                 </p>
                 <div
-                  class="evaluation-card"
+                  class="evaluation-card moderate"
                   style="margin-top: 0; flex-shrink: 0"
                 >
                   Moderate
                 </div>
               </div>
+
               <div class="acoustic-bars" id="acousticBars"></div>
-              <p class="footnote">
-                Supporting delivery indicators only. Not confidence,
-                authenticity, sincerity, or hireability. Excluded from overall
-                profile and the four content dimensions.
+            </section>
+          </div>
+
+          <div class="right-col">
+            <section class="card">
+              <span class="section-kicker">Executive summary</span>
+              <h2 class="headline">Candidate overview</h2>
+              <p class="description">
+                Camille links her interest in product management to relevant
+                internship experience and supports it with a concrete example of
+                analytical contribution. Her response is logically structured,
+                demonstrates curiosity about the product lifecycle, and defines
+                a credible learning objective. Her understanding of Louis
+                Vuitton is thoughtful, although currently expressed at a general
+                level.
               </p>
+            </section>
+
+            <section class="card" id="dimensionsCard">
+              <span class="section-kicker">Detailed findings</span>
+              <h2 class="headline">Evidence by dimension</h2>
+              <div id="dimensions"></div>
             </section>
           </div>
         </div>
@@ -1032,7 +1328,8 @@
           title: "Substantiated motivation",
           short: "Motivation",
           level: "Strong",
-          text: "Connected her motivation to a specific experience during her merchandising internship, explaining how an unresolved product performance question led her to pursue a career in product management.",
+          score: 94,
+          text: "Camille grounds her interest in product management in a specific merchandising experience, explaining how an unresolved product-performance question shaped her career direction.",
           evidence: [
             "internship at Sandro, where I supported the merchandising team",
             "That experience made me realise I wanted to understand what really drives a product's success.",
@@ -1040,18 +1337,20 @@
         },
         {
           title: "Maison & product awareness",
-          short: "Awareness",
+          short: "Product awareness",
           level: "Moderate",
-          text: "Demonstrated an appreciation for Louis Vuitton's craftsmanship and long-term product philosophy while comparing it with her previous experience, although her knowledge of the Maison remained relatively general.",
+          score: 62,
+          text: "She identifies craftsmanship, product longevity, and long-term value as relevant points of attraction. The comparison with her internship is meaningful, although her knowledge of the Maison remains general.",
           evidence: [
             "focus on craftsmanship and creating products that last… quality and long-term value",
           ],
         },
         {
           title: "Contribution & growth mindset",
-          short: "Contribution",
+          short: "Contribution & growth mindset",
           level: "Strong",
-          text: "Described improving a weekly sell-through report that was adopted by her team and expressed a clear ambition to learn how collections are developed from the earliest stages.",
+          score: 86,
+          text: "She provides a concrete example of improving a sell-through report that her team adopted, while setting a clear learning objective across the product lifecycle.",
           evidence: [
             "redesigned our weekly sell-through report… became the version people relied on",
             "how collections are created from the beginning… across the product lifecycle",
@@ -1059,9 +1358,10 @@
         },
         {
           title: "Communication clarity",
-          short: "Clarity",
+          short: "Communication clarity",
           level: "Strong",
-          text: "Delivered a well-structured response that addressed all three topics in a logical and easy-to-follow sequence.",
+          score: 91,
+          text: "The response follows a clear sequence: source of motivation, interest in Louis Vuitton, prior contribution, and future development. Each point is relevant and easy to follow.",
           evidence: [
             "Hi, I'm Camille. The reason I'm interested in this programme…",
             "What interests me about Louis Vuitton…",
@@ -1070,10 +1370,48 @@
         },
       ];
 
+      const radarAxes = dimensions.map((d) => ({
+        label: d.short.includes(" ") ? d.short.split(" ")[0] : d.short,
+        level: d.level,
+        score: d.score,
+      }));
+      // Keep short radar labels readable
+      radarAxes[0].label = "Motivation";
+      radarAxes[1].label = "Awareness";
+      radarAxes[2].label = "Contribution";
+      radarAxes[3].label = "Clarity";
+
       const acoustic = [
-        { name: "Pace stability", score: 78 },
-        { name: "Energy consistency", score: 68 },
-        { name: "Signal quality", score: 92 },
+        {
+          name: "Speaking pace",
+          value: "Steady",
+          hint: "How evenly the candidate speaks over time, based on word-level timing. This is an observable delivery pattern, not a judgment of fluency or accent.",
+        },
+        {
+          name: "Pause pattern",
+          value: "Balanced",
+          hint: "Frequency and length of silences between phrases. Useful for understanding delivery rhythm without scoring personality or confidence.",
+        },
+        {
+          name: "Pitch variation",
+          value: "Moderate",
+          hint: "Range of pitch movement across the recording. Reported as a delivery signal only; it is not used to infer enthusiasm, sincerity, or hireability.",
+        },
+        {
+          name: "Energy consistency",
+          value: "Measured",
+          hint: "Stability of vocal loudness and energy across the response. Helps describe delivery consistency rather than emotional intensity.",
+        },
+        {
+          name: "Signal quality",
+          value: "Clear",
+          hint: "Whether the audio is clear enough for reliable analysis. Checks for excessive noise, clipping, or missing audio that would reduce trust in the result.",
+        },
+        {
+          name: "Word timing coverage",
+          value: "Complete",
+          hint: "Whether the recording has complete word-level timestamps for analysis. Incomplete coverage can limit pace and pause analysis.",
+        },
       ];
 
       const duration = 77;
@@ -1085,26 +1423,109 @@
         return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
       }
 
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function polygonPoints(cx, cy, radius, values, squash = 1) {
+        const count = values.length;
+        return values.map((value, index) => {
+          const angle = -Math.PI / 2 + (index * 2 * Math.PI) / count;
+          const r = radius * value;
+          return `${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle) * squash}`;
+        });
+      }
+
+      function renderRadar() {
+        const svg = document.getElementById("radarChart");
+        const cx = 160;
+        const cy = 160;
+        const maxR = 100;
+        const values = radarAxes.map((axis) => (axis.score ?? 50) / 100);
+
+        const rings = [1, 0.66, 0.33]
+          .map((scale, i) => {
+            const pts = polygonPoints(cx, cy, maxR, Array(4).fill(scale)).join(
+              " ",
+            );
+            return `<polygon points="${pts}" fill="${i === 0 ? "rgba(0,0,79,0.025)" : "none"}" stroke="#d9dae6" stroke-width="${i === 0 ? 2 : 1.4}" />`;
+          })
+          .join("");
+
+        const spokes = polygonPoints(cx, cy, maxR, Array(4).fill(1))
+          .map((point) => {
+            const [x, y] = point.split(",");
+            return `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#d9dae6" stroke-width="1.4" />`;
+          })
+          .join("");
+
+        const scorePts = polygonPoints(cx, cy, maxR, values);
+        const scorePoints = scorePts.join(" ");
+        const dots = scorePts
+          .map((point, index) => {
+            const [x, y] = point.split(",");
+            const fill =
+              radarAxes[index].level === "Moderate"
+                ? "var(--moderate)"
+                : "var(--tatio-pink)";
+            return `<circle cx="${x}" cy="${y}" r="6" fill="${fill}" stroke="#fff" stroke-width="2" />`;
+          })
+          .join("");
+
+        const labels = polygonPoints(cx, cy, maxR + 30, Array(4).fill(1))
+          .map((point, index) => {
+            const [x, y] = point.split(",").map(Number);
+            const axis = radarAxes[index];
+            return `
+              <text x="${x}" y="${y}" text-anchor="middle" font-size="12" font-weight="700" fill="#00004f">${axis.label}</text>
+              <text x="${x}" y="${y + 14}" text-anchor="middle" font-size="10" font-weight="600" fill="#777777">${axis.level} · ${axis.score}</text>
+            `;
+          })
+          .join("");
+
+        svg.innerHTML = `
+          ${rings}
+          ${spokes}
+          <polygon id="scorePoly" points="${scorePoints}" fill="rgba(226, 12, 152, 0.2)" stroke="var(--tatio-pink)" stroke-width="3" />
+          ${dots}
+          ${labels}
+        `;
+      }
+
       function renderDimViz() {
         document.getElementById("dimBars").innerHTML = dimensions
           .map((d) => {
-            const width = LEVEL_WIDTH[d.level] ?? 40;
-            const fillClass =
-              d.level === "Moderate"
-                ? "moderate"
-                : d.level === "Limited"
-                  ? "limited"
-                  : "";
+            const width = d.score ?? LEVEL_WIDTH[d.level] ?? 40;
+            const fillClass = levelClass(d.level);
             return `
-          <div class="dim-bar-row">
-            <span class="label">${d.short}</span>
-            <span class="level-chip">${d.level}</span>
+          <div class="dim-bar-row" tabindex="0" aria-label="${escapeHtml(d.title)}: ${escapeHtml(d.level)}, score ${d.score}. ${escapeHtml(d.text)}">
+            <div class="dim-hint" role="tooltip">
+              <strong>${escapeHtml(d.title)} · ${escapeHtml(d.level)} · ${d.score}</strong>
+              <span>${escapeHtml(d.text)}</span>
+            </div>
+            <span class="label">${escapeHtml(d.short)}</span>
+            <span class="level-chip ${fillClass}">${escapeHtml(d.level)} · ${d.score}</span>
             <div class="dim-bar-track">
-              <div class="dim-bar-fill ${fillClass}" style="width:${width}%"></div>
+              <div class="dim-bar-fill ${fillClass}" style="--fill-width:${width}%"></div>
             </div>
           </div>`;
           })
           .join("");
+
+        renderRadar();
+
+        requestAnimationFrame(() => {
+          document.querySelectorAll(".dim-bar-row").forEach((row, index) => {
+            window.setTimeout(
+              () => row.classList.add("is-ready"),
+              80 + index * 90,
+            );
+          });
+        });
       }
 
       function renderTranscript() {
@@ -1119,18 +1540,25 @@
           .join("");
       }
 
+      function levelClass(level) {
+        if (level === "Moderate") return "moderate";
+        if (level === "Limited") return "limited";
+        return "";
+      }
+
       function renderDimensions() {
         document.getElementById("dimensions").innerHTML = dimensions
           .map(
             (d) => `
           <article class="dimension">
             <div class="dimension-head">
-              <h4>${d.title}</h4>
-              <div class="evaluation-card" style="margin-top:0">${d.level}</div>
+              <h4>${escapeHtml(d.title)}</h4>
+              <div class="evaluation-card ${levelClass(d.level)}" style="margin-top:0">${escapeHtml(d.level)}</div>
             </div>
-            <p class="description">${d.text}</p>
+            <p class="description">${escapeHtml(d.text)}</p>
+            <div class="evidence-label">Supporting evidence</div>
             <ul class="evidence">
-              ${d.evidence.map((quote) => `<li><p class="quote">“${quote}”</p></li>`).join("")}
+              ${d.evidence.map((quote) => `<li><p class="quote">“${escapeHtml(quote)}”</p></li>`).join("")}
             </ul>
           </article>`,
           )
@@ -1141,12 +1569,13 @@
         document.getElementById("acousticBars").innerHTML = acoustic
           .map(
             (a) => `
-          <div class="progress-row">
-            <span class="span">${a.name}</span>
-            <div class="bars-wrap">
-              <span class="precentage">${a.score}%</span>
-              <div class="multicolor-bar"><div class="bar" style="width:${a.score}%"></div></div>
+          <div class="progress-row" tabindex="0" aria-label="${escapeHtml(a.name)}: ${escapeHtml(a.value)}. ${escapeHtml(a.hint)}">
+            <div class="dim-hint" role="tooltip">
+              <strong>${escapeHtml(a.name)} · ${escapeHtml(a.value)}</strong>
+              <span>${escapeHtml(a.hint)}</span>
             </div>
+            <span class="span">${escapeHtml(a.name)}</span>
+            <span class="signal-value">${escapeHtml(a.value)}</span>
           </div>`,
           )
           .join("");
@@ -1194,15 +1623,6 @@
         if (!line) return;
         seekTo(Number(line.dataset.start));
         setActiveLine(line.dataset.id);
-      });
-
-      document.querySelectorAll(".switcher button").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          document
-            .querySelectorAll(".switcher button")
-            .forEach((b) => b.setAttribute("aria-selected", "false"));
-          btn.setAttribute("aria-selected", "true");
-        });
       });
 
       renderDimViz();
