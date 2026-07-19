@@ -973,6 +973,7 @@
       .acoustic-card {
         border-style: solid;
         background: #fff;
+        overflow: visible;
       }
 
       .speech-header {
@@ -1084,6 +1085,24 @@
         right: auto;
         width: min(280px, 72vw);
         bottom: calc(100% + 10px);
+        z-index: 20;
+      }
+
+      .progress-row:nth-child(even) .dim-hint {
+        left: auto;
+        right: 0;
+      }
+
+      .progress-row:nth-child(even) .dim-hint::after {
+        left: auto;
+        right: 24px;
+      }
+
+      .progress-row:hover .dim-hint,
+      .progress-row:focus-within .dim-hint {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
       }
 
       @media (max-width: 1100px) {
