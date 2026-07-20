@@ -736,22 +736,18 @@
             transparent 50%
           ),
           linear-gradient(155deg, #00003e 0%, #00004f 45%, #1a0040 100%);
-        transition: opacity 0.25s ease, visibility 0.25s ease;
+        transition:
+          opacity 0.25s ease,
+          visibility 0.25s ease;
       }
 
       .player-poster::before {
         content: "";
         position: absolute;
         inset: 0;
-        background-image: linear-gradient(
-            rgba(255, 255, 255, 0.03) 1px,
-            transparent 1px
-          ),
-          linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.03) 1px,
-            transparent 1px
-          );
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
         background-size: 28px 28px;
         opacity: 0.7;
         pointer-events: none;
@@ -825,7 +821,9 @@
         cursor: pointer;
         display: grid;
         place-items: center;
-        transition: background 0.2s ease, opacity 0.2s ease;
+        transition:
+          background 0.2s ease,
+          opacity 0.2s ease;
       }
 
       .player-toggle:hover,
@@ -1736,15 +1734,19 @@
         <div class="main-split">
           <div class="left-col">
             <section class="card player-card" id="playerCard">
-              <div
-                class="player"
-                aria-label="Motivation recording player"
-              >
+              <div class="player" aria-label="Motivation recording player">
                 <div class="player-embed" id="playerEmbed">
                   <iframe
                     id="vimeoPlayer"
                     src="https://player.vimeo.com/video/1211484513?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0#t=53s"
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    allow="
+                      autoplay;
+                      fullscreen;
+                      picture-in-picture;
+                      clipboard-write;
+                      encrypted-media;
+                      web-share;
+                    "
                     referrerpolicy="strict-origin-when-cross-origin"
                     allowfullscreen
                     title="Louis Vuitton - Motivation Video"
@@ -1844,7 +1846,7 @@
       const transcript = [
         {
           id: "t1",
-          start: 2,
+          start: 4,
           text: "Hi, I'm Camille. The reason I'm interested in this programme actually comes from my internship at Sandro, where I supported the merchandising team.",
         },
         {
@@ -1854,27 +1856,27 @@
         },
         {
           id: "t3",
-          start: 32,
+          start: 40,
           text: "What interests me about Louis Vuitton is its focus on craftsmanship and creating products that last. During my internship, the pace was very much about the next collection, so I find Louis Vuitton's approach to quality and long-term value really interesting.",
         },
         {
           id: "t4",
-          start: 48,
+          start: 54,
           text: "I don't know the technical side yet, but that's exactly what I'd like to learn.",
         },
         {
           id: "t5",
-          start: 54,
+          start: 60,
           text: "I think I'd bring strong analytical skills. I redesigned our weekly sell-through report to make it easier for the team to use, and it became the version people relied on.",
         },
         {
           id: "t6",
-          start: 66,
+          start: 71,
           text: "Through this programme, I'd love to develop a much deeper understanding of how collections are created from the beginning and learn from experienced teams across the product lifecycle.",
         },
         {
           id: "t7",
-          start: 74,
+          start: 81,
           text: "Thank you.",
         },
       ];
@@ -2202,7 +2204,8 @@
         const line = transcript.find((t) => t.id === lineId);
         if (!line) return;
         seekTo(line.start);
-        if (typeof window.vimeoSeek === "function") window.vimeoSeek(line.start);
+        if (typeof window.vimeoSeek === "function")
+          window.vimeoSeek(line.start);
         highlightEvidenceLine(lineId);
         document
           .getElementById("transcriptCard")
