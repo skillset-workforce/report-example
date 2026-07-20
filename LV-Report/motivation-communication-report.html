@@ -121,12 +121,33 @@
       }
 
       .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         margin: 0 0 8px;
         color: var(--tatio-pink);
         font-size: 12px;
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
+      }
+
+      .eyebrow-logo {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .brand-logo {
+        width: 52px;
+        height: 52px;
+        object-fit: contain;
+        flex-shrink: 0;
+        padding: 4px;
+        border-radius: 0;
+        background: #fff;
+        border: 1px solid var(--border);
       }
 
       .report-heading h1 {
@@ -164,17 +185,6 @@
         align-items: center;
         gap: 12px;
         min-width: 0;
-      }
-
-      .tatio-logo {
-        width: 48px;
-        height: 48px;
-        object-fit: contain;
-        flex-shrink: 0;
-        padding: 6px;
-        border-radius: 12px;
-        background: #fff;
-        border: 1px solid var(--border);
       }
 
       .candidate-header .name {
@@ -1161,14 +1171,28 @@
       }
 
       @media print {
+        .mock-banner,
         .pdf-btn,
+        .player-card,
         .play-overlay,
-        .play-control {
+        .play-control,
+        .dim-hint,
+        .quote-hint {
           display: none !important;
         }
 
+        @page {
+          size: A4;
+          margin: 8mm 9mm;
+        }
+
+        html,
         body {
-          background: #fff;
+          background: #fff !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          font-size: 11.5px;
+          zoom: 0.91;
         }
 
         .shell {
@@ -1176,37 +1200,291 @@
           padding: 0;
         }
 
-        .main-split,
-        .section-row,
-        .dim-viz {
+        .sections {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .profile-card {
+          order: 1;
+          width: 100%;
+          padding: 18px 20px;
+          gap: 16px;
+        }
+
+        .dim-viz-card {
+          order: 2;
+          padding: 18px 20px;
+          flex: 1 1 auto;
+        }
+
+        .main-split {
+          order: 3;
+          display: flex !important;
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          gap: 14px;
+          align-items: stretch;
+          min-height: 145mm;
+          page-break-before: always;
+          break-before: page;
+        }
+
+        .acoustic-card {
+          order: 4;
+          margin-top: 0;
+          padding: 16px 18px;
+        }
+
+        .report-heading {
+          padding: 16px 18px;
+        }
+
+        .report-heading h1 {
+          font-size: 22px;
+          margin: 0;
+        }
+
+        .subtitle {
+          margin-top: 6px;
+          font-size: 12.5px;
+        }
+
+        .eyebrow {
+          margin-bottom: 6px;
+          font-size: 11px;
+        }
+
+        .candidate-header {
+          padding: 12px 18px;
+        }
+
+        .name {
+          font-size: 18px;
+        }
+
+        .sim-name,
+        .contact-meta {
+          font-size: 11.5px;
+        }
+
+        .card {
+          padding: 14px 16px;
+        }
+
+        .circular {
+          width: 110px;
+          height: 110px;
+        }
+
+        .circular svg {
+          width: 110px;
+          height: 110px;
+        }
+
+        .circular .score {
+          font-size: 11px;
+        }
+
+        .scan-list {
+          margin-top: 12px;
+          gap: 8px;
+        }
+
+        .scan-list li {
+          font-size: 12px;
+          padding: 6px 0;
+        }
+
+        .section-row {
           display: block;
         }
 
-        .left-col,
-        .right-col,
-        .profile-card {
-          width: 100%;
+        .dim-viz {
+          display: grid !important;
+          grid-template-columns: minmax(220px, 260px) 1fr;
+          gap: 16px 22px;
+          margin-top: 14px;
+          padding: 16px 18px;
         }
 
+        .left-col {
+          width: 42% !important;
+          max-width: 42% !important;
+          flex: 1 1 42% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 0;
+          min-width: 0;
+          min-height: 0;
+        }
+
+        .right-col {
+          width: 58% !important;
+          max-width: 58% !important;
+          flex: 1 1 58% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          min-width: 0;
+          min-height: 0;
+        }
+
+        .left-col > .transcript-card,
+        .right-col > #dimensionsCard,
         .transcript-card,
         #dimensionsCard {
-          height: auto;
+          flex: 1 1 auto !important;
+          height: 100% !important;
+          max-height: none;
+          display: flex !important;
+          flex-direction: column !important;
         }
 
         .transcript-card #transcript,
         #dimensionsCard #dimensions {
+          flex: 1 1 auto;
           overflow: visible;
+          max-height: none;
         }
 
         .radar-wrap {
-          display: none !important;
+          display: block !important;
+          max-width: 280px;
+          margin: 0 auto;
+        }
+
+        .dim-bar-row {
+          padding: 10px 0;
+          gap: 8px 10px;
+        }
+
+        .dim-bar-track {
+          height: 10px;
+        }
+
+        .dim-bar-fill {
+          width: var(--fill-width) !important;
+          transition: none !important;
+        }
+
+        .dim-bar-row .level-chip {
+          font-size: 10px;
+          padding: 3px 10px;
+          min-width: 72px;
         }
 
         .report-heading,
         .report-hero,
-        .card {
+        .dim-viz {
           box-shadow: none;
           break-inside: avoid;
+        }
+
+        .card {
+          box-shadow: none;
+        }
+
+        .dimension {
+          padding: 10px 0;
+          break-inside: auto;
+        }
+
+        .headline {
+          font-size: 17px;
+        }
+
+        .section-kicker {
+          font-size: 10px;
+          margin-bottom: 4px;
+        }
+
+        .description {
+          font-size: 12px;
+          line-height: 1.45;
+          margin-top: 6px;
+        }
+
+        .transcript-line {
+          padding: 8px 8px;
+          gap: 10px;
+          grid-template-columns: 36px 1fr;
+        }
+
+        .transcript-line p {
+          font-size: 11.5px;
+          line-height: 1.4;
+        }
+
+        .ts {
+          font-size: 10px;
+        }
+
+        .dimension-head h4 {
+          font-size: 13px;
+        }
+
+        .evaluation-card {
+          font-size: 10px;
+          padding: 4px 10px;
+        }
+
+        .evidence-label {
+          font-size: 10px;
+          margin: 8px 0 6px;
+        }
+
+        .evidence {
+          gap: 6px;
+        }
+
+        .evidence .quote {
+          font-size: 11.5px;
+          padding: 8px 10px;
+          margin: 0;
+        }
+
+        .acoustic-bars {
+          margin-top: 12px;
+          gap: 10px;
+        }
+
+        .progress-row {
+          padding: 10px 12px;
+        }
+
+        .progress-row .span {
+          font-size: 11px;
+        }
+
+        .signal-value {
+          font-size: 14px;
+          margin-top: 4px;
+        }
+
+        .speech-header .headline {
+          font-size: 16px;
+        }
+
+        .report-footer {
+          display: flex !important;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          margin-top: 12px;
+          padding-top: 10px;
+          font-size: 11px;
+          color: var(--dark-grey);
+        }
+
+        .report-footer img {
+          height: 14px;
+          width: auto;
+        }
+
+        .eyebrow-logo {
+          width: 14px;
+          height: 14px;
         }
       }
     </style>
@@ -1216,7 +1494,14 @@
       <section class="report-hero" aria-labelledby="report-title">
         <div class="report-heading">
           <div class="report-heading-copy">
-            <p class="eyebrow">TaTiO · Candidate assessment</p>
+            <p class="eyebrow">
+              <img
+                class="eyebrow-logo"
+                src="./tatio-short-logo.svg"
+                alt="TaTiO"
+              />
+              <span>TaTiO · Candidate assessment</span>
+            </p>
             <h1 id="report-title">Motivation &amp; Communication Report</h1>
             <p class="subtitle">
               Structured analysis of the candidate's self-reported motivation
@@ -1228,9 +1513,9 @@
         <header class="candidate-header">
           <div class="candidate-identity">
             <img
-              class="tatio-logo"
-              src="https://shared-assets.tatio.io/images/tatio-short-logo.svg"
-              alt="TaTiO"
+              class="brand-logo"
+              src="./louis-vuitton-logo.png"
+              alt="Louis Vuitton"
             />
             <div>
               <h2 class="name">Camille Martin</h2>
@@ -1432,10 +1717,7 @@
       <footer class="report-footer">
         Powered by
         <a href="https://tatio.io" target="_blank" rel="noopener noreferrer">
-          <img
-            src="https://shared-assets.tatio.io/images/tatio-powered-by-blue.svg"
-            alt="TaTiO"
-          />
+          <img src="./tatio-powered-by-blue.svg" alt="TaTiO" />
         </a>
       </footer>
     </div>
