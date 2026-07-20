@@ -757,6 +757,52 @@
         letter-spacing: 2px;
       }
 
+      .player-controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px 14px;
+        background: var(--dark-blue);
+        color: #fff;
+      }
+
+      .player-scrub {
+        flex: 1;
+        appearance: none;
+        height: 4px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.25);
+        outline: none;
+        cursor: pointer;
+      }
+
+      .player-scrub::-webkit-slider-thumb {
+        appearance: none;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--tatio-pink);
+        cursor: pointer;
+      }
+
+      .player-scrub::-moz-range-thumb {
+        width: 12px;
+        height: 12px;
+        border: none;
+        border-radius: 50%;
+        background: var(--tatio-pink);
+        cursor: pointer;
+      }
+
+      .player-time {
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+        opacity: 0.95;
+        min-width: 78px;
+        text-align: right;
+      }
+
       .transcript-line {
         display: grid;
         grid-template-columns: 40px 1fr;
@@ -1601,6 +1647,19 @@
                     <span class="player-toggle-icon" aria-hidden="true">▶</span>
                   </button>
                 </div>
+                <div class="player-controls">
+                  <input
+                    class="player-scrub"
+                    id="playerScrub"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="0"
+                    step="0.1"
+                    aria-label="Seek video"
+                  />
+                  <span class="player-time" id="playerTime">0:00 / 0:00</span>
+                </div>
               </div>
             </section>
 
@@ -2022,6 +2081,7 @@
         const line = transcript.find((t) => t.id === lineId);
         if (!line) return;
         seekTo(line.start);
+        if (typeof window.vimeoSeek === "function") window.vimeoSeek(line.start);
         highlightEvidenceLine(lineId);
         document
           .getElementById("transcriptCard")
@@ -2039,7 +2099,9 @@
       document.getElementById("transcript").addEventListener("click", (e) => {
         const line = e.target.closest(".transcript-line");
         if (!line) return;
-        seekTo(Number(line.dataset.start));
+        const start = Number(line.dataset.start);
+        seekTo(start);
+        if (typeof window.vimeoSeek === "function") window.vimeoSeek(start);
         setActiveLine(line.dataset.id);
       });
 
@@ -2048,7 +2110,9 @@
         const line = e.target.closest(".transcript-line");
         if (!line) return;
         e.preventDefault();
-        seekTo(Number(line.dataset.start));
+        const start = Number(line.dataset.start);
+        seekTo(start);
+        if (typeof window.vimeoSeek === "function") window.vimeoSeek(start);
         setActiveLine(line.dataset.id);
       });
 
@@ -2075,10 +2139,15 @@
       (function initVimeoPlayer() {
         const iframe = document.getElementById("vimeoPlayer");
         const toggle = document.getElementById("playerToggle");
+        const scrub = document.getElementById("playerScrub");
+        const timeLabel = document.getElementById("playerTime");
         const icon = toggle?.querySelector(".player-toggle-icon");
-        if (!iframe || !toggle || !window.Vimeo?.Player) return;
+        if (!iframe || !toggle || !scrub || !timeLabel || !window.Vimeo?.Player)
+          return;
 
         const player = new Vimeo.Player(iframe);
+        let videoDuration = 0;
+        let scrubbing = false;
 
         function setPlaying(isPlaying) {
           toggle.classList.toggle("is-playing", isPlaying);
@@ -2089,9 +2158,26 @@
           if (icon) icon.textContent = isPlaying ? "❚❚" : "▶";
         }
 
+        function updateTimeUi(seconds) {
+          const safe = Math.max(0, Math.min(videoDuration || 0, seconds));
+          if (!scrubbing && videoDuration > 0) {
+            scrub.value = String((safe / videoDuration) * 100);
+          }
+          timeLabel.textContent = `${formatTime(safe)} / ${formatTime(videoDuration || 0)}`;
+          seekTo(safe);
+        }
+
+        player.getDuration().then((d) => {
+          videoDuration = d;
+          updateTimeUi(0);
+        });
+
         player.on("play", () => setPlaying(true));
         player.on("pause", () => setPlaying(false));
         player.on("ended", () => setPlaying(false));
+        player.on("timeupdate", (data) => {
+          if (!scrubbing) updateTimeUi(data.seconds);
+        });
 
         toggle.addEventListener("click", () => {
           player.getPaused().then((paused) => {
@@ -2099,6 +2185,27 @@
             else player.pause();
           });
         });
+
+        scrub.addEventListener("pointerdown", () => {
+          scrubbing = true;
+        });
+        scrub.addEventListener("pointerup", () => {
+          scrubbing = false;
+        });
+        scrub.addEventListener("input", () => {
+          if (!videoDuration) return;
+          const seconds = (Number(scrub.value) / 100) * videoDuration;
+          timeLabel.textContent = `${formatTime(seconds)} / ${formatTime(videoDuration)}`;
+          player.setCurrentTime(seconds);
+          seekTo(seconds);
+        });
+
+        window.vimeoSeek = (seconds) => {
+          if (!videoDuration) return;
+          const safe = Math.max(0, Math.min(videoDuration, seconds));
+          player.setCurrentTime(safe);
+          updateTimeUi(safe);
+        };
       })();
     </script>
   </body>
