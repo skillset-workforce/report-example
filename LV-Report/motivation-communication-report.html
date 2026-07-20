@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://player.vimeo.com/api/player.js"></script>
     <style>
       @font-face {
         font-family: Gilroy;
@@ -690,119 +691,23 @@
       }
 
       .player {
-        background: var(--dark-blue);
+        background: #000;
         border-radius: 10px;
         overflow: hidden;
       }
 
-      .player:focus-within {
-        outline: 2px solid var(--tatio-pink);
-        outline-offset: 2px;
-      }
-
-      .player-stage {
-        aspect-ratio: 16 / 10;
-        background: linear-gradient(160deg, #00003e, #00004f);
-        display: grid;
-        place-items: center;
+      .player-embed {
+        padding: 55.03% 0 0 0;
         position: relative;
       }
 
-      .avatar {
-        width: 72px;
-        height: 72px;
-        border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.35);
-        display: grid;
-        place-items: center;
-        color: #fff;
-        font-size: 22px;
-        font-weight: 600;
-      }
-
-      .play-overlay {
+      .player-embed iframe {
         position: absolute;
-        inset: 0;
-        border: none;
-        background: rgba(0, 0, 0, 0.15);
-        cursor: pointer;
-        display: grid;
-        place-items: center;
-      }
-
-      .play-overlay[hidden] {
-        display: none;
-      }
-
-      .play-btn {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: var(--tatio-pink);
-        color: #fff;
-        display: grid;
-        place-items: center;
-        font-size: 18px;
-        padding-left: 3px;
-      }
-
-      .player-controls {
-        padding: 12px 14px 14px;
-        color: #fff;
-      }
-
-      .scrub {
+        top: 0;
+        left: 0;
         width: 100%;
-        appearance: none;
-        height: 4px;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.25);
-        outline: none;
-      }
-
-      .scrub::-webkit-slider-thumb {
-        appearance: none;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--tatio-pink);
-      }
-
-      .player-meta {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        margin-top: 8px;
-        font-size: 12px;
-        opacity: 0.95;
-      }
-
-      .player-meta-left {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-
-      .play-control {
-        border: 1px solid rgba(255, 255, 255, 0.28);
-        background: rgba(255, 255, 255, 0.1);
-        color: #fff;
-        border-radius: 999px;
-        padding: 4px 10px;
-        font-size: 11px;
-        font-weight: 600;
-        cursor: pointer;
-      }
-
-      .duration-pill {
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        border-radius: 999px;
-        padding: 3px 8px;
-        font-size: 11px;
-        font-weight: 600;
-        white-space: nowrap;
+        height: 100%;
+        border: 0;
       }
 
       .transcript-line {
@@ -1174,8 +1079,6 @@
         .mock-banner,
         .pdf-btn,
         .player-card,
-        .play-overlay,
-        .play-control,
         .dim-hint,
         .quote-hint {
           display: none !important;
@@ -1631,45 +1534,16 @@
             <section class="card player-card" id="playerCard">
               <div
                 class="player"
-                tabindex="0"
-                aria-label="Motivation recording player. Press Space to play or pause."
+                aria-label="Motivation recording player"
               >
-                <div class="player-stage">
-                  <div class="avatar">CM</div>
-                  <button
-                    class="play-overlay"
-                    id="playOverlay"
-                    type="button"
-                    aria-label="Play clip"
-                  >
-                    <span class="play-btn">▶</span>
-                  </button>
-                </div>
-                <div class="player-controls">
-                  <input
-                    class="scrub"
-                    id="scrub"
-                    type="range"
-                    min="0"
-                    max="77"
-                    value="0"
-                    aria-label="Position"
-                  />
-                  <div class="player-meta">
-                    <div class="player-meta-left">
-                      <button
-                        class="play-control"
-                        id="playControl"
-                        type="button"
-                      >
-                        Play
-                      </button>
-                      <span id="timeLabel">0:00 / 1:17</span>
-                    </div>
-                    <span class="duration-pill"
-                      >1:17 of 1:30 · Within limit</span
-                    >
-                  </div>
+                <div class="player-embed">
+                  <iframe
+                    src="https://player.vimeo.com/video/1211484513?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                    title="Louis Vuitton - Motivation Video"
+                  ></iframe>
                 </div>
               </div>
             </section>
@@ -1894,8 +1768,6 @@
 
       const duration = 77;
       let currentTime = 0;
-      let playing = false;
-      let timer = null;
 
       function formatTime(s) {
         return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
@@ -2100,66 +1972,13 @@
           ?.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
 
-      function updatePlayUi() {
-        const overlay = document.getElementById("playOverlay");
-        const control = document.getElementById("playControl");
-        overlay.hidden = playing;
-        control.textContent = playing ? "Pause" : "Play";
-      }
-
-      function stopPlayback() {
-        playing = false;
-        clearInterval(timer);
-        timer = null;
-        updatePlayUi();
-      }
-
-      function startPlayback() {
-        playing = true;
-        updatePlayUi();
-        clearInterval(timer);
-        timer = setInterval(() => {
-          if (!playing) return;
-          currentTime = Math.min(duration, currentTime + 0.25);
-          seekTo(currentTime);
-          if (currentTime >= duration) stopPlayback();
-        }, 250);
-      }
-
-      function togglePlayback() {
-        if (playing) stopPlayback();
-        else startPlayback();
-      }
-
       function seekTo(seconds) {
         currentTime = Math.max(0, Math.min(duration, seconds));
-        document.getElementById("scrub").value = String(currentTime);
-        document.getElementById("timeLabel").textContent =
-          `${formatTime(currentTime)} / ${formatTime(duration)}`;
         const active = [...transcript]
           .reverse()
           .find((t) => currentTime >= t.start);
         if (active) setActiveLine(active.id);
       }
-
-      document
-        .getElementById("playOverlay")
-        .addEventListener("click", togglePlayback);
-      document
-        .getElementById("playControl")
-        .addEventListener("click", togglePlayback);
-
-      document.querySelector(".player").addEventListener("keydown", (e) => {
-        if (e.code !== "Space" && e.key !== " ") return;
-        if (e.target.matches("input, button, a, textarea")) return;
-        e.preventDefault();
-        togglePlayback();
-      });
-
-      document.getElementById("scrub").addEventListener("input", (e) => {
-        stopPlayback();
-        seekTo(Number(e.target.value));
-      });
 
       document.getElementById("transcript").addEventListener("click", (e) => {
         const line = e.target.closest(".transcript-line");
@@ -2196,7 +2015,6 @@
       renderDimensions();
       renderAcoustic();
       seekTo(0);
-      updatePlayUi();
     </script>
   </body>
 </html>
