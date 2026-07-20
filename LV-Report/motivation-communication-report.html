@@ -710,6 +710,53 @@
         border: 0;
       }
 
+      .player-toggle {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        border: none;
+        background: rgba(0, 0, 0, 0.28);
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        transition: background 0.2s ease, opacity 0.2s ease;
+      }
+
+      .player-toggle:hover,
+      .player-toggle:focus-visible {
+        background: rgba(0, 0, 0, 0.4);
+        outline: none;
+      }
+
+      .player-toggle.is-playing {
+        background: transparent;
+        opacity: 0;
+      }
+
+      .player-toggle.is-playing:hover,
+      .player-toggle.is-playing:focus-visible {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.28);
+      }
+
+      .player-toggle-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--tatio-pink);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+        line-height: 1;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+      }
+
+      .player-toggle.is-playing .player-toggle-icon {
+        font-size: 16px;
+        letter-spacing: 2px;
+      }
+
       .transcript-line {
         display: grid;
         grid-template-columns: 40px 1fr;
@@ -1538,12 +1585,21 @@
               >
                 <div class="player-embed">
                   <iframe
-                    src="https://player.vimeo.com/video/1211484513?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                    id="vimeoPlayer"
+                    src="https://player.vimeo.com/video/1211484513?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0"
                     allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                     referrerpolicy="strict-origin-when-cross-origin"
                     allowfullscreen
                     title="Louis Vuitton - Motivation Video"
                   ></iframe>
+                  <button
+                    class="player-toggle"
+                    id="playerToggle"
+                    type="button"
+                    aria-label="Play video"
+                  >
+                    <span class="player-toggle-icon" aria-hidden="true">▶</span>
+                  </button>
                 </div>
               </div>
             </section>
@@ -2015,6 +2071,35 @@
       renderDimensions();
       renderAcoustic();
       seekTo(0);
+
+      (function initVimeoPlayer() {
+        const iframe = document.getElementById("vimeoPlayer");
+        const toggle = document.getElementById("playerToggle");
+        const icon = toggle?.querySelector(".player-toggle-icon");
+        if (!iframe || !toggle || !window.Vimeo?.Player) return;
+
+        const player = new Vimeo.Player(iframe);
+
+        function setPlaying(isPlaying) {
+          toggle.classList.toggle("is-playing", isPlaying);
+          toggle.setAttribute(
+            "aria-label",
+            isPlaying ? "Pause video" : "Play video",
+          );
+          if (icon) icon.textContent = isPlaying ? "❚❚" : "▶";
+        }
+
+        player.on("play", () => setPlaying(true));
+        player.on("pause", () => setPlaying(false));
+        player.on("ended", () => setPlaying(false));
+
+        toggle.addEventListener("click", () => {
+          player.getPaused().then((paused) => {
+            if (paused) player.play();
+            else player.pause();
+          });
+        });
+      })();
     </script>
   </body>
 </html>
