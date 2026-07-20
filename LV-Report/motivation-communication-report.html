@@ -386,9 +386,12 @@
         inset: 0;
         display: grid;
         place-items: center;
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 600;
+        line-height: 1.25;
+        text-align: center;
         color: var(--almost-black);
+        padding: 0 14px;
       }
 
       /* Dimension score visualization */
@@ -1216,7 +1219,8 @@
             <p class="eyebrow">TaTiO · Candidate assessment</p>
             <h1 id="report-title">Motivation &amp; Communication Report</h1>
             <p class="subtitle">
-              Evidence-based review of the recorded motivation response.
+              Structured analysis of the candidate's self-reported motivation
+              response.
             </p>
           </div>
         </div>
@@ -1231,7 +1235,8 @@
             <div>
               <h2 class="name">Camille Martin</h2>
               <p class="sim-name">
-                Louis Vuitton France · Early Talent Simulation
+                Louis Vuitton France · Assistant Product Manager — Early Talent
+                Programme
               </p>
             </div>
           </div>
@@ -1253,25 +1258,26 @@
             <span class="section-kicker">Overall assessment</span>
             <h2 class="headline">Overall motivation profile</h2>
             <p class="description">
-              Camille presents a clear, well-supported rationale grounded in a
-              specific merchandising experience. She explains what attracts her
-              to Louis Vuitton, identifies a concrete internship contribution,
-              and sets a focused development goal. Maison knowledge is relevant
-              but still broad.
+              In her own account, Camille grounds her interest in a specific
+              Sandro merchandising experience. She explains what attracts her to
+              Louis Vuitton, cites a sell-through report she redesigned that her
+              team adopted, and states a learning goal spanning the product
+              lifecycle. This dossier reflects what the candidate reported about
+              herself; it does not verify or measure demonstrated ability.
             </p>
             <ul class="scan-list">
               <li>
                 <strong>Strength</strong>
                 <span
-                  >Specific motivation with a concrete analytical contribution
-                  from internship work.</span
+                  >Motivation is substantiated with a specific, self-reported
+                  example rather than general statements.</span
                 >
               </li>
               <li>
-                <strong>Watch-out</strong>
+                <strong>Development</strong>
                 <span
-                  >Product awareness is thoughtful but remains general rather
-                  than Maison-specific.</span
+                  >References to Louis Vuitton remain general — no specific
+                  product line, collection, or Maison practice was cited.</span
                 >
               </li>
               <li>
@@ -1283,7 +1289,7 @@
               </li>
             </ul>
           </div>
-          <div class="circular" aria-label="Overall profile Strong">
+          <div class="circular" aria-label="Evidence: Substantiated">
             <svg
               viewBox="0 0 120 120"
               width="120"
@@ -1310,7 +1316,7 @@
                 stroke-dashoffset="55"
               />
             </svg>
-            <div class="score">Strong</div>
+            <div class="score">Evidence:<br />Substantiated</div>
           </div>
         </section>
 
@@ -1320,7 +1326,7 @@
         >
           <span class="section-kicker">Content assessment</span>
           <h2 class="headline" id="content-assessment-title">
-            Motivation and communication dimensions
+            Evidence Strength — Self-Reported Response
           </h2>
 
           <div
@@ -1505,7 +1511,7 @@
           short: "Product awareness",
           level: "Moderate",
           score: 62,
-          text: "She identifies craftsmanship, product longevity, and long-term value as relevant points of attraction. The comparison with her internship is meaningful, although her knowledge of the Maison remains general.",
+          text: "She describes craftsmanship, product longevity, and long-term value as what attracts her. The comparison with her internship is meaningful, although her knowledge of the Maison remains general.",
           evidence: [
             {
               quote:
@@ -1669,7 +1675,7 @@
             const axis = radarAxes[index];
             return `
               <text x="${x}" y="${y}" text-anchor="middle" font-size="12" font-weight="700" fill="#00004f">${axis.label}</text>
-              <text x="${x}" y="${y + 14}" text-anchor="middle" font-size="10" font-weight="600" fill="#777777">${axis.level} · ${axis.score}</text>
+              <text x="${x}" y="${y + 14}" text-anchor="middle" font-size="10" font-weight="600" fill="#777777">${axis.level}</text>
             `;
           })
           .join("");
@@ -1689,13 +1695,13 @@
             const width = d.score ?? LEVEL_WIDTH[d.level] ?? 40;
             const fillClass = levelClass(d.level);
             return `
-          <div class="dim-bar-row" tabindex="0" aria-label="${escapeHtml(d.title)}: ${escapeHtml(d.level)}, score ${d.score}. ${escapeHtml(d.text)}">
+          <div class="dim-bar-row" tabindex="0" aria-label="${escapeHtml(d.title)}: ${escapeHtml(d.level)}. ${escapeHtml(d.text)}">
             <div class="dim-hint" role="tooltip">
-              <strong>${escapeHtml(d.title)} · ${escapeHtml(d.level)} · ${d.score}</strong>
+              <strong>${escapeHtml(d.title)} · ${escapeHtml(d.level)}</strong>
               <span>${escapeHtml(d.text)}</span>
             </div>
             <span class="label">${escapeHtml(d.short)}</span>
-            <span class="level-chip ${fillClass}">${escapeHtml(d.level)} · ${d.score}</span>
+            <span class="level-chip ${fillClass}">${escapeHtml(d.level)}</span>
             <div class="dim-bar-track">
               <div class="dim-bar-fill ${fillClass}" style="--fill-width:${width}%"></div>
             </div>
@@ -1744,7 +1750,7 @@
               <div class="evaluation-card ${levelClass(d.level)}" style="margin-top:0">${escapeHtml(d.level)}</div>
             </div>
             <p class="description">${escapeHtml(d.text)}</p>
-            <div class="evidence-label">Supporting evidence</div>
+            <div class="evidence-label">Candidate's Own Words</div>
             <ul class="evidence">
               ${d.evidence
                 .map(
