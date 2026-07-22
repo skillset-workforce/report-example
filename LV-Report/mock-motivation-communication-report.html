@@ -1,0 +1,2392 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Motivation &amp; Communication Report — TaTiO mock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <style>
+      @font-face {
+        font-family: Gilroy;
+        src: url("https://shared-assets.tatio.io/fonts/Gilroy-Regular.otf");
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: Gilroy;
+        src: url("https://shared-assets.tatio.io/fonts/Gilroy-Medium.otf");
+        font-weight: 500;
+      }
+      @font-face {
+        font-family: Gilroy;
+        src: url("https://shared-assets.tatio.io/fonts/Gilroy-SemiBold.otf");
+        font-weight: 600;
+      }
+      @font-face {
+        font-family: Gilroy;
+        src: url("https://shared-assets.tatio.io/fonts/Gilroy-Bold.otf");
+        font-weight: 700;
+      }
+
+      :root {
+        --dark-blue: #00004f;
+        --moderate: #88077b;
+        --tatio-pink: #e20c98;
+        --tatio-green: #07f698;
+        --orange: #ff5811;
+        --yellow: #ffc100;
+        --light-blue: #07e7f6;
+        --light-grey: #f9f9f9;
+        --frosted-sky: #f9fafe;
+        --almost-black: #1a1a1a;
+        --very-dark-grey: #414143;
+        --dark-grey: #777777;
+        --e-grey: #eeeeee;
+        --border: #ecebeb;
+        --primary-font: Gilroy, Rubik, Arial, Helvetica, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--primary-font);
+        color: var(--almost-black);
+        background: var(--light-grey);
+        min-height: 100vh;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      .mock-banner {
+        background: var(--dark-blue);
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 8px 12px;
+      }
+
+      .mock-banner span {
+        color: var(--tatio-green);
+      }
+
+      .shell {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 22px 2.5% 52px;
+      }
+
+      .report-hero {
+        margin: 10px 0 18px;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 79, 0.08);
+        box-shadow: 0 14px 34px rgba(0, 0, 79, 0.08);
+      }
+
+      .report-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        margin: 0;
+        padding: 20px 28px 18px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 0;
+        border-left: 4px solid var(--tatio-pink);
+        color: var(--dark-blue);
+        background: linear-gradient(180deg, #f7f8fd 0%, #ffffff 100%);
+        box-shadow: none;
+      }
+
+      .report-heading::after {
+        display: none;
+      }
+
+      .report-heading-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 820px;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 8px;
+        color: var(--tatio-pink);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow-logo {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .brand-logo {
+        width: 52px;
+        height: 52px;
+        object-fit: contain;
+        flex-shrink: 0;
+        padding: 4px;
+        border-radius: 0;
+        background: #fff;
+        border: 1px solid var(--border);
+      }
+
+      .report-heading h1 {
+        margin: 0;
+        font-size: clamp(26px, 3vw, 36px);
+        line-height: 1.1;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+      }
+
+      .report-heading .subtitle {
+        max-width: 720px;
+        margin: 8px 0 0;
+        color: var(--dark-grey);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .candidate-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin: 0;
+        padding: 16px 24px 18px;
+        border: none;
+        border-radius: 0;
+        border-top: 1px solid var(--border);
+        background: #fff;
+        flex-wrap: wrap;
+      }
+
+      .candidate-identity {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .candidate-header .name {
+        font-size: 24px;
+        font-weight: 600;
+        text-transform: capitalize;
+        margin: 0;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: var(--dark-blue);
+      }
+
+      .candidate-header .sim-name {
+        margin: 4px 0 0;
+        font-size: 14px;
+        color: var(--dark-grey);
+        font-weight: 400;
+      }
+
+      .sim-name a {
+        color: var(--tatio-pink);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .sim-name a:hover {
+        text-decoration: underline;
+      }
+
+      .report-footer {
+        margin-top: 28px;
+        padding: 20px 0 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: var(--dark-grey);
+        font-size: 14px;
+      }
+
+      .report-footer img {
+        height: 22px;
+        width: auto;
+        display: block;
+      }
+
+      .data-section {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .contact-meta {
+        margin: 0;
+        color: var(--very-dark-grey);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .contact-meta a {
+        color: var(--dark-blue);
+        text-decoration: none;
+      }
+
+      .contact-meta a:hover {
+        color: var(--tatio-pink);
+        text-decoration: underline;
+      }
+
+      .pdf-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--orange);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        height: 40px;
+        padding: 0 14px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .pdf-btn:hover {
+        filter: brightness(1.05);
+      }
+
+      .sections {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .section-row {
+        display: flex;
+        gap: 16px;
+        width: 100%;
+        align-items: stretch;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.045);
+        border-radius: 12px;
+        padding: 24px 26px;
+        font-family: var(--primary-font);
+        box-shadow: 0 5px 18px rgba(0, 0, 79, 0.045);
+      }
+
+      .headline {
+        font-weight: 600;
+        font-size: 23px;
+        color: var(--almost-black);
+        margin: 0;
+        letter-spacing: -0.015em;
+      }
+
+      .description {
+        margin: 8px 0 0;
+        color: var(--very-dark-grey);
+        font-size: 14.5px;
+        line-height: 1.58;
+        font-weight: 400;
+      }
+
+      .evaluation-card {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--dark-blue);
+        color: #fff;
+        border-radius: 8px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        width: fit-content;
+        margin-top: 12px;
+      }
+
+      .evaluation-card.strong {
+        background: var(--tatio-pink);
+      }
+
+      .evaluation-card.moderate {
+        background: var(--moderate);
+      }
+
+      .evaluation-card.limited {
+        background: var(--dark-blue);
+      }
+
+      /* Overall verdict */
+      .profile-card {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        min-height: 180px;
+      }
+
+      .profile-texts {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .scan-list {
+        list-style: none;
+        margin: 14px 0 0;
+        padding: 0;
+        display: grid;
+        gap: 8px;
+      }
+
+      .scan-list li {
+        display: grid;
+        grid-template-columns: 88px 1fr;
+        gap: 10px;
+        align-items: start;
+        font-size: 13.5px;
+        line-height: 1.45;
+        color: var(--very-dark-grey);
+      }
+
+      .scan-list strong {
+        color: var(--dark-blue);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding-top: 2px;
+      }
+
+      .circular {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+      }
+
+      .circular svg {
+        transform: rotate(-90deg);
+      }
+
+      .circular .score {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.25;
+        text-align: center;
+        color: var(--almost-black);
+        padding: 0 14px;
+      }
+
+      /* Dimension score visualization */
+      .dim-viz-card {
+        width: 100%;
+        padding: 26px 28px 28px;
+        background:
+          radial-gradient(
+            circle at 12% 18%,
+            rgba(226, 12, 152, 0.08),
+            transparent 32%
+          ),
+          linear-gradient(180deg, #ffffff 0%, #f7f8fd 100%);
+        border: 1px solid rgba(0, 0, 79, 0.08);
+      }
+
+      .dim-viz {
+        display: grid;
+        grid-template-columns: minmax(240px, 300px) 1fr;
+        gap: 28px 36px;
+        align-items: center;
+        margin: 18px 0 0;
+        padding: 22px 24px;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 79, 0.08);
+        border-radius: 14px;
+        box-shadow: 0 10px 28px rgba(0, 0, 79, 0.06);
+        overflow: visible;
+        animation: dimVizIn 0.7s ease both;
+      }
+
+      .radar-wrap {
+        position: relative;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        aspect-ratio: 1;
+      }
+
+      .radar-wrap svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      .radar-wrap #scorePoly {
+        filter: drop-shadow(0 6px 14px rgba(226, 12, 152, 0.2));
+        animation: scoreReveal 0.75s ease 0.1s both;
+      }
+
+      @keyframes dimVizIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes scoreReveal {
+        from {
+          opacity: 0;
+          transform-origin: center;
+          transform: scale(0.82);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 8px;
+        color: var(--tatio-pink);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .dim-bars {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .dim-bar-row {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px 14px;
+        align-items: center;
+        padding: 10px 12px;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        background: var(--frosted-sky);
+        cursor: help;
+        transition:
+          border-color 0.15s ease,
+          background 0.15s ease,
+          transform 0.15s ease;
+      }
+
+      .dim-bar-row:hover,
+      .dim-bar-row:focus-within {
+        background: #fff;
+        border-color: rgba(226, 12, 152, 0.28);
+        transform: translateY(-1px);
+      }
+
+      .dim-bar-row .label {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--almost-black);
+      }
+
+      .dim-bar-row .level-chip {
+        min-width: 96px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--tatio-pink);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .dim-bar-row .level-chip.moderate {
+        background: var(--moderate);
+      }
+
+      .dim-bar-row .level-chip.limited {
+        background: var(--dark-blue);
+      }
+
+      .dim-bar-track {
+        grid-column: 1 / -1;
+        height: 14px;
+        background: #e8e9f2;
+        border-radius: 99px;
+        overflow: hidden;
+      }
+
+      .dim-bar-fill {
+        height: 100%;
+        width: 0;
+        border-radius: 99px;
+        background: linear-gradient(
+          90deg,
+          var(--dark-blue) 0%,
+          var(--tatio-pink) 100%
+        );
+        box-shadow: 0 0 0 1px rgba(0, 0, 79, 0.08);
+        transition: width 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .dim-bar-row.is-ready .dim-bar-fill {
+        width: var(--fill-width);
+      }
+
+      .dim-hint {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: calc(100% + 8px);
+        z-index: 5;
+        padding: 12px 14px;
+        border-radius: 10px;
+        background: var(--dark-blue);
+        color: #fff;
+        box-shadow: 0 12px 28px rgba(0, 0, 79, 0.22);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(4px);
+        transition:
+          opacity 0.15s ease,
+          transform 0.15s ease,
+          visibility 0.15s ease;
+      }
+
+      .dim-hint::after {
+        content: "";
+        position: absolute;
+        left: 24px;
+        top: 100%;
+        border: 6px solid transparent;
+        border-top-color: var(--dark-blue);
+      }
+
+      .dim-hint strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .dim-hint span {
+        display: block;
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 12px;
+        line-height: 1.45;
+        font-weight: 400;
+      }
+
+      .dim-bar-row:hover .dim-hint,
+      .dim-bar-row:focus-within .dim-hint {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .dim-viz,
+        .radar-wrap #scorePoly,
+        .dim-bar-fill {
+          animation: none;
+          transition: none;
+        }
+
+        .dim-hint {
+          transition: none;
+        }
+      }
+
+      /* Main body: media + dimensions */
+      .main-split {
+        display: flex;
+        gap: 16px;
+        align-items: stretch;
+      }
+
+      .left-col {
+        width: 42%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-height: 0;
+      }
+
+      .right-col {
+        width: 58%;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+
+      .left-col > .transcript-card {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .transcript-card #transcript {
+        flex: 1;
+        min-height: 0;
+        overflow: auto;
+      }
+
+      .right-col > #dimensionsCard {
+        flex: 1;
+        min-height: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #dimensionsCard #dimensions {
+        flex: 1;
+        min-height: 0;
+        overflow: auto;
+      }
+
+      .player-card {
+        flex-shrink: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .player {
+        background: #000;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .player-embed {
+        padding: 55.03% 0 0 0;
+        position: relative;
+        background: var(--dark-blue);
+      }
+
+      .player-embed iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+
+      .player-embed.is-active iframe {
+        opacity: 1;
+      }
+
+      .player-poster {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            ellipse 80% 60% at 20% 20%,
+            rgba(226, 12, 152, 0.35),
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 70% 50% at 85% 80%,
+            rgba(7, 246, 152, 0.18),
+            transparent 50%
+          ),
+          linear-gradient(155deg, #00003e 0%, #00004f 45%, #1a0040 100%);
+        transition:
+          opacity 0.25s ease,
+          visibility 0.25s ease;
+      }
+
+      .player-poster::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 28px 28px;
+        opacity: 0.7;
+        pointer-events: none;
+      }
+
+      .player-poster-content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        justify-items: center;
+        gap: 14px;
+        padding: 24px;
+        text-align: center;
+        color: #fff;
+        pointer-events: none;
+      }
+
+      .player-poster-avatar {
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: #fff;
+        background: linear-gradient(
+          145deg,
+          rgba(226, 12, 152, 0.95),
+          rgba(0, 0, 79, 0.9)
+        );
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      }
+
+      .player-poster-kicker {
+        margin: 0;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .player-poster-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+
+      .player-poster-meta {
+        margin: 0;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .player-embed.is-active .player-poster {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .player-toggle {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        transition:
+          background 0.2s ease,
+          opacity 0.2s ease;
+      }
+
+      .player-toggle:hover,
+      .player-toggle:focus-visible {
+        background: rgba(0, 0, 0, 0.18);
+        outline: none;
+      }
+
+      .player-toggle.is-playing {
+        background: transparent;
+        opacity: 0;
+      }
+
+      .player-toggle.is-playing:hover,
+      .player-toggle.is-playing:focus-visible {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.28);
+      }
+
+      .player-toggle-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--tatio-pink);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+        line-height: 1;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+        transform: translateY(28px);
+      }
+
+      .player-embed.is-active .player-toggle-icon {
+        transform: none;
+      }
+
+      .player-toggle.is-playing .player-toggle-icon {
+        font-size: 16px;
+        letter-spacing: 2px;
+      }
+
+      .player-controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px 14px;
+        background: var(--dark-blue);
+        color: #fff;
+      }
+
+      .player-scrub {
+        flex: 1;
+        appearance: none;
+        height: 4px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.25);
+        outline: none;
+        cursor: pointer;
+      }
+
+      .player-scrub::-webkit-slider-thumb {
+        appearance: none;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--tatio-pink);
+        cursor: pointer;
+      }
+
+      .player-scrub::-moz-range-thumb {
+        width: 12px;
+        height: 12px;
+        border: none;
+        border-radius: 50%;
+        background: var(--tatio-pink);
+        cursor: pointer;
+      }
+
+      .player-time {
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+        opacity: 0.95;
+        min-width: 78px;
+        text-align: right;
+      }
+
+      .transcript-line {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 10px;
+        padding: 8px 6px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .transcript-line:hover,
+      .transcript-line:focus-visible {
+        background: rgba(226, 12, 152, 0.06);
+        outline: none;
+      }
+
+      .transcript-line.active {
+        background: rgba(226, 12, 152, 0.1);
+        box-shadow: inset 3px 0 0 var(--tatio-pink);
+      }
+
+      .transcript-line.evidence-hit {
+        background: rgba(7, 246, 152, 0.14);
+        outline: 1px solid rgba(7, 246, 152, 0.4);
+      }
+
+      .ts {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--tatio-pink);
+        padding-top: 2px;
+      }
+
+      .transcript-line p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.5;
+        color: var(--almost-black);
+      }
+
+      .dimension {
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .dimension:first-child {
+        padding-top: 14px;
+      }
+
+      .dimension:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .dimension + .dimension {
+        margin-top: 0;
+      }
+
+      .dimension-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .dimension-head h4 {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .dimension .description {
+        margin-top: 6px;
+      }
+
+      .evidence-label {
+        margin-top: 13px;
+        color: var(--dark-grey);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .evidence {
+        list-style: none;
+        margin: 7px 0 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .evidence .quote {
+        margin: 0;
+        padding: 10px 12px;
+        background: var(--frosted-sky);
+        border-left: 3px solid var(--tatio-pink);
+        border-radius: 0 8px 8px 0;
+        font-size: 13px;
+        line-height: 1.45;
+        color: var(--almost-black);
+        font-style: italic;
+        cursor: pointer;
+        transition:
+          background 0.15s ease,
+          border-color 0.15s ease;
+      }
+
+      .evidence .quote:hover,
+      .evidence .quote:focus-visible {
+        background: rgba(226, 12, 152, 0.06);
+        border-left-color: var(--moderate);
+        outline: none;
+      }
+
+      .evidence .quote:focus-visible {
+        box-shadow: 0 0 0 2px rgba(226, 12, 152, 0.25);
+      }
+
+      .quote-hint {
+        display: block;
+        margin-top: 4px;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 600;
+        color: var(--dark-grey);
+      }
+
+      .acoustic-card {
+        overflow: visible;
+        border-style: dashed;
+        background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
+      }
+
+      .speech-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .speech-header .headline {
+        margin-top: 0;
+      }
+
+      .speech-badges {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .secondary-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 79, 0.16);
+        background: #fff;
+        color: var(--dark-grey);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .speech-level {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 11px;
+        border-radius: 8px;
+        border: 1.5px solid var(--moderate);
+        background: rgba(136, 7, 123, 0.06);
+        color: var(--moderate);
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .acoustic-card .experimental {
+        display: inline-block;
+        margin-top: 8px;
+        background: rgba(0, 0, 79, 0.06);
+        color: var(--dark-blue);
+        border-radius: 6px;
+        padding: 4px 8px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .acoustic-bars {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 16px;
+        overflow: visible;
+      }
+
+      .progress-row {
+        position: relative;
+        display: block;
+        padding: 13px 14px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: var(--frosted-sky);
+        cursor: help;
+        transition:
+          border-color 0.15s ease,
+          background 0.15s ease,
+          transform 0.15s ease;
+      }
+
+      .progress-row:hover,
+      .progress-row:focus-within {
+        background: #fff;
+        border-color: rgba(0, 0, 79, 0.18);
+        transform: translateY(-1px);
+      }
+
+      .progress-row:last-child {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .progress-row .span {
+        display: block;
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      .signal-value {
+        display: block;
+        margin-top: 5px;
+        color: var(--dark-blue);
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .progress-row .dim-hint {
+        left: 0;
+        right: auto;
+        width: min(260px, 72vw);
+        bottom: calc(100% + 10px);
+      }
+
+      .progress-row:nth-child(even) .dim-hint {
+        left: auto;
+        right: 0;
+      }
+
+      .progress-row:nth-child(even) .dim-hint::after {
+        left: auto;
+        right: 24px;
+      }
+
+      .progress-row:hover .dim-hint,
+      .progress-row:focus-within .dim-hint {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .analysis-stack {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .analysis-step {
+        min-height: 92px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: #fff;
+      }
+
+      .analysis-step strong {
+        display: block;
+        color: var(--dark-blue);
+        font-size: 12px;
+      }
+
+      .analysis-step span {
+        display: block;
+        margin-top: 5px;
+        color: var(--dark-grey);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .footnote {
+        margin: 10px 0 0;
+        font-size: 12px;
+        color: var(--very-dark-grey);
+        line-height: 1.45;
+      }
+
+      @media (max-width: 1100px) {
+        .report-heading {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .section-row,
+        .main-split,
+        .dim-viz {
+          flex-direction: column;
+          grid-template-columns: 1fr;
+          display: flex;
+        }
+
+        .profile-card,
+        .left-col,
+        .right-col {
+          width: 100%;
+        }
+
+        .left-col > .transcript-card,
+        .right-col > #dimensionsCard {
+          flex: none;
+          height: auto;
+        }
+
+        .transcript-card #transcript,
+        #dimensionsCard #dimensions {
+          overflow: visible;
+        }
+
+        .radar-wrap {
+          max-width: 280px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          padding-inline: 12px;
+        }
+
+        .report-heading {
+          padding: 24px 20px;
+        }
+
+        .candidate-header {
+          align-items: flex-start;
+        }
+
+        .data-section {
+          gap: 8px;
+        }
+
+        .acoustic-bars,
+        .analysis-stack {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+
+      @media print {
+        .mock-banner,
+        .pdf-btn,
+        .player-card,
+        .dim-hint,
+        .quote-hint {
+          display: none !important;
+        }
+
+        @page {
+          size: A4;
+          margin: 8mm 9mm;
+        }
+
+        html,
+        body {
+          background: #fff !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          font-size: 11.5px;
+          zoom: 0.91;
+        }
+
+        .shell {
+          max-width: none;
+          padding: 0;
+        }
+
+        .sections {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .profile-card {
+          order: 1;
+          width: 100%;
+          padding: 18px 20px;
+          gap: 16px;
+        }
+
+        .dim-viz-card {
+          order: 2;
+          padding: 18px 20px;
+          flex: 1 1 auto;
+        }
+
+        .main-split {
+          order: 3;
+          display: flex !important;
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          gap: 14px;
+          align-items: stretch;
+          min-height: 145mm;
+          page-break-before: always;
+          break-before: page;
+        }
+
+        .acoustic-card {
+          order: 4;
+          margin-top: 0;
+          padding: 16px 18px;
+        }
+
+        .report-heading {
+          padding: 16px 18px;
+        }
+
+        .report-heading h1 {
+          font-size: 22px;
+          margin: 0;
+        }
+
+        .subtitle {
+          margin-top: 6px;
+          font-size: 12.5px;
+        }
+
+        .eyebrow {
+          margin-bottom: 6px;
+          font-size: 11px;
+        }
+
+        .candidate-header {
+          padding: 12px 18px;
+        }
+
+        .name {
+          font-size: 18px;
+        }
+
+        .sim-name,
+        .contact-meta {
+          font-size: 11.5px;
+        }
+
+        .card {
+          padding: 14px 16px;
+        }
+
+        .circular {
+          width: 110px;
+          height: 110px;
+        }
+
+        .circular svg {
+          width: 110px;
+          height: 110px;
+        }
+
+        .circular .score {
+          font-size: 11px;
+        }
+
+        .scan-list {
+          margin-top: 12px;
+          gap: 8px;
+        }
+
+        .scan-list li {
+          font-size: 12px;
+          padding: 6px 0;
+        }
+
+        .section-row {
+          display: block;
+        }
+
+        .dim-viz {
+          display: grid !important;
+          grid-template-columns: minmax(220px, 260px) 1fr;
+          gap: 16px 22px;
+          margin-top: 14px;
+          padding: 16px 18px;
+        }
+
+        .left-col {
+          width: 42% !important;
+          max-width: 42% !important;
+          flex: 1 1 42% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 0;
+          min-width: 0;
+          min-height: 0;
+        }
+
+        .right-col {
+          width: 58% !important;
+          max-width: 58% !important;
+          flex: 1 1 58% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          min-width: 0;
+          min-height: 0;
+        }
+
+        .left-col > .transcript-card,
+        .right-col > #dimensionsCard,
+        .transcript-card,
+        #dimensionsCard {
+          flex: 1 1 auto !important;
+          height: 100% !important;
+          max-height: none;
+          display: flex !important;
+          flex-direction: column !important;
+        }
+
+        .transcript-card #transcript,
+        #dimensionsCard #dimensions {
+          flex: 1 1 auto;
+          overflow: visible;
+          max-height: none;
+        }
+
+        .radar-wrap {
+          display: block !important;
+          max-width: 280px;
+          margin: 0 auto;
+        }
+
+        .dim-bar-row {
+          padding: 10px 0;
+          gap: 8px 10px;
+        }
+
+        .dim-bar-track {
+          height: 10px;
+        }
+
+        .dim-bar-fill {
+          width: var(--fill-width) !important;
+          transition: none !important;
+        }
+
+        .dim-bar-row .level-chip {
+          font-size: 10px;
+          padding: 3px 10px;
+          min-width: 72px;
+        }
+
+        .report-heading,
+        .report-hero,
+        .dim-viz {
+          box-shadow: none;
+          break-inside: avoid;
+        }
+
+        .card {
+          box-shadow: none;
+        }
+
+        .dimension {
+          padding: 10px 0;
+          break-inside: auto;
+        }
+
+        .headline {
+          font-size: 17px;
+        }
+
+        .section-kicker {
+          font-size: 10px;
+          margin-bottom: 4px;
+        }
+
+        .description {
+          font-size: 12px;
+          line-height: 1.45;
+          margin-top: 6px;
+        }
+
+        .transcript-line {
+          padding: 8px 8px;
+          gap: 10px;
+          grid-template-columns: 36px 1fr;
+        }
+
+        .transcript-line p {
+          font-size: 11.5px;
+          line-height: 1.4;
+        }
+
+        .ts {
+          font-size: 10px;
+        }
+
+        .dimension-head h4 {
+          font-size: 13px;
+        }
+
+        .evaluation-card {
+          font-size: 10px;
+          padding: 4px 10px;
+        }
+
+        .evidence-label {
+          font-size: 10px;
+          margin: 8px 0 6px;
+        }
+
+        .evidence {
+          gap: 6px;
+        }
+
+        .evidence .quote {
+          font-size: 11.5px;
+          padding: 8px 10px;
+          margin: 0;
+        }
+
+        .acoustic-bars {
+          margin-top: 12px;
+          gap: 10px;
+        }
+
+        .progress-row {
+          padding: 10px 12px;
+        }
+
+        .progress-row .span {
+          font-size: 11px;
+        }
+
+        .signal-value {
+          font-size: 14px;
+          margin-top: 4px;
+        }
+
+        .speech-header .headline {
+          font-size: 16px;
+        }
+
+        .report-footer {
+          display: flex !important;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          margin-top: 12px;
+          padding-top: 10px;
+          font-size: 11px;
+          color: var(--dark-grey);
+        }
+
+        .report-footer img {
+          height: 14px;
+          width: auto;
+        }
+
+        .eyebrow-logo {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <section class="report-hero" aria-labelledby="report-title">
+        <div class="report-heading">
+          <div class="report-heading-copy">
+            <p class="eyebrow">
+              <img
+                class="eyebrow-logo"
+                src="https://shared-assets.tatio.io/images/tatio-short-logo.svg"
+                alt="TaTiO"
+              />
+              <span>TaTiO · Candidate assessment</span>
+            </p>
+            <h1 id="report-title">Motivation &amp; Communication Report</h1>
+            <p class="subtitle">
+              Structured analysis of the candidate's self-reported motivation
+              response.
+            </p>
+          </div>
+        </div>
+
+        <header class="candidate-header">
+          <div class="candidate-identity">
+            <div>
+              <h2 class="name">Camille Martin</h2>
+              <p class="sim-name">
+                Assistant Product Manager — Early Talent Programme
+              </p>
+            </div>
+          </div>
+          <div class="data-section">
+            <p class="contact-meta">
+              <a href="mailto:camille.martin@email.com"
+                >camille.martin@email.com</a
+              >
+              · +33 6 12 34 56 78 · Paris, FR
+            </p>
+            <button class="pdf-btn" type="button">↓ Download PDF</button>
+          </div>
+        </header>
+      </section>
+
+      <div class="sections">
+        <section class="card profile-card">
+          <div class="profile-texts">
+            <span class="section-kicker">Overall assessment</span>
+            <h2 class="headline">Overall motivation profile</h2>
+            <p class="description">
+              In her recorded statement, Camille attributes her interest to a
+              Sandro merchandising internship. She describes what draws her to
+              Louis Vuitton, refers to a sell-through report she redesigned that
+              her team adopted, and outlines a learning goal across the product
+              lifecycle. This dossier reflects what she reported about herself;
+              it does not verify or measure demonstrated ability.
+            </p>
+            <ul class="scan-list">
+              <li>
+                <strong>Strength</strong>
+                <span
+                  >Motivation is substantiated with a specific, self-reported
+                  example rather than general statements.</span
+                >
+              </li>
+              <li>
+                <strong>Development</strong>
+                <span
+                  >References to Louis Vuitton remain general — no specific
+                  product line, collection, or Maison practice was cited.</span
+                >
+              </li>
+              <li>
+                <strong>Speech</strong>
+                <span
+                  >Steady delivery · Moderate — excluded from overall
+                  profile.</span
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="circular" aria-label="Evidence: Substantiated">
+            <svg
+              viewBox="0 0 120 120"
+              width="120"
+              height="120"
+              aria-hidden="true"
+            >
+              <circle
+                cx="60"
+                cy="60"
+                r="48"
+                fill="none"
+                stroke="#ECEBEB"
+                stroke-width="9"
+              />
+              <circle
+                cx="60"
+                cy="60"
+                r="48"
+                fill="none"
+                stroke="var(--tatio-pink)"
+                stroke-width="11"
+                stroke-linecap="round"
+                stroke-dasharray="301.6"
+                stroke-dashoffset="55"
+              />
+            </svg>
+            <div class="score">Evidence:<br />Substantiated</div>
+          </div>
+        </section>
+
+        <section
+          class="card dim-viz-card"
+          aria-labelledby="content-assessment-title"
+        >
+          <span class="section-kicker">Content assessment</span>
+          <h2 class="headline" id="content-assessment-title">
+            Evidence Strength — Self-Reported Response
+          </h2>
+
+          <div
+            class="dim-viz"
+            id="dimViz"
+            aria-label="Dimension score overview"
+          >
+            <div class="radar-wrap" aria-hidden="true">
+              <svg viewBox="0 0 320 320" id="radarChart"></svg>
+            </div>
+            <div class="dim-bars" id="dimBars"></div>
+          </div>
+        </section>
+
+        <div class="main-split">
+          <div class="left-col">
+            <section class="card player-card" id="playerCard">
+              <div class="player" aria-label="Motivation recording player">
+                <div class="player-embed" id="playerEmbed">
+                  <iframe
+                    id="vimeoPlayer"
+                    src="https://player.vimeo.com/video/1211484513?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0#t=53s"
+                    allow="
+                      autoplay;
+                      fullscreen;
+                      picture-in-picture;
+                      clipboard-write;
+                      encrypted-media;
+                      web-share;
+                    "
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                    title="Louis Vuitton - Motivation Video"
+                  ></iframe>
+                  <div class="player-poster" aria-hidden="true">
+                    <div class="player-poster-content">
+                      <div class="player-poster-avatar">CM</div>
+                      <p class="player-poster-kicker">Motivation recording</p>
+                      <p class="player-poster-title">Camille Martin</p>
+                      <p class="player-poster-meta">1:22 · Tap play to watch</p>
+                    </div>
+                  </div>
+                  <button
+                    class="player-toggle"
+                    id="playerToggle"
+                    type="button"
+                    aria-label="Play video"
+                  >
+                    <span class="player-toggle-icon" aria-hidden="true">▶</span>
+                  </button>
+                </div>
+                <div class="player-controls">
+                  <input
+                    class="player-scrub"
+                    id="playerScrub"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="0"
+                    step="0.1"
+                    aria-label="Seek video"
+                  />
+                  <span class="player-time" id="playerTime">0:00 / 0:00</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="card transcript-card" id="transcriptCard">
+              <span class="section-kicker">Source evidence</span>
+              <h2 class="headline">Transcript</h2>
+              <p class="description" style="margin-bottom: 12px">
+                Original language · English · click a line or evidence quote to
+                seek
+              </p>
+              <div id="transcript"></div>
+            </section>
+          </div>
+
+          <div class="right-col">
+            <section class="card" id="dimensionsCard">
+              <span class="section-kicker">Detailed findings</span>
+              <h2 class="headline">Evidence by dimension</h2>
+              <div id="dimensions"></div>
+            </section>
+          </div>
+        </div>
+
+        <section class="card acoustic-card">
+          <div class="speech-header">
+            <div>
+              <span class="section-kicker">Speech analysis</span>
+              <h2 class="headline">Delivery signals</h2>
+            </div>
+            <div class="speech-badges">
+              <span class="speech-level">Moderate</span>
+            </div>
+          </div>
+          <p class="description">
+            Camille’s delivery is steady and controlled, with consistent pacing
+            and measured variation in vocal energy. Observable delivery patterns
+            only — does not infer confidence, personality, or sincerity.
+          </p>
+          <div class="acoustic-bars" id="acousticBars"></div>
+        </section>
+      </div>
+
+      <footer class="report-footer">
+        Powered by
+        <a href="https://tatio.io" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://shared-assets.tatio.io/images/tatio-powered-by-blue.svg"
+            alt="TaTiO"
+          />
+        </a>
+      </footer>
+    </div>
+
+    <script>
+      const LEVEL_WIDTH = {
+        Strong: 90,
+        Moderate: 60,
+        Limited: 35,
+        "Insufficient Evidence": 18,
+      };
+
+      const transcript = [
+        {
+          id: "t1",
+          start: 4,
+          text: "Hi, I'm Camille. The reason I'm interested in this programme actually comes from my internship at Sandro, where I supported the merchandising team.",
+        },
+        {
+          id: "t2",
+          start: 12,
+          text: "One of my responsibilities was preparing the weekly sell-through reports. There was one handbag that everyone expected to do really well, but it didn't, and nobody could really explain why. Was it the price, the colour, or the stores? That experience made me realise I wanted to understand what really drives a product's success.",
+        },
+        {
+          id: "t3",
+          start: 40,
+          text: "What interests me about Louis Vuitton is its focus on craftsmanship and creating products that last. During my internship, the pace was very much about the next collection, so I find Louis Vuitton's approach to quality and long-term value really interesting.",
+        },
+        {
+          id: "t4",
+          start: 54,
+          text: "I don't know the technical side yet, but that's exactly what I'd like to learn.",
+        },
+        {
+          id: "t5",
+          start: 60,
+          text: "I think I'd bring strong analytical skills. I redesigned our weekly sell-through report to make it easier for the team to use, and it became the version people relied on.",
+        },
+        {
+          id: "t6",
+          start: 71,
+          text: "Through this programme, I'd love to develop a much deeper understanding of how collections are created from the beginning and learn from experienced teams across the product lifecycle.",
+        },
+        {
+          id: "t7",
+          start: 81,
+          text: "Thank you.",
+        },
+      ];
+
+      const dimensions = [
+        {
+          title: "Substantiated motivation",
+          short: "Motivation",
+          level: "Strong",
+          score: 94,
+          text: "Camille grounds her interest in product management in a specific merchandising experience, explaining how an unresolved product-performance question shaped her career direction.",
+          evidence: [
+            {
+              quote:
+                "internship at Sandro, where I supported the merchandising team",
+              lineId: "t1",
+            },
+            {
+              quote:
+                "That experience made me realise I wanted to understand what really drives a product's success.",
+              lineId: "t2",
+            },
+          ],
+        },
+        {
+          title: "Maison & product awareness",
+          short: "Product awareness",
+          level: "Moderate",
+          score: 62,
+          text: "She describes craftsmanship, product longevity, and long-term value as what attracts her. The comparison with her internship is meaningful, although her knowledge of the Maison remains general.",
+          evidence: [
+            {
+              quote:
+                "focus on craftsmanship and creating products that last… quality and long-term value",
+              lineId: "t3",
+            },
+          ],
+        },
+        {
+          title: "Contribution & growth mindset",
+          short: "Contribution & growth mindset",
+          level: "Strong",
+          score: 86,
+          text: "She provides a concrete example of improving a sell-through report that her team adopted, while setting a clear learning objective across the product lifecycle.",
+          evidence: [
+            {
+              quote:
+                "redesigned our weekly sell-through report… became the version people relied on",
+              lineId: "t5",
+            },
+            {
+              quote:
+                "how collections are created from the beginning… across the product lifecycle",
+              lineId: "t6",
+            },
+          ],
+        },
+        {
+          title: "Communication clarity",
+          short: "Communication clarity",
+          level: "Strong",
+          score: 91,
+          text: "The response follows a clear sequence: source of motivation, interest in Louis Vuitton, prior contribution, and future development. Each point is relevant and easy to follow.",
+          evidence: [
+            {
+              quote:
+                "Hi, I'm Camille. The reason I'm interested in this programme…",
+              lineId: "t1",
+            },
+            {
+              quote: "What interests me about Louis Vuitton…",
+              lineId: "t3",
+            },
+            {
+              quote: "I think I'd bring strong analytical skills…",
+              lineId: "t5",
+            },
+          ],
+        },
+      ];
+
+      const radarAxes = dimensions.map((d) => ({
+        label: d.short.includes(" ") ? d.short.split(" ")[0] : d.short,
+        level: d.level,
+        score: d.score,
+      }));
+      // Keep short radar labels readable
+      radarAxes[0].label = "Motivation";
+      radarAxes[1].label = "Awareness";
+      radarAxes[2].label = "Contribution";
+      radarAxes[3].label = "Clarity";
+
+      const acoustic = [
+        {
+          name: "Speaking pace",
+          value: "Steady",
+          hint: "How evenly the candidate speaks over time, based on word-level timing. This is an observable delivery pattern, not a judgment of fluency or accent.",
+        },
+        {
+          name: "Pause pattern",
+          value: "Balanced",
+          hint: "Frequency and length of silences between phrases. Useful for understanding delivery rhythm without scoring personality or confidence.",
+        },
+        {
+          name: "Pitch variation",
+          value: "Moderate",
+          hint: "Range of pitch movement across the recording. Reported as a delivery signal only; it is not used to infer enthusiasm, sincerity, or hireability.",
+        },
+        {
+          name: "Energy consistency",
+          value: "Measured",
+          hint: "Stability of vocal loudness and energy across the response. Helps describe delivery consistency rather than emotional intensity.",
+        },
+        {
+          name: "Signal quality",
+          value: "Clear",
+          hint: "Whether the audio is clear enough for reliable analysis. Checks for excessive noise, clipping, or missing audio that would reduce trust in the result.",
+        },
+        {
+          name: "Word timing coverage",
+          value: "Complete",
+          hint: "Whether the recording has complete word-level timestamps for analysis. Incomplete coverage can limit pace and pause analysis.",
+        },
+      ];
+
+      const CLIP_START = 53;
+      const CLIP_END = 135;
+      const duration = CLIP_END - CLIP_START;
+      let currentTime = 0;
+
+      function formatTime(s) {
+        return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function polygonPoints(cx, cy, radius, values, squash = 1) {
+        const count = values.length;
+        return values.map((value, index) => {
+          const angle = -Math.PI / 2 + (index * 2 * Math.PI) / count;
+          const r = radius * value;
+          return `${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle) * squash}`;
+        });
+      }
+
+      function renderRadar() {
+        const svg = document.getElementById("radarChart");
+        const cx = 160;
+        const cy = 160;
+        const maxR = 100;
+        const values = radarAxes.map((axis) => (axis.score ?? 50) / 100);
+
+        const rings = [1, 0.66, 0.33]
+          .map((scale, i) => {
+            const pts = polygonPoints(cx, cy, maxR, Array(4).fill(scale)).join(
+              " ",
+            );
+            return `<polygon points="${pts}" fill="${i === 0 ? "rgba(0,0,79,0.025)" : "none"}" stroke="#d9dae6" stroke-width="${i === 0 ? 2 : 1.4}" />`;
+          })
+          .join("");
+
+        const spokes = polygonPoints(cx, cy, maxR, Array(4).fill(1))
+          .map((point) => {
+            const [x, y] = point.split(",");
+            return `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#d9dae6" stroke-width="1.4" />`;
+          })
+          .join("");
+
+        const scorePts = polygonPoints(cx, cy, maxR, values);
+        const scorePoints = scorePts.join(" ");
+        const dots = scorePts
+          .map((point, index) => {
+            const [x, y] = point.split(",");
+            const fill =
+              radarAxes[index].level === "Moderate"
+                ? "var(--moderate)"
+                : "var(--tatio-pink)";
+            return `<circle cx="${x}" cy="${y}" r="6" fill="${fill}" stroke="#fff" stroke-width="2" />`;
+          })
+          .join("");
+
+        const labels = polygonPoints(cx, cy, maxR + 30, Array(4).fill(1))
+          .map((point, index) => {
+            const [x, y] = point.split(",").map(Number);
+            const axis = radarAxes[index];
+            return `
+              <text x="${x}" y="${y}" text-anchor="middle" font-size="12" font-weight="700" fill="#00004f">${axis.label}</text>
+              <text x="${x}" y="${y + 14}" text-anchor="middle" font-size="10" font-weight="600" fill="#777777">${axis.level}</text>
+            `;
+          })
+          .join("");
+
+        svg.innerHTML = `
+          ${rings}
+          ${spokes}
+          <polygon id="scorePoly" points="${scorePoints}" fill="rgba(226, 12, 152, 0.2)" stroke="var(--tatio-pink)" stroke-width="3" />
+          ${dots}
+          ${labels}
+        `;
+      }
+
+      function renderDimViz() {
+        document.getElementById("dimBars").innerHTML = dimensions
+          .map((d) => {
+            const width = d.score ?? LEVEL_WIDTH[d.level] ?? 40;
+            const fillClass = levelClass(d.level);
+            return `
+          <div class="dim-bar-row" tabindex="0" aria-label="${escapeHtml(d.title)}: ${escapeHtml(d.level)}. ${escapeHtml(d.text)}">
+            <div class="dim-hint" role="tooltip">
+              <strong>${escapeHtml(d.title)} · ${escapeHtml(d.level)}</strong>
+              <span>${escapeHtml(d.text)}</span>
+            </div>
+            <span class="label">${escapeHtml(d.short)}</span>
+            <span class="level-chip ${fillClass}">${escapeHtml(d.level)}</span>
+            <div class="dim-bar-track">
+              <div class="dim-bar-fill ${fillClass}" style="--fill-width:${width}%"></div>
+            </div>
+          </div>`;
+          })
+          .join("");
+
+        renderRadar();
+
+        requestAnimationFrame(() => {
+          document.querySelectorAll(".dim-bar-row").forEach((row, index) => {
+            window.setTimeout(
+              () => row.classList.add("is-ready"),
+              80 + index * 90,
+            );
+          });
+        });
+      }
+
+      function renderTranscript() {
+        document.getElementById("transcript").innerHTML = transcript
+          .map(
+            (line) => `
+          <div class="transcript-line" data-id="${line.id}" data-start="${line.start}" role="button" tabindex="0">
+            <span class="ts">${formatTime(line.start)}</span>
+            <p>${line.text}</p>
+          </div>`,
+          )
+          .join("");
+      }
+
+      function levelClass(level) {
+        if (level === "Strong") return "strong";
+        if (level === "Moderate") return "moderate";
+        if (level === "Limited") return "limited";
+        return "";
+      }
+
+      function renderDimensions() {
+        document.getElementById("dimensions").innerHTML = dimensions
+          .map(
+            (d) => `
+          <article class="dimension">
+            <div class="dimension-head">
+              <h4>${escapeHtml(d.title)}</h4>
+              <div class="evaluation-card ${levelClass(d.level)}" style="margin-top:0">${escapeHtml(d.level)}</div>
+            </div>
+            <p class="description">${escapeHtml(d.text)}</p>
+            <div class="evidence-label">Candidate's Own Words</div>
+            <ul class="evidence">
+              ${d.evidence
+                .map(
+                  (item) => `
+                <li>
+                  <p class="quote" role="button" tabindex="0" data-line-id="${escapeHtml(item.lineId)}">
+                    “${escapeHtml(item.quote)}”
+                  </p>
+                </li>`,
+                )
+                .join("")}
+            </ul>
+          </article>`,
+          )
+          .join("");
+      }
+
+      function renderAcoustic() {
+        document.getElementById("acousticBars").innerHTML = acoustic
+          .map(
+            (a) => `
+          <div class="progress-row" tabindex="0" aria-label="${escapeHtml(a.name)}: ${escapeHtml(a.value)}. ${escapeHtml(a.hint)}">
+            <div class="dim-hint" role="tooltip">
+              <strong>${escapeHtml(a.name)} · ${escapeHtml(a.value)}</strong>
+              <span>${escapeHtml(a.hint)}</span>
+            </div>
+            <span class="span">${escapeHtml(a.name)}</span>
+            <span class="signal-value">${escapeHtml(a.value)}</span>
+          </div>`,
+          )
+          .join("");
+      }
+
+      function setActiveLine(id) {
+        document.querySelectorAll(".transcript-line").forEach((el) => {
+          el.classList.toggle("active", el.dataset.id === id);
+          el.classList.toggle("evidence-hit", false);
+        });
+      }
+
+      function highlightEvidenceLine(id) {
+        document.querySelectorAll(".transcript-line").forEach((el) => {
+          const match = el.dataset.id === id;
+          el.classList.toggle("evidence-hit", match);
+          el.classList.toggle("active", match);
+        });
+        const line = document.querySelector(
+          `.transcript-line[data-id="${id}"]`,
+        );
+        if (line) {
+          line.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      }
+
+      function jumpToEvidence(lineId) {
+        const line = transcript.find((t) => t.id === lineId);
+        if (!line) return;
+        seekTo(line.start);
+        if (typeof window.vimeoSeek === "function")
+          window.vimeoSeek(line.start);
+        highlightEvidenceLine(lineId);
+        document
+          .getElementById("transcriptCard")
+          ?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+
+      function seekTo(seconds) {
+        currentTime = Math.max(0, Math.min(duration, seconds));
+        const active = [...transcript]
+          .reverse()
+          .find((t) => currentTime >= t.start);
+        if (active) setActiveLine(active.id);
+      }
+
+      document.getElementById("transcript").addEventListener("click", (e) => {
+        const line = e.target.closest(".transcript-line");
+        if (!line) return;
+        const start = Number(line.dataset.start);
+        seekTo(start);
+        if (typeof window.vimeoSeek === "function") window.vimeoSeek(start);
+        setActiveLine(line.dataset.id);
+      });
+
+      document.getElementById("transcript").addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        const line = e.target.closest(".transcript-line");
+        if (!line) return;
+        e.preventDefault();
+        const start = Number(line.dataset.start);
+        seekTo(start);
+        if (typeof window.vimeoSeek === "function") window.vimeoSeek(start);
+        setActiveLine(line.dataset.id);
+      });
+
+      document.getElementById("dimensions").addEventListener("click", (e) => {
+        const quote = e.target.closest(".quote[data-line-id]");
+        if (!quote) return;
+        jumpToEvidence(quote.dataset.lineId);
+      });
+
+      document.getElementById("dimensions").addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        const quote = e.target.closest(".quote[data-line-id]");
+        if (!quote) return;
+        e.preventDefault();
+        jumpToEvidence(quote.dataset.lineId);
+      });
+
+      renderDimViz();
+      renderTranscript();
+      renderDimensions();
+      renderAcoustic();
+      seekTo(0);
+
+      (function initVimeoPlayer() {
+        const iframe = document.getElementById("vimeoPlayer");
+        const toggle = document.getElementById("playerToggle");
+        const scrub = document.getElementById("playerScrub");
+        const timeLabel = document.getElementById("playerTime");
+        const icon = toggle?.querySelector(".player-toggle-icon");
+        if (!iframe || !toggle || !scrub || !timeLabel || !window.Vimeo?.Player)
+          return;
+
+        const player = new Vimeo.Player(iframe);
+        const embed = document.getElementById("playerEmbed");
+        const clipDuration = CLIP_END - CLIP_START;
+        let scrubbing = false;
+        let endingClip = false;
+        const primed = player.ready().then(() =>
+          player.setCurrentTime(CLIP_START).then(() => {
+            updateTimeUi(CLIP_START);
+          }),
+        );
+
+        function setPlaying(isPlaying) {
+          toggle.classList.toggle("is-playing", isPlaying);
+          if (isPlaying) embed?.classList.add("is-active");
+          toggle.setAttribute(
+            "aria-label",
+            isPlaying ? "Pause video" : "Play video",
+          );
+          if (icon) icon.textContent = isPlaying ? "❚❚" : "▶";
+        }
+
+        function showPoster() {
+          embed?.classList.remove("is-active");
+          setPlaying(false);
+        }
+
+        function clampAbsolute(seconds) {
+          return Math.max(CLIP_START, Math.min(CLIP_END, seconds));
+        }
+
+        function toRelative(absoluteSeconds) {
+          return clampAbsolute(absoluteSeconds) - CLIP_START;
+        }
+
+        function updateTimeUi(absoluteSeconds) {
+          const relative = toRelative(absoluteSeconds);
+          if (!scrubbing) {
+            scrub.value = String((relative / clipDuration) * 100);
+          }
+          timeLabel.textContent = `${formatTime(relative)} / ${formatTime(clipDuration)}`;
+          seekTo(relative);
+        }
+
+        function seekAbsolute(absoluteSeconds) {
+          const safe = clampAbsolute(absoluteSeconds);
+          return player.setCurrentTime(safe).then(() => {
+            updateTimeUi(safe);
+            return safe;
+          });
+        }
+
+        function enforceClipWindow(absoluteSeconds) {
+          if (absoluteSeconds < CLIP_START - 0.25) {
+            player.setCurrentTime(CLIP_START);
+            return;
+          }
+          if (absoluteSeconds >= CLIP_END) {
+            if (endingClip) return;
+            endingClip = true;
+            player
+              .pause()
+              .then(() => seekAbsolute(CLIP_END))
+              .then(() => showPoster())
+              .finally(() => {
+                endingClip = false;
+              });
+          }
+        }
+
+        updateTimeUi(CLIP_START);
+
+        player.on("play", () => setPlaying(true));
+        player.on("pause", () => {
+          toggle.classList.remove("is-playing");
+          toggle.setAttribute("aria-label", "Play video");
+          if (icon) icon.textContent = "▶";
+        });
+        player.on("ended", () => {
+          seekAbsolute(CLIP_START).then(() => showPoster());
+        });
+        player.on("timeupdate", (data) => {
+          if (!scrubbing) updateTimeUi(data.seconds);
+          enforceClipWindow(data.seconds);
+        });
+
+        toggle.addEventListener("click", () => {
+          player
+            .getPaused()
+            .then((paused) => {
+              if (!paused) return player.pause();
+
+              // Play first (keeps the user-gesture), then snap into the clip
+              // window if needed. Seeking before play() often fails on first click.
+              return player.play().then(() =>
+                player.getCurrentTime().then((t) => {
+                  if (t < CLIP_START - 0.05 || t >= CLIP_END - 0.15) {
+                    return player.setCurrentTime(CLIP_START);
+                  }
+                }),
+              );
+            })
+            .catch(() =>
+              player.setCurrentTime(CLIP_START).then(() => player.play()),
+            );
+        });
+
+        scrub.addEventListener("pointerdown", () => {
+          scrubbing = true;
+        });
+        scrub.addEventListener("pointerup", () => {
+          scrubbing = false;
+        });
+        scrub.addEventListener("input", () => {
+          const relative = (Number(scrub.value) / 100) * clipDuration;
+          const absolute = CLIP_START + relative;
+          timeLabel.textContent = `${formatTime(relative)} / ${formatTime(clipDuration)}`;
+          player.setCurrentTime(absolute);
+          seekTo(relative);
+        });
+
+        // Transcript times are relative to the clip (0 = CLIP_START on Vimeo).
+        window.vimeoSeek = (relativeSeconds) => {
+          seekAbsolute(CLIP_START + relativeSeconds);
+        };
+      })();
+    </script>
+  </body>
+</html>
