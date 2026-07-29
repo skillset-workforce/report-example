@@ -103,20 +103,46 @@
         line-height: 1.35;
         font-weight: 400;
         color: var(--very-dark-grey);
-        margin-bottom: 16px;
+        margin-bottom: 20px;
       }
 
       .cta-box .cta-headline {
-        font-size: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 20px;
         line-height: 1.2;
         font-weight: 600;
-        color: var(--dark-blue);
+        color: var(--white);
         margin: 0;
         text-decoration: none;
+        background: var(--tatio-pink);
+        border-radius: 999px;
+        padding: 14px 28px;
+        box-shadow: 0 8px 20px rgba(226, 12, 152, 0.28);
+        transition:
+          background 0.15s ease,
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .cta-box .cta-headline svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
       }
 
       .cta-box .cta-headline:hover {
-        color: var(--tatio-pink);
+        color: var(--white);
+        background: #c40a84;
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(226, 12, 152, 0.36);
+      }
+
+      .cta-box .cta-headline:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 12px rgba(226, 12, 152, 0.24);
       }
 
       @media (max-width: 768px) {
@@ -129,7 +155,8 @@
         }
 
         .cta-box .cta-headline {
-          font-size: 30px;
+          font-size: 17px;
+          padding: 12px 22px;
         }
       }
 
@@ -894,8 +921,21 @@
             href="https://hubspot.tatio.io/meetings/maya-huber/meeting-with-tatio-team"
             target="_blank"
             rel="noopener noreferrer"
-            >Book a demo now!</a
           >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+            </svg>
+            Book a demo now!
+          </a>
         </div>
       </div>
     </div>
